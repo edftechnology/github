@@ -41,16 +41,6 @@
 # _This document contains the main commands for configuring/installing/using the `Git`._
 # 
 
-# ## Revisão(ões)/Versão(ões)
-
-# |Revisão número |Data da revisão |Descrição da revisão                                    |Autor da revisão                                |
-# |:-------------:|:--------------:|:-------------------------------------------------------|:-----------------------------------------------|
-# |0              |03/08/2023      |<ul><li>Revisão inicial/criação do documento.</li></ul> |<ul><li>Eden Denis F. da S. L. Santos</li></ul> |
-# |1              |20/09/2023      |<ul><li>Incluído a descrição dos comandos `git fetch`, `git checkout`, `git log` e `git merge`.</li></ul>|<ul><li>Eden Denis F. da S. L. Santos</li></ul>|
-# |2              |09/11/2023      |<ul><li>Incluído a descrição dos comandos `git log --online` e `git checkout <>`.</li></ul>|<ul><li>Eden Denis F. da S. L. Santos</li></ul>|
-# |3              |24/11/2023      |<ul><li>Incluída a Seção Configurar o `git diff` para **NÃO** apontar mudanças nas informações de células colapsadas ou expandidas em notebooks do Jupyter.</li></ul>|<ul><li>Eden Denis F. da S. L. Santos</li></ul>|
-# 
-
 # ## Descrição [2]
 # 
 # ### `Git`
@@ -189,7 +179,7 @@
 # 
 # #### Configurar o `Git` para usar SSH
 # 
-#     1. **Altere o URL remoto do seu repositório para usar SSH**: `git remote set-url origin git@github.com:edendenis/<nome_do_projeto>>.git`
+# 1. **Altere o URL remoto do seu repositório para usar SSH**: `git remote set-url origin git@github.com:edendenis/<nome_do_projeto>.git`
 
 # ### 2.3.3 `Windows` [5]
 # 
