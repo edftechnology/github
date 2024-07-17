@@ -45,7 +45,7 @@
 # 
 # ### `Git`
 # 
-# O `Git` é um sistema de controle de versão distribuído amplamente utilizado para rastrear e gerenciar o código-fonte de projetos de desenvolvimento de software. Desenvolvido por Linus Torvalds, o criador do Linux, o `Git` é conhecido por sua eficiência, flexibilidade e capacidade de trabalhar tanto em projetos individuais quanto em equipes de desenvolvimento. Ele permite que os desenvolvedores acompanhem as alterações feitas no código, revertam para versões anteriores, colaborem em projetos e gerenciem conflitos de maneira eficaz. O `Git` também é suportado por várias plataformas de hospedagem de código, como o GitHub, o GitLab e o Bitbucket, o que o torna uma escolha central para o desenvolvimento colaborativo e a gestão de código-fonte em projetos de software.
+# O `Git` é um sistema de controle de versão distribuído amplamente utilizado para rastrear e gerenciar o código-fonte de projetos de desenvolvimento de software. Desenvolvido por Linus Torvalds, o criador do `Linux`, o `Git` é conhecido por sua eficiência, flexibilidade e capacidade de trabalhar tanto em projetos individuais quanto em equipes de desenvolvimento. Ele permite que os desenvolvedores acompanhem as alterações feitas no código, revertam para versões anteriores, colaborem em projetos e gerenciem conflitos de maneira eficaz. O `Git` também é suportado por várias plataformas de hospedagem de código, como o GitHub, o GitLab e o Bitbucket, o que o torna uma escolha central para o desenvolvimento colaborativo e a gestão de código-fonte em projetos de software.
 
 # ## 1. Sobre os _branches_ do `Git` [1][2]
 # 
@@ -53,23 +53,23 @@
 # 
 # Aqui estão alguns conceitos-chave relacionados aos ramos (branches) do `Git`:
 # 
-# 1. **Ramo Master/Principal:** O ramo padrão em um repositório `Git` é frequentemente chamado de "master" ou "main". Esse ramo representa o código estável e pronto para produção. Geralmente é a base a partir da qual outros ramos são criados.
+# 1. **Ramo `master`/principal:** O ramo padrão em um repositório `Git` é frequentemente chamado de "master" ou "main". Esse ramo representa o código estável e pronto para produção. Geralmente é a base a partir da qual outros ramos são criados.
 # 
-# 2. **Criando um Ramo:** Você pode criar um novo ramo no `Git` usando o comando `git branch` seguido pelo nome do ramo. Por exemplo, para criar um novo ramo chamado "feature-branch", você usaria: `git branch feature-branch`.
+# 2. **Criando um ramo:** Você pode criar um novo ramo no `Git` usando o comando `git branch` seguido pelo nome do ramo. Por exemplo, para criar um novo ramo chamado _"feature-branch"_, você usaria: `git branch feature-branch`.
 # 
-# 3. **Alternando Entre Ramos:** Para mudar para um ramo diferente, você usa o comando `git checkout` seguido do nome do ramo. A partir do `Git` 2.23, você também pode usar `git switch` para esse propósito. Por exemplo: `git checkout feature-branch` ou `git switch feature-branch`.
+# 3. **Alternando entre ramos:** Para mudar para um ramo diferente, você usa o comando `git checkout` seguido do nome do ramo. A partir do `Git` 2.23, você também pode usar `git switch` para esse propósito. Por exemplo: `git checkout feature-branch` ou `git switch feature-branch`.
 # 
-# 4. **Criando e Alternando em um Único Passo:** Você pode criar e mudar para um novo ramo simultaneamente usando a opção `-b com git checkout` ou `git switch`. Por exemplo: `git checkout -b new-feature` ou `git switch -c new-feature`.
+# 4. **Criando e alternando em um único passo:** Você pode criar e mudar para um novo ramo simultaneamente usando a opção `-b com git checkout` ou `git switch`. Por exemplo: `git checkout -b new-feature` ou `git switch -c new-feature`.
 # 
-# 5. **Visualizando Ramos:** O comando `git branch` lista todos os ramos no repositório. O ramo atual é marcado com um asterisco (*).
+# 5. **Visualizando ramos:** O comando `git branch` lista todos os ramos no repositório. O ramo atual é marcado com um asterisco (*).
 # 
-# 6. **Mesclando Ramos:** Depois de terminar o trabalho em um ramo de funcionalidade, você pode mesclá-lo de volta ao ramo principal (por exemplo, master/main). Isso combina as mudanças do ramo de funcionalidade no ramo principal. Você pode usar `git merge` para fazer isso.
+# 6. **Mesclando ramos:** Depois de terminar o trabalho em um ramo de funcionalidade, você pode mesclá-lo de volta ao ramo principal (por exemplo, master/main). Isso combina as mudanças do ramo de funcionalidade no ramo principal. Você pode usar `git merge` para fazer isso.
 # 
-# 7. **Resolvendo Conflitos:** Ao mesclar ramos, se houver conflitos (ou seja, mudanças na mesma parte do código), o `Git` pedirá que você resolva os conflitos manualmente.
+# 7. **Resolvendo conflitos:** Ao mesclar ramos, se houver conflitos (ou seja, mudanças na mesma parte do código), o `Git` pedirá que você resolva os conflitos manualmente.
 # 
-# 8. **Fluxos de Trabalho com Ramos:** O uso de ramos no `Git` possibilita vários fluxos de trabalho, como o "Feature Branch Workflow", o "Gitflow Workflow" e o "`Git` Forking Workflow", entre outros. Esses fluxos de trabalho ajudam as equipes a colaborar de forma eficaz e gerenciar o código de maneira eficiente.
+# 8. **Fluxos de trabalho com ramos:** O uso de ramos no `Git` possibilita vários fluxos de trabalho, como o `"Feature Branch Workflow"`, o `"Gitflow Workflow"` e o `"Git Forking Workflow"`, entre outros. Esses fluxos de trabalho ajudam as equipes a colaborar de forma eficaz e gerenciar o código de maneira eficiente.
 # 
-# 9. **Ramos Remotos:** Ramos remotos representam ramos em um repositório remoto (por exemplo, no GitHub, GitLab ou Bitbucket). Você pode enviar seus ramos locais para um repositório remoto e trazer ramos remotos para o seu repositório local.
+# 9. **Ramos remotos:** Ramos remotos representam ramos em um repositório remoto (por exemplo, no GitHub, GitLab ou Bitbucket). Você pode enviar seus ramos locais para um repositório remoto e trazer ramos remotos para o seu repositório local.
 # 
 # O uso de ramos no `Git` permite que os desenvolvedores trabalhem colaborativamente em diferentes partes do projeto simultaneamente. Ele facilita o isolamento do código, a experimentação e a capacidade de trabalhar em várias funcionalidades ao mesmo tempo. Ramos são um conceito fundamental no `Git` que promove a organização do código, a manutenibilidade e o trabalho em equipe.
 
@@ -219,7 +219,7 @@
 # 
 # O comando `git init` é usado para iniciar um novo repositório `Git` em um diretório. Quando você executa este comando em um diretório vazio ou existente, ele cria um repositório `Git` local, que é um local onde você pode armazenar e gerenciar seu código fonte e seu histórico de alterações. Aqui está uma explicação mais detalhada em código e comentários:
 # 
-# 1. Inicializa um novo repositório Git no diretório atual: `git init`
+# 1. **Inicializa um novo repositório `Git` no diretório atual**: `git init`
 # 
 #     Este comando cria um diretório oculto chamado `.git` na pasta onde você executou o `git init`. É dentro deste diretório `.git` que o `Git` armazena todas as informações sobre o repositório, incluindo o histórico de `commits`, as configurações e outras informações relacionadas ao controle de versão.
 # 
@@ -306,9 +306,9 @@
 # 
 # Para editar um `git commit` já salvo, você pode seguir os seguintes passos:
 # 
-# 1. **Abrir um Terminal:** Primeiro, você precisa de um terminal onde possa executar comandos Git.
+# 1. **Abrir um Terminal:** Primeiro, você precisa de um terminal onde possa executar comandos `Git`.
 # 
-# 2. **Navegar até o Repositório:** Use o comando cd para navegar até a pasta do seu repositório Git.
+# 2. **Navegar até o Repositório:** Use o comando `cd` para navegar até a pasta do seu repositório `Git`.
 # 
 # 3. **Usar o Comando `git rebase`:**
 # 
@@ -451,21 +451,21 @@
 
 # ### 4.2 Comando `git log` [4]
 # 
-# O comando `git log` é usado para exibir o histórico de commits em um repositório `Git`. Ele mostra informações detalhadas sobre os commits, incluindo o hash do commit, autor, data e hora, e a mensagem associada ao commit. Aqui está uma explicação mais detalhada de como o comando funciona: `git log`
+# O comando `git log` é usado para exibir o histórico de commits em um repositório `Git`. Ele mostra informações detalhadas sobre os commits, incluindo o hash do `commit`, autor, data e hora, e a mensagem associada ao `commit`. Aqui está uma explicação mais detalhada de como o comando funciona: `git log`
 # 
-# Ao executar o comando `git log` sem argumentos adicionais, você verá uma lista de todos os commits no ramo atual (aquele em que você está atualmente). Cada entrada no registro do `git log`` representa um commit e inclui as seguintes informações:
+# Ao executar o comando `git log` sem argumentos adicionais, você verá uma lista de todos os commits no ramo atual (aquele em que você está atualmente). Cada entrada no registro do `git log`` representa um `commit` e inclui as seguintes informações:
 # 
-# - **Hash do Commit:** Um identificador exclusivo (geralmente em formato hexadecimal) que identifica de forma única o commit.
+# - **Hash do `commit`:** Um identificador exclusivo (geralmente em formato hexadecimal) que identifica de forma única o `commit`.
 # 
-# - **Autor:** O nome e o endereço de e-mail do autor do commit.
+# - **Autor:** O nome e o endereço de e-mail do autor do `commit`.
 # 
-# - **Data e Hora:** A data e a hora em que o commit foi criado.
+# - **Data e Hora:** A data e a hora em que o `commit` foi criado.
 # 
-# - **Mensagem do Commit:** A mensagem descritiva associada ao commit, que geralmente explica as alterações feitas no commit.
+# - **Mensagem do Commit:** A mensagem descritiva associada ao `commit`, que geralmente explica as alterações feitas no `commit`.
 # 
-# O comando `git log` exibe os commits em ordem cronológica reversa, com o commit mais recente listado no topo.
+# O comando `git log` exibe os commits em ordem cronológica reversa, com o `commit` mais recente listado no topo.
 # 
-# Este comando é útil para visualizar o histórico de desenvolvimento do seu projeto, permitindo que você acompanhe quem fez quais alterações e quando essas alterações foram feitas. Você também pode usar várias opções e argumentos adicionais com o "git log" para personalizar a saída, como limitar o número de commits exibidos, filtrar por autor, data ou mensagem de commit, e muito mais.
+# Este comando é útil para visualizar o histórico de desenvolvimento do seu projeto, permitindo que você acompanhe quem fez quais alterações e quando essas alterações foram feitas. Você também pode usar várias opções e argumentos adicionais com o "git log" para personalizar a saída, como limitar o número de commits exibidos, filtrar por autor, data ou mensagem de `commit`, e muito mais.
 
 # ### 4.2.1 Comando `git log --oneline` [7]
 # 
@@ -478,41 +478,41 @@
 
 # ### 4.2.2 Consultar os últimos `commits`
 # 
-# Para consultar os últimos `commits` no Git através do terminal, você pode utilizar o comando git log. Aqui estão algumas das formas mais comuns de usar o git log para visualizar o histórico de `commits`:
+# Para consultar os últimos `commits` no `Git` através do `Terminal Emulator`, você pode utilizar o comando `git log`. Aqui estão algumas das formas mais comuns de usar o `git log` para visualizar o histórico de `commits`:
 # 
-# 1. **Visualizar uma Lista Simples de Commits:** `git log`
+# 1. **Visualizar uma lista simples de commits:** `git log`
 # 
 #     Este comando mostrará uma lista detalhada dos `commits`, incluindo o autor, a data e a mensagem de cada commit.
 # 
-# 2. **Limitar o Número de Commits Mostrados:** `git log -n <número>`
+# 2. **Limitar o número de commits mostrados:** `git log -n <número>`
 # 
 #     Substitua <número> pelo número de `commits` que você deseja ver. Por exemplo, `git log -n 5` mostrará os últimos cinco `commits`.
 # 
-# 3. **Mostrar Commits em uma Linha:** `git log --oneline`
+# 3. **Mostrar commits em uma linha:** `git log --oneline`
 # 
 #     Esta opção exibe cada `commit` em uma única linha, mostrando apenas o identificador do `commit` (`hash`) e a mensagem do `commit`.
 # 
-# 4. **Mostrar Commits com Estatísticas de Mudanças:** `git log --stat`
+# 4. **Mostrar commits com estatísticas de mudanças:** `git log --stat`
 # 
 #     Além da informação normal, isso mostrará estatísticas de mudança para cada `commit`, como quantos arquivos foram alterados e o número de linhas adicionadas ou removidas.
 # 
-# 5. **Mostrar um Gráfico dos Branches e Merges:**  `git log --graph`
+# 5. **Mostrar um gráfico dos branches e merges:**  `git log --graph`
 # 
 #     Isso adiciona um gráfico ASCII ao lado das mensagens de `commit`, mostrando a estrutura de `branches` e `merges`.
 # 
-# 6. **Filtrar Commits por Autor:** `git log --author="Nome do Autor"`
+# 6. **Filtrar commits por autor:** `git log --author="Nome do Autor"`
 # 
 #     Substitua "Nome do Autor" pelo nome do autor para ver apenas os `commits` feitos por essa pessoa.
 # 
-# 7. **Mostrar Commits Desde Uma Data Específica:**  `git log --since="2023-01-01"`
+# 7. **Mostrar commits desde uma data específica:**  `git log --since="2023-01-01"`
 # 
-#     Substitua "2023-01-01" pela data desejada para ver `commits` desde aquela data.
+#     Substitua `"2023-01-01"` pela data desejada para ver `commits` desde aquela data.
 # 
-# 8. **Mostrar Commits Antes de Uma Data Específica:** `git log --until="2023-01-01"`
+# 8. **Mostrar commits antes de uma data específica:** `git log --until="2023-01-01"`
 # 
 #     Similar ao comando `--since`, mas mostra `commits` anteriores à data especificada.
 # 
-# Esses são apenas alguns exemplos de como você pode usar `git log` para explorar o histórico de `commits`. O Git oferece muitas outras opções e filtros que podem ser aplicados ao comando `git log` para personalizar a saída de acordo com suas necessidades.
+# Esses são apenas alguns exemplos de como você pode usar `git log` para explorar o histórico de `commits`. O `Git` oferece muitas outras opções e filtros que podem ser aplicados ao comando `git log` para personalizar a saída de acordo com suas necessidades.
 # 
 
 # ### 4.3 Comando `git push` [1][2]
@@ -642,7 +642,7 @@
 # 
 # Para atualizar o repositório local (mais atualizado) para o remoto (menos atualizado) a partir que um backup em outra pasta execute os passos abaixo:
 # 
-# 1. **Atribuir a palavra "Attentus" a uma variável:** `projeto="attentus_vba"`
+# 1. **Atribuir a palavra `"Attentus"` a uma variável:** `projeto="attentus_vba"`
 # 
 # 2. **Remover o diretório do projeto existente, se houver:** `rm -rf "$projeto"`
 # 
@@ -656,9 +656,9 @@
 # 
 # 6. **Inicializar um novo repositório Git (se necessário):** `git init`
 # 
-# 7. **Verificar Repositórios Remotos Configurados:** Primeiro, verifique os repositórios remotos atualmente configurados no seu projeto com o comando: `git remote -v`
+# 7. **Verificar repositórios remotos configurados:** Primeiro, verifique os repositórios remotos atualmente configurados no seu projeto com o comando: `git remote -v`
 # 
-#     7.1 **Adicionar o Repositório Remoto origin, se Necessário:** Se o origin não estiver listado, você precisará adicioná-lo. Para projetos hospedados no `GitHub` e que você deseja acessar via SSH (como indicado pela sua tentativa de usar a URL SSH `git@github.com:edendenis/[projeto].git`), use o seguinte comando: `git remote add origin git@github.com:edendenis/"$projeto".git`
+#     7.1 **Adicionar o repositório remoto origin, se necessário:** Se o origin não estiver listado, você precisará adicioná-lo. Para projetos hospedados no `GitHub` e que você deseja acessar via SSH (como indicado pela sua tentativa de usar a URL SSH `git@github.com:edendenis/[projeto].git`), use o seguinte comando: `git remote add origin git@github.com:edendenis/"$projeto".git`
 # 
 # 8. **Verificar a configuração do repositório remoto:** `git remote -v`
 # 
@@ -668,7 +668,7 @@
 # 
 # 11. **Copiar os arquivos de backup para o diretório do projeto:** `cp -r /home/edenedfsls/Documents/EDF/APPS/excel_vba/excel_vba_public/0_BACKUP/"$projeto"/ /home/edenedfsls/Documents/EDF/APPS/excel_vba/excel_vba_public/"$projeto"/`
 # 
-# 10. **Verificar o status do repositório Git:** `git status`
+# 10. **Verificar o _status_ do repositório Git:** `git status`
 # 
 # 11. **Adicionar todos os arquivos ao staging area:** `git add .`
 # 
@@ -691,6 +691,113 @@
 # 19. **Remover o diretório do projeto no backup:** `rm -rf "$projeto"`
 # 
 # 20. **Voltar para o diretório pai:** `cd ..`
+
+# ## 7. Criar repositório diretamente pela Interface de Linha de Comando (Command Line Interface, CLI) usando o `GitHub CLI`
+# 
+# ### 7.1 Configurar/Instalar/Usar o `GitHub CLI` 
+# 
+# Atualmente, o `GitHub` não oferece uma maneira oficial de criar repositórios diretamente pela linha de comando sem acessar a interface web, a menos que você use a API do `GitHub` ou ferramentas de terceiros como o `GitHub CLI`.
+# 
+# Se você quer fazer tudo pela linha de comando, pode usar o `GitHub CLI (gh)`, uma ferramenta oficial do `GitHub` que permite gerenciar repositórios, `issues`, `pull` `requests` e mais, tudo pelo `Terminal Emulator`. Aqui estão os passos para usar o `GitHub CLI` para criar um repositório:
+# 
+# 1. **Instalar o `GitHub CLI`**: Você pode instalar o `GitHub CLI` seguindo as instruções na página de instalação:
+# 
+#     ```
+#     (type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) \
+#     && sudo mkdir -p -m 755 /etc/apt/keyrings \
+#     && wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
+#     && sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+#     && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+#     && sudo apt update \
+#     && sudo apt install gh -y
+#     ```
+# 
+# 2. **Autenticar com sua conta `GitHub`**: Após a instalação, autentique-se usando: `gh auth login`
+# 
+#     Siga as instruções na tela para autenticar.
+# 
+
+# ### 7.2 Criar repositório e enviar os arquivos e pastas
+# 
+# 1. **Inicializa um novo repositório `Git` no diretório atual**: `git init`
+# 
+# 2. **Criar o repositório**: Com o `GitHub CLI`, você pode criar um novo repositório usando: `gh repo create <nome-do-repositorio> --public`
+# 
+#     Substitua `<nome-do-repositorio>` pelo nome que você deseja e use `--public` ou `--private` para definir a visibilidade do repositório.
+# 
+# 3. **Adicionar o remote ao seu repositório local**: Uma vez criado o repositório, você pode conectar seu repositório local ao remoto usando: `git remote add origin git@github.com:seu-usuario/<nome-do-repositorio>.git`
+# 
+#     Substitua `<nome-do-repositorio>` pelo nome que você deseja para definir a visibilidade do repositório.
+# 
+# 4. **Verificar as Branches Locais**: Primeiro, verifique quais _branches_ existem no seu repositório local usando o comando `git branch`: `git branch`
+# 
+#     Isso lista todas as _branches_ locais. Certifique-se de que a `branch` `"main"` exista. Se não existir ou se não existir nenhuma, você pode criá-la a partir da `branch` atual ou mudar para ela usando: `git branch -M main`
+# 
+#     Isso cria uma nova `branch` `"main"` baseada na `branch` atual.
+# 
+# 5. **Fazer um Commit**: Após criar a branch `"main"`, você precisa fazer pelo menos um `commit` nela. Adicione arquivos, faça o `commit` e forneça uma mensagem de `commit`:
+# 
+#     ```
+#     git add .
+#     git commit -m "first commit na branch main"
+#     ```
+# 
+# 6. **Enviar seu repositório local para o `GitHub`**: Finalmente, envie seu repositório para o `GitHub`: `git push -u origin main`
+# 
+# Esses comandos permitem que você crie um repositório no `GitHub` e o gerencie completamente a partir da linha de comando.
+# 
+
+# ## 8. Configurar o `Git` para não solicitar a senha sempre que executar o `git push`
+# 
+# Para configurar o `Git` para não solicitar a senha sempre que você executar git push, você pode usar o protocolo HTTPS com autenticação através de tokens pessoais. Aqui está um passo a passo básico para configurar isso:
+# 
+# ### 8.1 Crie um token pessoal
+# 
+# 1. Vá para a plataforma de hospedagem do seu repositório `Git` (como `GitHub`, `GitLab`, `Bitbucket`).
+# 
+# 2. Nas configurações da sua conta, encontre a seção de `Tokens Pessoais` (ou similar).
+# 
+# 3. Crie um novo token pessoal com permissões adequadas para acessar seus repositórios.
+# 
+# ### 8.2 Configure o `Git` para usar o token
+# 
+# 1. Abra o `Terminal Emulator` ou `prompt` de comando.
+# 
+# 2. Configure o `Git` para usar o `credential.helper` store para armazenar suas credenciais: `git config --global credential.helper store`
+# 
+# Este comando diz ao `Git` para armazenar suas credenciais em um arquivo local no seu sistema.
+# 
+# 3. Crie o arquivo `~/.git-credentials` com suas credenciais (usuário e token): `echo "https://SEU_USUARIO:SEU_TOKEN_AQUI@SEU_REPO.git" > ~/.git-credentials`
+# 
+#     - Substitua `SEU_USUARIO` pelo seu nome de usuário no Git (ou o nome de usuário da plataforma de hospedagem do seu repositório).
+# 
+#     - Substitua `SEU_TOKEN_AQUI` pelo token que você gerou na plataforma de hospedagem do seu repositório.
+# 
+#     - Substitua `SEU_REPO.git` pelo endereço HTTPS do seu repositório.
+# 
+# 3. Após esses passos, o `Git` usará as credenciais armazenadas no arquivo ~/.git-credentials (incluindo o token) para autenticar suas operações de git push.
+# 
+# Então, a sequência correta e ajustada seria:
+# 
+# bash
+# Copy code
+# git config --global credential.helper store
+# echo "https://SEU_USUARIO:SEU_TOKEN_AQUI@SEU_REPO.git" > ~/.git-credentials
+# ```
+# 
+# Isso armazenará suas credenciais (usuário e token) em um arquivo `~/.git-credentials` no seu diretório pessoal.
+# 
+# ### 8.3 Atualize a URL do Repositório Remoto:
+# 
+# 1. Se já estiver usando HTTPS para clonar ou adicionar o repositório, a URL provavelmente já está configurada. Caso contrário, atualize a URL do repositório remoto para usar HTTPS: `git remote set-url origin https://SEU_USUARIO@SEU_REPO.git`
+# 
+# ### 8.4 Teste o `git push`
+# 
+# 1. Tente fazer um `git push` para o repositório remoto.
+# 
+#     Você não deverá mais ser solicitado a digitar sua senha; o `Git` utilizará o token pessoal para autenticação.
+# 
+# Este método armazena as credenciais de forma persistente, o que evita a necessidade de digitar a senha a cada `git push`. Certifique-se de manter o arquivo `~/.git-credentials` seguro em seu sistema.
 
 # <!-- LICENÇA -->
 # ## Licença
@@ -753,19 +860,17 @@
 # 
 # [1] CHACON, S e STRAUB, B.. ***Progit: everything you need to know about git***. Apress, Second edition, 2020.
 # 
-# [2] OPEN AI. ***Enviar repositório local ao GitHub.*** Disponível em: <https://chat.openai.com/c/0b137275-7e88-41e4-b679-6ebce8603a01> (texto adaptado). ChatGPT. Acessado em: 03/08/2023 09:09.
+# [2] OPENAI. ***Enviar repositório local ao github.*** Disponível em: <https://chat.openai.com/c/0b137275-7e88-41e4-b679-6ebce8603a01> (texto adaptado). ChatGPT. Acessado em: 03/08/2023 09:09.
 # 
 # [3] CHACON, S e STRAUB, B.. ***Progit: everything you need to know about git***. Apress, page 16, Second edition, 2020.
 # 
-# [4] OPEN AI. ***GitLab: comando "git fetch".*** Disponível em: <https://chat.openai.com/c/31c7e7f1-51c8-47ae-978b-6a01c5730131> (texto adaptado). ChatGPT. Acesso em: 20/09/2023 21:38.
+# [4] OPENAI. ***Gitlab: comando "git fetch".*** Disponível em: <https://chat.openai.com/c/31c7e7f1-51c8-47ae-978b-6a01c5730131> (texto adaptado). ChatGPT. Acesso em: 20/09/2023 21:38.
 # 
-# [5] OPEN AI. ***Gerar chave SSH Ubuntu.*** Disponível em: <https://chat.openai.com/c/6f3224a3-b4a2-43c6-a878-f1612beae966> (texto adaptado). Chat GPT. Acessado em: 21/07/2023 10:14.
+# [5] OPENAI. ***Gerar chave ssh ubuntu.*** Disponível em: <https://chat.openai.com/c/6f3224a3-b4a2-43c6-a878-f1612beae966> (texto adaptado). Chat GPT. Acessado em: 21/07/2023 10:14.
 # 
-# [6] OPEN AI. ***Gerar chave SSH Ubuntu.*** Disponível em: <https://chat.openai.com/c/3d4690a0-2466-4655-990a-cd14823b6825> (texto adaptado). Chat GPT. Acessado em: 21/07/2023 10:21.
+# [6] OPENAI. ***Comando "git log --oneline".*** Disponível em: <https://chat.openai.com/c/7c186067-7c88-4f26-bdd0-3ac8d9036ffd> (texto adaptado). Chat GPT. Acessado em: 09/11/2023 10:24.
 # 
-# [7] OPEN AI. ***Comando "git log --oneline".*** Disponível em: <https://chat.openai.com/c/7c186067-7c88-4f26-bdd0-3ac8d9036ffd> (texto adaptado). Chat GPT. Acessado em: 09/11/2023 10:24.
+# [7] OPEN I. ***Salvar e fechar no vim.*** Disponível em: <https://chat.openai.com/c/efd5cbbb-2acb-4d58-8a04-9887d73fb8e8> (texto adaptado). Chat GPT. Acessado em: 09/11/2023 15:37.
 # 
-# [8] OPEN AI. ***Salvar e fechar no vim.*** Disponível em: <https://chat.openai.com/c/efd5cbbb-2acb-4d58-8a04-9887d73fb8e8> (texto adaptado). Chat GPT. Acessado em: 09/11/2023 15:37.
-# 
-# [9] OPEN AI. ***Remover arquivos da staging.*** Disponível em: <https://chat.openai.com/c/d640a993-7f4d-41c4-923e-3ccc5d04f709> (texto adaptado). Chat GPT. Acessado em: 22/11/2023 12:04.
+# [8] OPENAI. ***Remover arquivos da staging.*** Disponível em: <https://chat.openai.com/c/d640a993-7f4d-41c4-923e-3ccc5d04f709> (texto adaptado). Chat GPT. Acessado em: 22/11/2023 12:04.
 # 
