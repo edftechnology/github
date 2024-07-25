@@ -689,7 +689,7 @@ Para atualizar o repositório local (mais atualizado) para o remoto (menos atual
 
 20. **Voltar para o diretório pai:** `cd ..`
 
-## 7. Criar repositório diretamente pela Interface de Linha de Comando (Command Line Interface, CLI) usando o `GitHub CLI`
+## 7. Criar repositório diretamente pela Interface de Linha de Comando (_Command Line Interface, CLI_) usando o `GitHub CLI`
 
 ### 7.1 Configurar/Instalar/Usar o `GitHub CLI` 
 
@@ -716,6 +716,20 @@ Se você quer fazer tudo pela linha de comando, pode usar o `GitHub CLI (gh)`, u
 
 ### 7.2 Criar repositório e enviar os arquivos e pastas
 
+#### 7.2.1 Sugestão de comandos indicados pelo _website_ do `GitHub`
+
+```
+echo "# list_the_folders_within_another_with_the_largest_volume_of_data" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin git@github.com:edendenis/list_the_folders_within_another_with_the_largest_volume_of_data.git
+git push -u origin main
+```
+
+#### 7.2.2 Comandos pelo `Git Hub CLI (Command Line Interface)` do `gh`
+
 1. **Inicializa um novo repositório `Git` no diretório atual**: `git init`
 
 2. **Criar o repositório**: Com o `GitHub CLI`, você pode criar um novo repositório usando: `gh repo create <nome-do-repositorio> --public`
@@ -732,11 +746,11 @@ Se você quer fazer tudo pela linha de comando, pode usar o `GitHub CLI (gh)`, u
 
     Isso cria uma nova `branch` `"main"` baseada na `branch` atual.
 
-5. **Fazer um Commit**: Após criar a branch `"main"`, você precisa fazer pelo menos um `commit` nela. Adicione arquivos, faça o `commit` e forneça uma mensagem de `commit`:
+5. **Fazer um `Commit`**: Após criar a branch `"main"`, você precisa fazer pelo menos um `commit` nela. Adicione arquivos, faça o `commit` e forneça uma mensagem de `commit`:
 
     ```
     git add .
-    git commit -m "first commit na branch main"
+    git commit -m "first commit within branch main"
     ```
 
 6. **Enviar seu repositório local para o `GitHub`**: Finalmente, envie seu repositório para o `GitHub`: `git push -u origin main`
@@ -764,25 +778,16 @@ Para configurar o `Git` para não solicitar a senha sempre que você executar gi
 
 Este comando diz ao `Git` para armazenar suas credenciais em um arquivo local no seu sistema.
 
-3. Crie o arquivo `~/.git-credentials` com suas credenciais (usuário e token): `echo "https://SEU_USUARIO:SEU_TOKEN_AQUI@SEU_REPO.git" > ~/.git-credentials`
+3. Crie o arquivo `~/.git-credentials` com suas credenciais (usuário e token): `echo "https://<SEU_USUARIO>:<SEU_TOKEN_AQUI>@github.com/<SEU_REPO>/<SEU_PROJETO>.git" > ~/.git-credentials`
 
-    - Substitua `SEU_USUARIO` pelo seu nome de usuário no Git (ou o nome de usuário da plataforma de hospedagem do seu repositório).
+    - Substitua `<SEU_USUARIO>` pelo seu nome de usuário no Git (ou o nome de usuário da plataforma de hospedagem do seu repositório).
 
-    - Substitua `SEU_TOKEN_AQUI` pelo token que você gerou na plataforma de hospedagem do seu repositório.
+    - Substitua `<SEU_TOKEN_AQUI>` pelo token que você gerou na plataforma de hospedagem do seu repositório.
 
-    - Substitua `SEU_REPO.git` pelo endereço HTTPS do seu repositório.
+    - Substitua `<SEU_REPO:.git` pelo endereço HTTPS do seu repositório.
 
-3. Após esses passos, o `Git` usará as credenciais armazenadas no arquivo ~/.git-credentials (incluindo o token) para autenticar suas operações de git push.
 
-Então, a sequência correta e ajustada seria:
-
-bash
-Copy code
-git config --global credential.helper store
-echo "https://SEU_USUARIO:SEU_TOKEN_AQUI@SEU_REPO.git" > ~/.git-credentials
-```
-
-Isso armazenará suas credenciais (usuário e token) em um arquivo `~/.git-credentials` no seu diretório pessoal.
+Após esses passos, o `Git` usará as credenciais armazenadas no arquivo `~/.git-credentials` (incluindo o token) para autenticar suas operações de `git push`. Isso armazenará suas credenciais (usuário e token) em um arquivo `~/.git-credentials` no seu diretório pessoal.
 
 ### 8.3 Atualize a URL do Repositório Remoto:
 
@@ -807,12 +812,19 @@ Distribuído sob a licença MIT. Consulte `LICENSE.txt` para obter mais informa�
 ## Roteiro
 
 - [x] Adicionar registro de alterações
+
 - [x] Adicionar links de volta ao topo
+
 - [x] Adicionar modelos adicionais com exemplos
+
 - [x] Suporte multilíngue
+
      - [ ] Espanhol
+
      - [ ] Inglês
+
      - [ ] Português
+
      - [x] Português brasileiro 
 
 Consulte os [problemas abertos](https://github.com/edendenis/google_chrome/issues) para obter uma lista completa dos recursos propostos (e problemas conhecidos).
@@ -829,10 +841,14 @@ Se você tiver uma sugestão que possa melhorar isso, bifurque o repositório e 
 Não se esqueça de dar uma estrela ao projeto! Obrigado novamente!
 
 1. Bifurque o projeto
+
 2. Crie sua ramificação de recursos (`git checkout -b feature/AmazingFeature`)
+
 3. Confirme suas alterações (`git commit -m 'Add some AmazingFeature'`)
+
 4. Envie para a filial (`git push origin feature/AmazingFeature`)
-5. Abra uma solicitação pull
+
+5. Abra uma solicitação `pull`
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
@@ -841,13 +857,21 @@ Não se esqueça de dar uma estrela ao projeto! Obrigado novamente!
 ## Agradecimentos
 
 * [Best README Template](https://github.com/othneildrew/Best-README-Template?tab=readme-ov-file)
+
 * [Choose an Open Source License](https://choosealicense.com)
+
 * [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
+
 * [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
+
 * [Malven's Grid Cheatsheet](https://grid.malven.co/)
+
 * [Img Shields](https://shields.io)
+
 * [GitHub Pages](https://pages.github.com)
+
 * [Font Awesome](https://fontawesome.com)
+
 * [React Icons](https://react-icons.github.io/react-icons/search)
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
