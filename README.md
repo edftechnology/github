@@ -74,7 +74,7 @@ O uso de ramos no `Git` permite que os desenvolvedores trabalhem colaborativamen
 
 ## 2.1 Configurar/Instalar/usar o `Git` no `Linux Ubuntu`
 
-Para configurar/instalar o `Git` no `Linux Ubuntu`, você pode seguir estas etapas:
+Para configurar/instalar/usar o `Git` no `Linux Ubuntu`, você pode seguir estas etapas:
 
 1. Abra o `Terminal Emulator`. Você pode fazer isso pressionando: `Ctrl + Alt + T`
 
@@ -100,6 +100,24 @@ Para configurar/instalar o `Git` no `Linux Ubuntu`, você pode seguir estas etap
 
 3. No `Terminal Emulator` do Sistema Operacional (SO), executar o comando: `sudo apt install git-all -y`
 
+4. **Por favor dizer ao `Git` quem é você **: Depois de instalar o `Git`, indique com os comandos abaixo seus usuário e nome:
+
+```
+** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+```
+
+- **`"you@example.com"`**: por exemplo: `"edendenis@gmail.com"`
+
+- **`"Your name"`**: por exemplo: `"Eden Denis"` 
+
 ### 2.2 Configurar/Instalar/usar o `Git` no `Windows` a partir da fonte
 
 Para instalar o `git-all` no `Windows` usando o `PowerShell`, você seguirá basicamente dois passos: primeiro, baixar o instalador do `Git`, e depois, executá-lo. Aqui estão as instruções detalhadas:
@@ -123,6 +141,24 @@ Para instalar o `git-all` no `Windows` usando o `PowerShell`, você seguirá bas
 3. Depois de concluir a instalação, você pode verificar se o `Git` foi instalado corretamente abrindo um novo terminal do `PowerShell` e digitando: `git --version`
 
     Isso deve retornar a versão do Git que foi instalada.
+
+4. **Por favor dizer ao `Git` quem é você **: Depois de instalar o `Git`, indique com os comandos abaixo seus usuário e nome:
+
+```
+** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+```
+
+- **`"you@example.com"`**: por exemplo: `"edendenis@gmail.com"`
+
+- **`"Your name"`**: por exemplo: `"Eden Denis"` 
 
 ## 2.3 Criar chave Secure SHell `ssh` para a conta do usuário [4][5]
 
@@ -303,7 +339,7 @@ Aqui estão alguns detalhes sobre o funcionamento do comando `git add`:
 
 Para editar um `git commit` já salvo, você pode seguir os seguintes passos:
 
-1. **Abrir um Terminal:** Primeiro, você precisa de um terminal onde possa executar comandos `Git`.
+1. **Abrir um `Terminal Emulator`:** Primeiro, você precisa de um `Terminal Emulator` onde possa executar comandos `Git`.
 
 2. **Navegar até o Repositório:** Use o comando `cd` para navegar até a pasta do seu repositório `Git`.
 
@@ -593,7 +629,7 @@ O comando `git stash` é usado para temporariamente salvar (ou "guardar") as mud
 
     Quando você executa `git stash`, o `Git` cria uma entrada de `stash` que contém todas as mudanças não commitadas em seu diretório de trabalho, incluindo os arquivos modificados e arquivos não rastreados. Seu diretório de trabalho ficará limpo, como se você nunca tivesse feito alterações. Isso permite que você faça outras tarefas, como alternar para outra ramificação, sem se preocupar com as mudanças em andamento.
 
-    Após realizar a tarefa necessária em outra ramificação ou contexto, você pode aplicar as mudanças do stash de volta ao seu diretório de trabalho usando o comando `git stash apply` ou `git stash pop`. 
+    Após realizar a tarefa necessária em outra ramificação ou contexto, você pode aplicar as mudanças do `stash` de volta ao seu diretório de trabalho usando o comando `git stash apply` ou `git stash pop`. 
     
     Aqui está como fazer isso:
 
@@ -603,7 +639,7 @@ Lembre-se de que o `stash` não substitui os `commits`. Ele é apenas uma maneir
 
 #### 4.4.1 Comando `git stash apply stash@{0}` [9]
 
-Para retornar as mudanças ao seu primeiro `stash`, você pode usar o comando `git stash apply` especificando qual entrada de stash deseja aplicar. As entradas de `stash` são numeradas e você pode referenciá-las pelo número. O primeiro `stash` é referenciado como `stash@{0}`. Aqui está como fazer isso:
+Para retornar as mudanças ao seu primeiro `stash`, você pode usar o comando `git stash apply` especificando qual entrada de `stash` deseja aplicar. As entradas de `stash` são numeradas e você pode referenciá-las pelo número. O primeiro `stash` é referenciado como `stash@{0}`. Aqui está como fazer isso:
 
 - Aplica as mudanças do primeiro `stash` de volta ao diretório de trabalho: `git stash apply stash@{0}`
 
@@ -613,7 +649,50 @@ Para retornar as mudanças ao seu primeiro `stash`, você pode usar o comando `g
 
 Lembre-se de que, se você tiver mais de um `stash` e quiser aplicar um `stash` específico, basta substituir `stash@{0}` pelo número da entrada de `stash` que deseja aplicar. Por exemplo, `stash@{1}` para o segundo `stash`, `stash@{2}` para o terceiro `stash`, e assim por diante.
 
-#### 4.4.2 Comando `git restore --staged <arquivo1> <arquivo2>`
+
+#### Ver lista de itens armazenados no `git stash`
+
+Para ver a lista de itens armazenados no `git stash`, você pode usar o comando `git stash list`. Esse comando exibe uma lista de todos os `stashes` que você fez, mostrando cada um com um identificador único e uma descrição do `stash`.
+
+Aqui está como você pode usar o comando:
+
+1. **Exibir a Lista de Stashes**: `git stash list`
+
+    **Exemplo de Saída**
+
+    A saída será semelhante a:
+
+    ```
+    stash@{0}: WIP on main: 9a0b1c2 Add feature X
+    stash@{1}: WIP on main: 3d4e5f6 Fix bug in Y
+    stash@{2}: WIP on feature-branch: 7g8h9i0 Update README
+    ```
+    
+    - `stash@{0}` é o stash mais recente.
+
+    - `stash@{1}` é o stash anterior, e assim por diante.
+    
+    Cada entrada inclui:
+
+    - O identificador do `stash` (`stash@{n}`).
+
+    - A mensagem de trabalho em progresso (WIP) ou a descrição associada ao `stash`.
+
+**Detalhes Adicionais**
+
+- **Ver Detalhes de um Stash Específico**: Para ver o conteúdo de um `stash` específico, use `git stash show` seguido do identificador do `stash`, como `stash@{0}`: `git stash show stash@{0}`
+
+    Se você quiser ver as mudanças detalhadas (`diff`), use a opção `-p`: `git stash show -p stash@{0}`
+
+- **Aplicar um Stash**: Para aplicar um `stash` específico e mantê-lo na lista de `stashes`, use: `git stash apply stash@{0}`
+
+- **Remover um Stash**: Para remover um `stash` da lista após aplicá-lo ou se não for mais necessário, use: `git stash drop stash@{0}`
+
+- **Limpar Todos os Stashes**: Para remover todos os stashes de uma vez, use: `git stash clear`
+
+Esses comandos permitem que você gerencie e visualize os stashes de forma eficiente no seu repositório `Git`.
+
+#### 4.5 Comando `git restore --staged <arquivo1> <arquivo2>`
 
 Esse comando é usado para remover arquivos ou alterações do índice (também conhecido como área de `stage`) sem modificar o seu diretório de trabalho. Ele pode ser útil quando você adicionou arquivos ao índice, mas deseja removê-los antes de efetuar um `commit`.
 
@@ -736,24 +815,20 @@ git push -u origin main
 
     Substitua `<nome-do-repositorio>` pelo nome que você deseja e use `--public` ou `--private` para definir a visibilidade do repositório.
 
-3. **Adicionar o remote ao seu repositório local**: Uma vez criado o repositório, você pode conectar seu repositório local ao remoto usando: `git remote add origin git@github.com:seu-usuario/<nome-do-repositorio>.git`
-
-    Substitua `<nome-do-repositorio>` pelo nome que você deseja para definir a visibilidade do repositório.
-
-4. **Verificar as Branches Locais**: Primeiro, verifique quais _branches_ existem no seu repositório local usando o comando `git branch`: `git branch`
+3. **Verificar as _branches_ locais**: Primeiro, verifique quais _branches_ existem no seu repositório local usando o comando `git branch`: `git branch`
 
     Isso lista todas as _branches_ locais. Certifique-se de que a `branch` `"main"` exista. Se não existir ou se não existir nenhuma, você pode criá-la a partir da `branch` atual ou mudar para ela usando: `git branch -M main`
 
     Isso cria uma nova `branch` `"main"` baseada na `branch` atual.
 
-5. **Fazer um `Commit`**: Após criar a branch `"main"`, você precisa fazer pelo menos um `commit` nela. Adicione arquivos, faça o `commit` e forneça uma mensagem de `commit`:
+4. **Fazer um `commit`**: Após criar a `branch` `"main"`, você precisa fazer pelo menos um `commit` nela. Adicione arquivos, faça o `commit` e forneça uma mensagem de `commit`:
 
     ```
     git add .
     git commit -m "first commit within branch main"
     ```
 
-6. **Enviar seu repositório local para o `GitHub`**: Finalmente, envie seu repositório para o `GitHub`: `git push -u origin main`
+5. **Enviar seu repositório local para o `GitHub`**: Finalmente, envie seu repositório para o `GitHub`: `git push -u origin main`
 
 Esses comandos permitem que você crie um repositório no `GitHub` e o gerencie completamente a partir da linha de comando.
 
@@ -762,15 +837,15 @@ Esses comandos permitem que você crie um repositório no `GitHub` e o gerencie 
 
 Para configurar o `Git` para não solicitar a senha sempre que você executar git push, você pode usar o protocolo HTTPS com autenticação através de tokens pessoais. Aqui está um passo a passo básico para configurar isso:
 
-### 8.1 Crie um token pessoal
+### 8.1 Crie um _token_ pessoal
 
 1. Vá para a plataforma de hospedagem do seu repositório `Git` (como `GitHub`, `GitLab`, `Bitbucket`).
 
 2. Nas configurações da sua conta, encontre a seção de `Tokens Pessoais` (ou similar).
 
-3. Crie um novo token pessoal com permissões adequadas para acessar seus repositórios.
+3. Crie um novo _token_ pessoal com permissões adequadas para acessar seus repositórios.
 
-### 8.2 Configure o `Git` para usar o token
+### 8.2 Configure o `Git` para usar o _token_
 
 1. Abra o `Terminal Emulator` ou `prompt` de comando.
 
@@ -778,16 +853,16 @@ Para configurar o `Git` para não solicitar a senha sempre que você executar gi
 
 Este comando diz ao `Git` para armazenar suas credenciais em um arquivo local no seu sistema.
 
-3. Crie o arquivo `~/.git-credentials` com suas credenciais (usuário e token): `echo "https://<SEU_USUARIO>:<SEU_TOKEN_AQUI>@github.com/<SEU_REPO>/<SEU_PROJETO>.git" > ~/.git-credentials`
+3. Crie o arquivo `~/.git-credentials` com suas credenciais (usuário e _token_): `echo "https://<SEU_USUARIO>:<SEU_TOKEN_AQUI>@github.com/<SEU_REPO>/<SEU_PROJETO>.git" > ~/.git-credentials`
 
     - Substitua `<SEU_USUARIO>` pelo seu nome de usuário no Git (ou o nome de usuário da plataforma de hospedagem do seu repositório).
 
-    - Substitua `<SEU_TOKEN_AQUI>` pelo token que você gerou na plataforma de hospedagem do seu repositório.
+    - Substitua `<SEU_TOKEN_AQUI>` pelo _token_ que você gerou na plataforma de hospedagem do seu repositório.
 
     - Substitua `<SEU_REPO:.git` pelo endereço HTTPS do seu repositório.
 
 
-Após esses passos, o `Git` usará as credenciais armazenadas no arquivo `~/.git-credentials` (incluindo o token) para autenticar suas operações de `git push`. Isso armazenará suas credenciais (usuário e token) em um arquivo `~/.git-credentials` no seu diretório pessoal.
+Após esses passos, o `Git` usará as credenciais armazenadas no arquivo `~/.git-credentials` (incluindo o token) para autenticar suas operações de `git push`. Isso armazenará suas credenciais (usuário e _token_) em um arquivo `~/.git-credentials` no seu diretório pessoal.
 
 ### 8.3 Atualize a URL do Repositório Remoto:
 
@@ -837,7 +912,8 @@ Consulte os [problemas abertos](https://github.com/edendenis/google_chrome/issue
 
 As contribuições são o que tornam a comunidade de código aberto um lugar incrível para aprender, inspirar e criar. Qualquer contribuição que você fizer será **muito apreciada**.
 
-Se você tiver uma sugestão que possa melhorar isso, bifurque o repositório e crie uma solicitação `pull`. Você também pode simplesmente abrir um problema com a tag “aprimoramento”.
+Se você tiver uma sugestão que possa melhorar isso, bifurque o repositório e crie uma solicitação `pull`. Você também pode simplesmente abrir um problema com a _tag_ “aprimoramento”.
+
 Não se esqueça de dar uma estrela ao projeto! Obrigado novamente!
 
 1. Bifurque o projeto
