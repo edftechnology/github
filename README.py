@@ -798,47 +798,43 @@
 
 # ### 7.2 Criar repositório e enviar os arquivos e pastas
 # 
-# #### 7.2.1 Sugestão de comandos indicados pelo _website_ do `GitHub`
+# #### 7.2.1 Comandos pelo `Git Hub CLI (Command Line Interface)` do `gh`
 # 
-# ```
-# echo "# list_the_folders_within_another_with_the_largest_volume_of_data" >> README.md
-# git init
-# git add README.md
-# git commit -m "first commit"
-# git branch -M main
-# git remote add origin git@github.com:edendenis/list_the_folders_within_another_with_the_largest_volume_of_data.git
-# git push -u origin main
-# ```
+# 1. Entrar na pasta do repositório que será enviado para o `Git`: `cd <nome_do_repositorio>`
 # 
-# #### 7.2.2 Comandos pelo `Git Hub CLI (Command Line Interface)` do `gh`
+#     Substitua `<nome_do_repositorio>` pelo nome que você deseja.
 # 
-# 1. **Inicializa um novo repositório `Git` no diretório atual**: `git init`
+# 2. Caso **NÃO** possua arquivo `README.md` já escrito e deseja adicionar um arquivo, execute o comando a seguir: `echo " <nome_do_repositorio>" >> README.md`
 # 
-# 2. **Criar o repositório**: Com o `GitHub CLI`, você pode criar um novo repositório usando: `gh repo create <nome-do-repositorio> --public`
+#     Substitua `<nome_do_repositorio>` pelo nome que você deseja.
+# 
+# 3. **Inicializa um novo repositório `Git` no diretório atual**: `git init`
+# 
+# 4. **Criar o repositório**: Com o `GitHub CLI`, você pode criar um novo repositório usando: `gh repo create <nome-do-repositorio> --public`
 # 
 #     Substitua `<nome-do-repositorio>` pelo nome que você deseja e use `--public` ou `--private` para definir a visibilidade do repositório.
 # 
-# 3. **Verificar as _branches_ locais**: Primeiro, verifique quais _branches_ existem no seu repositório local usando o comando `git branch`: `git branch`
+# 5. **Verificar as _branches_ locais**: Primeiro, verifique quais _branches_ existem no seu repositório local usando o comando `git branch`: `git branch`
 # 
 #     Isso lista todas as _branches_ locais. Certifique-se de que a `branch` `"main"` exista. Se não existir ou se não existir nenhuma, você pode criá-la a partir da `branch` atual ou mudar para ela usando: `git branch -M main`
 # 
 #     Isso cria uma nova `branch` `"main"` baseada na `branch` atual.
 # 
-# 4. **Fazer um `commit`**: Após criar a `branch` `"main"`, você precisa fazer pelo menos um `commit` nela. Adicione arquivos, faça o `commit` e forneça uma mensagem de `commit`:
+# 6. **Fazer um `commit`**: Após criar a `branch` `"main"`, você precisa fazer pelo menos um `commit` nela. Adicione arquivos, faça o `commit` e forneça uma mensagem de `commit`:
 # 
 #     ```
 #     git add .
 #     git commit -m "first commit within branch main"
 #     ```
 # 
-# 5. **Enviar seu repositório local para o `GitHub`**: Finalmente, envie seu repositório para o `GitHub`: `git push -u origin main`
+# 7. **Enviar seu repositório local para o `GitHub`**: Finalmente, envie seu repositório para o `GitHub`: `git push -u origin main`
 # 
 # Esses comandos permitem que você crie um repositório no `GitHub` e o gerencie completamente a partir da linha de comando.
 # 
 
 # ## 8. Configurar o `Git` para não solicitar a senha sempre que executar o `git push`
 # 
-# Para configurar o `Git` para não solicitar a senha sempre que você executar git push, você pode usar o protocolo HTTPS com autenticação através de tokens pessoais. Aqui está um passo a passo básico para configurar isso:
+# Para configurar o `Git` para não solicitar a senha sempre que você executar `git push`, você pode usar o protocolo HTTPS com autenticação através de tokens pessoais. Aqui está um passo a passo básico para configurar isso:
 # 
 # ### 8.1 Crie um _token_ pessoal
 # 
