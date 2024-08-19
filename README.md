@@ -824,7 +824,11 @@ Se você quer fazer tudo pela linha de comando, pode usar o `GitHub CLI (gh)`, u
     git commit -m "first commit within branch main"
     ```
 
-7. **Enviar seu repositório local para o `GitHub`**: Finalmente, envie seu repositório para o `GitHub`: `git push -u origin main`
+7. **Associar o repostitório local com o repositório remoto específico**: `git remote add origin <nome-do-repositorio>`
+
+    Substitua `<nome-do-repositorio>` pelo nome que você deseja e use `--public` ou `--private` para definir a visibilidade do repositório.
+
+8. **Enviar seu repositório local para o `GitHub`**: Finalmente, envie seu repositório para o `GitHub`: `git push -u origin main`
 
 Esses comandos permitem que você crie um repositório no `GitHub` e o gerencie completamente a partir da linha de comando.
 
