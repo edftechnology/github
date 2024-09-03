@@ -103,19 +103,19 @@
 
 # 3. No `Terminal Emulator` do Sistema Operacional (SO), executar o comando: `sudo apt install git-all -y`
 
-# 4. **Por favor dizer ao `Git` quem é você **: Depois de instalar o `Git`, indique com os comandos abaixo seus usuário e nome:
+# 4. **Por favor dizer ao `Git` quem é você**: Depois de instalar o `Git`, indique com os comandos abaixo seus usuário e nome:
 # 
-# ```
-# ** Please tell me who you are.
+#   ```
+#   ** Please tell me who you are.
 # 
-# Run
+#   Run
 # 
-#   git config --global user.email "you@example.com"
-#   git config --global user.name "Your Name"
+#     git config --global user.email "you@example.com"
+#     git config --global user.name "Your Name"
 # 
-# to set your account's default identity.
-# Omit --global to set the identity only in this repository.
-# ```
+#   to set your account's default identity.
+#   Omit --global to set the identity only in this repository.
+#   ```
 # 
 # - **`"you@example.com"`**: por exemplo: `"edendenis@gmail.com"`
 # 
@@ -145,19 +145,19 @@
 # 
 #     Isso deve retornar a versão do Git que foi instalada.
 
-# 4. **Por favor dizer ao `Git` quem é você **: Depois de instalar o `Git`, indique com os comandos abaixo seus usuário e nome:
+# 4. **Por favor dizer ao `Git` quem é você**: Depois de instalar o `Git`, indique com os comandos abaixo seus usuário e nome:
 # 
-# ```
-# ** Please tell me who you are.
+#   ```
+#   ** Please tell me who you are.
 # 
-# Run
+#   Run
 # 
-#   git config --global user.email "you@example.com"
-#   git config --global user.name "Your Name"
+#     git config --global user.email "you@example.com"
+#     git config --global user.name "Your Name"
 # 
-# to set your account's default identity.
-# Omit --global to set the identity only in this repository.
-# ```
+#   to set your account's default identity.
+#   Omit --global to set the identity only in this repository.
+#   ```
 # 
 # - **`"you@example.com"`**: por exemplo: `"edendenis@gmail.com"`
 # 
@@ -178,21 +178,21 @@
 
 # 2. Certifique-se de que seu sistema esteja limpo e atualizado.
 # 
-#     2.1 Limpar o `cache` do gerenciador de pacotes `apt`. Especificamente, ele remove todos os arquivos de pacotes (`.deb`) baixados pelo `apt` e armazenados em `/var/cache/apt/archives/`. Digite o seguinte comando: `sudo apt clean` 
+#     2.1 **Limpar o `cache` do gerenciador de pacotes `apt`**: Especificamente, ele remove todos os arquivos de pacotes (`.deb`) baixados pelo `apt` e armazenados em `/var/cache/apt/archives/`. Digite o seguinte comando: `sudo apt clean` 
 #     
-#     2.2 Remover pacotes `.deb` antigos ou duplicados do cache local. É útil para liberar espaço, pois remove apenas os pacotes que não podem mais ser baixados (ou seja, versões antigas de pacotes que foram atualizados). Digite o seguinte comando: `sudo apt autoclean`
+#     2.2 **Remover pacotes `.deb` antigos ou duplicados do `cache` local**: É útil para liberar espaço, pois remove apenas os pacotes que não podem mais ser baixados (ou seja, versões antigas de pacotes que foram atualizados). Digite o seguinte comando: `sudo apt autoclean`
 # 
-#     2.3 Remover pacotes que foram automaticamente instalados para satisfazer as dependências de outros pacotes e que não são mais necessários. Digite o seguinte comando: `sudo apt autoremove -y`
+#     2.3 **Remover pacotes que foram automaticamente instalados para satisfazer as dependências de outros pacotes e que não são mais necessários**: Digite o seguinte comando: `sudo apt autoremove -y`
 # 
-#     2.4 Buscar as atualizações disponíveis para os pacotes que estão instalados em seu sistema. Digite o seguinte comando e pressione `Enter`: `sudo apt update`
+#     2.4 **Buscar as atualizações disponíveis para os pacotes que estão instalados em seu sistema**: Digite o seguinte comando e pressione `Enter`: `sudo apt update`
 # 
 #     2.5 **Corrigir pacotes quebrados**: Isso atualizará a lista de pacotes disponíveis e tentará corrigir pacotes quebrados ou com dependências ausentes: `sudo apt --fix-broken install`
 # 
-#     2.6 Limpar o `cache` do gerenciador de pacotes `apt`. Especificamente, ele remove todos os arquivos de pacotes (`.deb`) baixados pelo `apt` e armazenados em `/var/cache/apt/archives/`. Digite o seguinte comando: `sudo apt clean` 
+#     2.6 **Limpar o `cache` do gerenciador de pacotes `apt`**: Especificamente, ele remove todos os arquivos de pacotes (`.deb`) baixados pelo `apt` e armazenados em `/var/cache/apt/archives/`. Digite o seguinte comando: `sudo apt clean` 
 #     
-#     2.7 Para ver a lista de pacotes a serem atualizados, digite o seguinte comando e pressione `Enter`:  `sudo apt list --upgradable`
+#     2.7 **Para ver a lista de pacotes a serem atualizados**: Digite o seguinte comando e pressione `Enter`:  `sudo apt list --upgradable`
 # 
-#     2.8 Realmente atualizar os pacotes instalados para as suas versões mais recentes, com base na última vez que você executou `sudo apt update`. Digite o seguinte comando e pressione `Enter`: `sudo apt full-upgrade -y`
+#     2.8 **Realmente atualizar os pacotes instalados para as suas versões mais recentes, com base na última vez que você executou `sudo apt update`**: Digite o seguinte comando e pressione `Enter`: `sudo apt full-upgrade -y`
 #     
 
 # 3. No `Terminal Emulator`, digite o seguinte comando para gerar um novo par de chaves SSH: `ssh-keygen -t rsa`
@@ -267,7 +267,8 @@
 
 # ### 2.5 Clonar o repositório do `Git`
 # 
-# 1. No Terminal do Sistema Operacional (SO), executar o comando: `git clone -b <nome_da_branch> <URL_da_branch>`, por exemplo, como caso real: `git clone -b develop git@gitlab.com:iae-apr/proplib.git` 
+# 1. No `Terminal` do Sistema Operacional (SO), executar o comando: `git clone -b <nome_da_branch> <URL_da_branch>`, por exemplo, como caso real: `git clone -b develop git@gitlab.com:iae-apr/proplib.git` 
+# 
 
 # ### 2.6 Comando `git checkout`
 # 
@@ -737,7 +738,7 @@
 # 
 # 7. **Verificar repositórios remotos configurados:** Primeiro, verifique os repositórios remotos atualmente configurados no seu projeto com o comando: `git remote -v`
 # 
-#     7.1 **Adicionar o repositório remoto origin, se necessário:** Se o origin não estiver listado, você precisará adicioná-lo. Para projetos hospedados no `GitHub` e que você deseja acessar via SSH (como indicado pela sua tentativa de usar a URL SSH `git@github.com:edendenis/[projeto].git`), use o seguinte comando: `git remote add origin git@github.com:edendenis/"$projeto".git`
+#     7.1 **Adicionar o repositório remoto `origin`, se necessário:** Se o `origin` não estiver listado, você precisará adicioná-lo. Para projetos hospedados no `GitHub` e que você deseja acessar via SSH (como indicado pela sua tentativa de usar a URL SSH `git@github.com:edendenis/[projeto].git`), use o seguinte comando: `git remote add origin git@github.com:edendenis/"$projeto".git`
 # 
 # 8. **Verificar a configuração do repositório remoto:** `git remote -v`
 # 
@@ -798,7 +799,7 @@
 
 # ### 7.2 Criar repositório e enviar os arquivos e pastas
 # 
-# #### 7.2.1 Comandos pelo `Git Hub CLI (Command Line Interface)` do `gh`
+# #### 7.2.1 Comandos pelo `Git Hub CLI (Command Line Interface, CLI)` do `gh`
 # 
 # 1. Entrar na pasta do repositório que será enviado para o `Git`: `cd <nome_do_repositorio>`
 # 
@@ -820,14 +821,12 @@
 # 
 #     Isso cria uma nova `branch` `"main"` baseada na `branch` atual.
 # 
-# 6. **Fazer um `commit`**: Após criar a `branch` `"main"`, você precisa fazer pelo menos um `commit` nela. Adicione arquivos, faça o `commit` e forneça uma mensagem de `commit`:
+# 6. **Adicionar um novo repositório remoto chamado `origin` ao seu repositório `Git` local**: O `origin` é o nome padrão usado para referir-se ao repositório remoto principal: `git add .`
 # 
-#     ```
-#     git add .
-#     git commit -m "first commit within branch main"
+# 7. **Fazer um `commit`**: Após criar a `branch` `"main"`, você precisa fazer pelo menos um `commit` nela. Adicione arquivos, faça o `commit` e forneça uma mensagem de `commit`: `git commit -m "first commit within branch main"`
 #     ```
 # 
-# 7. **Enviar seu repositório local para o `GitHub`**: Finalmente, envie seu repositório para o `GitHub`: `git push -u origin main`
+# 8. **Enviar seu repositório local para o `GitHub`**: Finalmente, envie seu repositório para o `GitHub`: `git push -u origin main`
 # 
 # Esses comandos permitem que você crie um repositório no `GitHub` e o gerencie completamente a partir da linha de comando.
 # 
