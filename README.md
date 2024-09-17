@@ -832,7 +832,65 @@ Esses comandos permitem que você crie um repositório no `GitHub` e o gerencie 
 
 Para configurar o `Git` para não solicitar a senha sempre que você executar `git push`, você pode usar o protocolo HTTPS com autenticação através de tokens pessoais. Aqui está um passo a passo básico para configurar isso:
 
-### 8.1 Crie um _token_ pessoal
+### 8.1 Use uma chave SSH 
+
+Uma maneira alternativa de evitar a solicitação de usuário e senha ao executar `git push`, utilizando chaves SSH. Aqui está como você pode configurar isso:
+
+1. **Gerar uma Chave SSH**: Se você ainda não tem uma chave SSH, você pode gerar uma usando o seguinte comando no `Terminal Emulator`: `ssh-keygen -t rsa -b 4096 -C "seu_email@example.com"`
+
+    Pressione `Enter` para aceitar os valores padrão e, se desejar, defina uma senha.
+
+2. **Adicionar a Chave SSH ao Agente SSH**: Após gerar a chave, inicie o agente SSH e adicione sua chave SSH:
+
+    ```
+    eval "$(ssh-agent -s)"
+    ssh-add ~/.ssh/id_rsa
+    ```
+
+3. **Copiar a Chave Pública:** Copie a chave pública para que você possa adicioná-la ao `GitHub`:
+
+    ```
+    cat ~/.ssh/id_rsa.pub
+    ```
+
+    Copie o conteúdo da saída.
+
+4. **Adicionar a Chave SSH ao GitHub**:
+
+    4.1 Vá para as configurações da sua conta no `GitHub`.
+
+    4.2 Acesse SSH and GPG keys.
+
+    4.3 Clique em New SSH key.
+
+    4.4 Cole a chave que você copiou no campo apropriado e salve.
+
+5. **Atualizar a URL do Repositório Remoto**: Certifique-se de que a URL do seu repositório remoto esteja configurada para usar SSH:
+
+```
+git remote set-url origin git@github.com:edendenis/latex_iae_technical_report_template.git
+```
+
+6. **Testar a Conexão SSH**: Teste a conexão com o GitHub para garantir que a chave SSH esteja funcionando: `ssh -T git@github.com`
+
+    Você deve ver uma mensagem de boas-vindas.
+
+7. **Fazer o `Push`**: Agora você pode fazer `git push` sem ser solicitado a digitar seu usuário e senha:
+
+```
+git push --set-upstream origin main
+```
+
+**Vantagens do Uso de Chaves SSH**
+
+-**Segurança**: As chaves SSH são mais seguras do que senhas, pois utilizam criptografia.
+
+-**Facilidade de Uso**: Após a configuração inicial, você não precisará digitar sua senha toda vez que interagir com o repositório.
+
+Usar chaves SSH é uma alternativa eficaz e segura para evitar a necessidade de digitar usuário e senha durante operações do Git.
+
+
+### 8.2 Crie um _token_ pessoal
 
 1. Vá para a plataforma de hospedagem do seu repositório `Git` (como `GitHub`, `GitLab`, `Bitbucket`).
 
@@ -840,7 +898,7 @@ Para configurar o `Git` para não solicitar a senha sempre que você executar `g
 
 3. Crie um novo _token_ pessoal com permissões adequadas para acessar seus repositórios.
 
-### 8.2 Configure o `Git` para usar o _token_
+#### 8.2.1 Configure o `Git` para usar o _token_
 
 1. Abra o `Terminal Emulator` ou `prompt` de comando.
 
@@ -859,11 +917,11 @@ Este comando diz ao `Git` para armazenar suas credenciais em um arquivo local no
 
 Após esses passos, o `Git` usará as credenciais armazenadas no arquivo `~/.git-credentials` (incluindo o token) para autenticar suas operações de `git push`. Isso armazenará suas credenciais (usuário e _token_) em um arquivo `~/.git-credentials` no seu diretório pessoal.
 
-### 8.3 Atualize a URL do Repositório Remoto:
+### 8.2.2 Atualize a URL do Repositório Remoto:
 
 1. Se já estiver usando HTTPS para clonar ou adicionar o repositório, a URL provavelmente já está configurada. Caso contrário, atualize a URL do repositório remoto para usar HTTPS: `git remote set-url origin https://SEU_USUARIO@SEU_REPO.git`
 
-### 8.4 Teste o `git push`
+### 8.2.3 Teste o `git push`
 
 1. Tente fazer um `git push` para o repositório remoto.
 
