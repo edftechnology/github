@@ -107,8 +107,8 @@ Para configurar/instalar/usar o `Git` no `Linux Ubuntu`, você pode seguir estas
 
   Run
 
-    git config --global user.email "you@example.com"
-    git config --global user.name "Your Name"
+    git config --global user.email "edendenis@gmail.com"
+    git config --global user.name "Eden Denis"
 
   to set your account's default identity.
   Omit --global to set the identity only in this repository.
@@ -149,8 +149,8 @@ Para instalar o `git-all` no `Windows` usando o `PowerShell`, você seguirá bas
 
   Run
 
-    git config --global user.email "you@example.com"
-    git config --global user.name "Your Name"
+    git config --global user.email "edendenis@gmail.com"
+    git config --global user.name "Eden Denis"
 
   to set your account's default identity.
   Omit --global to set the identity only in this repository.
@@ -192,17 +192,29 @@ Para gerar uma chave SSH no `Linux Ubuntu`, você pode seguir os passos abaixo:
     2.8 **Realmente atualizar os pacotes instalados para as suas versões mais recentes, com base na última vez que você executou `sudo apt update`**: Digite o seguinte comando e pressione `Enter`: `sudo apt full-upgrade -y`
     
 
-3. No `Terminal Emulator`, digite o seguinte comando para gerar um novo par de chaves SSH: `ssh-keygen -t rsa`
+3. No `Terminal Emulator`, digite o seguinte comando para gerar um novo par de chaves SSH:
+
+```
+ssh-keygen -t rsa
+```
 
 4. O comando acima irá gerar um par de chaves RSA (Rivest-Shamir-Adleman). Você também pode usar outros algoritmos de chave, como `dsa` ou `ecdsa`, se preferir. Pressione `Enter` para aceitar o local padrão do arquivo da chave.
 
-5. Em seguida, você será solicitado a inserir uma frase secreta (passphrase) para proteger sua chave. É recomendável usar uma senha forte e exclusiva para aumentar a segurança. Você pode pressionar `Enter` para deixar a frase secreta em branco, mas isso diminuirá a segurança da sua chave.
+5. Em seguida, você será solicitado a inserir uma frase secreta (_passphrase_) para proteger sua chave. É recomendável usar uma senha forte e exclusiva para aumentar a segurança. Você pode pressionar `Enter` para deixar a frase secreta em branco, mas isso diminuirá a segurança da sua chave.
 
 6. Após fornecer a frase secreta ou pressionar `Enter`, o comando `ssh-keygen` irá gerar duas chaves: uma chave privada (`id_rsa`) e uma chave pública (`id_rsa.pub`). A chave privada deve ser mantida em segredo e protegida com a frase secreta, enquanto a chave pública pode ser compartilhada.
 
-7. Por padrão, as chaves SSH são salvas no diretório `~/.ssh/`. Você pode listar o conteúdo desse diretório usando o comando: `ls ~/.ssh/`
+7. Por padrão, as chaves SSH são salvas no diretório `~/.ssh/`. Você pode listar o conteúdo desse diretório usando o comando:
 
-8. Agora você pode usar sua chave pública (`id_rsa.pub`) para autenticar em servidores remotos. Você pode copiar a chave pública para o servidor remoto usando o comando `ssh-copy-id`. Por exemplo: `ssh-copy-id -i ~/.ssh/id_rsa.pub usuário@servidor`
+```
+ls ~/.ssh/
+```
+
+8. Agora você pode usar sua chave pública (`id_rsa.pub`) para autenticar em servidores remotos. Você pode copiar a chave pública para o servidor remoto usando o comando `ssh-copy-id`. Por exemplo:
+
+```
+ssh-copy-id -i ~/.ssh/id_rsa.pub edendenis@github.com
+```
 
     Substitua `"usuário"` pelo seu nome de usuário no servidor remoto e `"servidor"` pelo endereço IP ou nome do servidor remoto. Você será solicitado a inserir a senha do usuário no servidor remoto.
 
@@ -769,70 +781,11 @@ Para atualizar o repositório local (mais atualizado) para o remoto (menos atual
 
 20. **Voltar para o diretório pai:** `cd ..`
 
-## 7. Criar repositório diretamente pela Interface de Linha de Comando (_Command Line Interface, CLI_) usando o `GitHub CLI`
-
-### 7.1 Configurar/Instalar/Usar o `GitHub CLI` 
-
-Atualmente, o `GitHub` não oferece uma maneira oficial de criar repositórios diretamente pela linha de comando sem acessar a interface web, a menos que você use a API do `GitHub` ou ferramentas de terceiros como o `GitHub CLI`.
-
-Se você quer fazer tudo pela linha de comando, pode usar o `GitHub CLI (gh)`, uma ferramenta oficial do `GitHub` que permite gerenciar repositórios, `issues`, `pull` `requests` e mais, tudo pelo `Terminal Emulator`. Aqui estão os passos para usar o `GitHub CLI` para criar um repositório:
-
-1. **Instalar o `GitHub CLI`**: Você pode instalar o `GitHub CLI` seguindo as instruções na página de instalação:
-
-    ```
-    (type -p wget >/dev/null || (sudo apt update && sudo apt-get install wget -y)) \
-    && sudo mkdir -p -m 755 /etc/apt/keyrings \
-    && wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
-    && sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
-    && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-    && sudo apt update \
-    && sudo apt install gh -y
-    ```
-
-2. **Autenticar com sua conta `GitHub`**: Após a instalação, autentique-se usando: `gh auth login`
-
-    Siga as instruções na tela para autenticar.
-
-
-### 7.2 Criar repositório e enviar os arquivos e pastas
-
-#### 7.2.1 Comandos pelo `Git Hub CLI (Command Line Interface, CLI)` do `gh`
-
-1. Entrar na pasta do repositório que será enviado para o `Git`: `cd <nome_do_repositorio>`
-
-    Substitua `<nome_do_repositorio>` pelo nome que você deseja.
-
-2. Caso **NÃO** possua arquivo `README.md` já escrito e deseja adicionar um arquivo, execute o comando a seguir: `echo " <nome_do_repositorio>" >> README.md`
-
-    Substitua `<nome_do_repositorio>` pelo nome que você deseja.
-
-3. **Inicializa um novo repositório `Git` no diretório atual**: `git init`
-
-4. **Criar o repositório**: Com o `GitHub CLI`, você pode criar um novo repositório usando: `gh repo create <nome-do-repositorio> --public`
-
-    Substitua `<nome-do-repositorio>` pelo nome que você deseja e use `--public` ou `--private` para definir a visibilidade do repositório.
-
-5. **Verificar as _branches_ locais**: Primeiro, verifique quais _branches_ existem no seu repositório local usando o comando `git branch`: `git branch`
-
-    Isso lista todas as _branches_ locais. Certifique-se de que a `branch` `"main"` exista. Se não existir ou se não existir nenhuma, você pode criá-la a partir da `branch` atual ou mudar para ela usando: `git branch -M main`
-
-    Isso cria uma nova `branch` `"main"` baseada na `branch` atual.
-
-6. **Adicionar um novo repositório remoto chamado `origin` ao seu repositório `Git` local**: O `origin` é o nome padrão usado para referir-se ao repositório remoto principal: `git add .`
-
-7. **Fazer um `commit`**: Após criar a `branch` `"main"`, você precisa fazer pelo menos um `commit` nela. Adicione arquivos, faça o `commit` e forneça uma mensagem de `commit`: `git commit -m "first commit within branch main"`
-    ```
-
-8. **Enviar seu repositório local para o `GitHub`**: Finalmente, envie seu repositório para o `GitHub`: `git push -u origin main`
-
-Esses comandos permitem que você crie um repositório no `GitHub` e o gerencie completamente a partir da linha de comando.
-
-
-## 8. Configurar o `Git` para não solicitar a senha sempre que executar o `git push`
+## 7. Configurar o `Git` para não solicitar a senha sempre que executar o `git push`
 
 Para configurar o `Git` para não solicitar a senha sempre que você executar `git push`, você pode usar o protocolo HTTPS com autenticação através de tokens pessoais. Aqui está um passo a passo básico para configurar isso:
 
-### 8.1 Use uma chave SSH 
+### 7.1 Use uma chave SSH 
 
 Uma maneira alternativa de evitar a solicitação de usuário e senha ao executar `git push`, utilizando chaves SSH. Aqui está como você pode configurar isso:
 
@@ -865,17 +818,17 @@ Uma maneira alternativa de evitar a solicitação de usuário e senha ao executa
 
     4.4 Cole a chave que você copiou no campo apropriado e salve.
 
-5. **Atualizar a URL do Repositório Remoto**: Certifique-se de que a URL do seu repositório remoto esteja configurada para usar SSH:
+6. **Atualizar a URL do Repositório Remoto**: Certifique-se de que a URL do seu repositório remoto esteja configurada para usar SSH:
 
 ```
-git remote set-url origin git@github.com:edendenis/latex_iae_technical_report_template.git
+git remote set-url origin git@github.com:edendenis/<nome_do_projeto>.git
 ```
 
-6. **Testar a Conexão SSH**: Teste a conexão com o GitHub para garantir que a chave SSH esteja funcionando: `ssh -T git@github.com`
+7. **Testar a Conexão SSH**: Teste a conexão com o GitHub para garantir que a chave SSH esteja funcionando: `ssh -T git@github.com`
 
     Você deve ver uma mensagem de boas-vindas.
 
-7. **Fazer o `Push`**: Agora você pode fazer `git push` sem ser solicitado a digitar seu usuário e senha:
+8. **Fazer o `Push`**: Agora você pode fazer `git push` sem ser solicitado a digitar seu usuário e senha:
 
 ```
 git push --set-upstream origin main
@@ -890,7 +843,7 @@ git push --set-upstream origin main
 Usar chaves SSH é uma alternativa eficaz e segura para evitar a necessidade de digitar usuário e senha durante operações do Git.
 
 
-### 8.2 Crie um _token_ pessoal
+### 7.2 Crie um _token_ pessoal
 
 1. Vá para a plataforma de hospedagem do seu repositório `Git` (como `GitHub`, `GitLab`, `Bitbucket`).
 
@@ -898,7 +851,7 @@ Usar chaves SSH é uma alternativa eficaz e segura para evitar a necessidade de 
 
 3. Crie um novo _token_ pessoal com permissões adequadas para acessar seus repositórios.
 
-#### 8.2.1 Configure o `Git` para usar o _token_
+#### 7.2.1 Configure o `Git` para usar o _token_
 
 1. Abra o `Terminal Emulator` ou `prompt` de comando.
 
@@ -917,11 +870,11 @@ Este comando diz ao `Git` para armazenar suas credenciais em um arquivo local no
 
 Após esses passos, o `Git` usará as credenciais armazenadas no arquivo `~/.git-credentials` (incluindo o token) para autenticar suas operações de `git push`. Isso armazenará suas credenciais (usuário e _token_) em um arquivo `~/.git-credentials` no seu diretório pessoal.
 
-### 8.2.2 Atualize a URL do Repositório Remoto:
+### 7.2.2 Atualize a URL do Repositório Remoto:
 
 1. Se já estiver usando HTTPS para clonar ou adicionar o repositório, a URL provavelmente já está configurada. Caso contrário, atualize a URL do repositório remoto para usar HTTPS: `git remote set-url origin https://SEU_USUARIO@SEU_REPO.git`
 
-### 8.2.3 Teste o `git push`
+### 7.2.3 Teste o `git push`
 
 1. Tente fazer um `git push` para o repositório remoto.
 
