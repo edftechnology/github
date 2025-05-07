@@ -121,6 +121,87 @@
 # 
 # - **`"Your name"`**: por exemplo: `"Eden Denis"` 
 
+# #### 2.1. Instalar o `Git LFS` (Git Large File Storage) no `Linux Ubuntu`
+# 
+# Para instalar o `Git LFS` no `Linux Ubuntu`, você pode seguir os passos abaixo. O `Git LFS` é um pacote separado, mas fácil de instalar. Veja como fazer isso:
+# 
+# 1. **Adicionar o repositório do `Git LFS`**: 
+# 
+# Primeiro, você precisa adicionar o repositório do `Git LFS` à lista de fontes do seu sistema. Para fazer isso, execute os seguintes comandos no terminal:
+# 
+# ```
+# sudo apt-get install wget
+# sudo mkdir -p /etc/apt/keyrings
+# wget -qO- https://packagecloud.io/github/git-lfs/gpgkey | sudo tee /etc/apt/keyrings/github.asc
+# sudo sh -c 'echo "deb [signed-by=/etc/apt/keyrings/github.asc] https://packagecloud.io/github/git-lfs/ubuntu/ $(lsb_release -c | awk "{print $2}") main" > /etc/apt/sources.list.d/github_git-lfs.list'
+# ```
+# 
+# Este comando vai baixar a chave GPG do repositório e adicionar a URL do repositório à lista de fontes do seu sistema.
+# 
+# 2. **Atualizar os pacotes**:
+# 
+# Agora, execute o comando para atualizar a lista de pacotes:
+# 
+# ```
+# sudo apt update
+# ```
+# 
+# 3. **Instalar o `Git LFS`**:
+# 
+# Depois de adicionar o repositório e atualizar a lista de pacotes, instale o `Git LFS` com o comando:
+# 
+# ```
+# sudo apt-get install git-lfs -y
+# 
+
+# #### 2.1.2 Inicializar o `Git LFS`
+# 
+# Depois de instalar o `Git LFS`, você precisa inicializá-lo no seu sistema. Execute o seguinte comando:
+# 
+# ```
+# git lfs install
+# ```
+# 
+# Isso configura o `Git LFS` no seu repositório `Git` e também define a configuração global para o `Git`, para que o LFS funcione corretamente com todos os repositórios.
+# 
+
+# #### 2.1.3 Verificar a Instalação
+# 
+# Para verificar se o `Git LFS` foi instalado corretamente, você pode executar:
+# 
+# ```
+# git lfs version
+# ```
+# 
+# Isso retornará a versão do `Git LFS` instalada, confirmando que a instalação foi bem-sucedida.
+# 
+
+# #### 2.1.4 Usando o `Git LFS`
+# 
+# Agora que o `Git LFS` está instalado e configurado, você pode começar a usá-lo em seus repositórios.
+# 
+# 1. **Adicionar tipos de arquivo para o `Git LFS`**:
+# 
+# Se você quiser que certos tipos de arquivos (como arquivos `.FCStd`, imagens, vídeos ou outros arquivos grandes) sejam gerenciados pelo `Git LFS`, você deve dizer ao `Git LFS` para rastrear esses tipos de arquivos. Por exemplo, para rastrear todos os arquivos `.FCStd`, você pode executar:
+# 
+# ```
+# git lfs track "*.FCStd"
+# ```
+# 
+# Isso cria um arquivo `.gitattributes` no seu repositório, que instrui o `Git LFS` a gerenciar os arquivos correspondentes a esses padrões.
+# 
+# 2. **Adicionar, `commit` e push dos arquivos `LFS`**:
+# 
+# Uma vez que os arquivos estão sendo rastreados pelo `Git LFS`, você pode adicioná-los ao repositório como faria normalmente com o `Git`:
+# 
+# ```
+# git add .gitattributes
+# git add <arquivo_lfs>
+# git commit -m "Adicionando arquivo grande com LFS"
+# git push origin main
+# ```
+# 
+
 # ### 2.2 Configurar/Instalar/usar o `Git` no `Windows` a partir da fonte
 # 
 # Para instalar o `git-all` no `Windows` usando o `PowerShell`, você seguirá basicamente dois passos: primeiro, baixar o instalador do `Git`, e depois, executá-lo. Aqui estão as instruções detalhadas:
@@ -639,11 +720,11 @@
 
 # ### 4.4 Comando `git stash` [9]
 # 
-# O comando `git stash` é usado para temporariamente salvar (ou "guardar") as mudanças em seu diretório de trabalho que ainda não foram commitadas em um estado chamado de `stash`. Isso pode ser útil quando você está trabalhando em uma determinada ramificação, mas precisa alternar para outra ramificação ou realizar alguma outra tarefa que exija um diretório de trabalho limpo.
+# O comando `git stash` é usado para temporariamente salvar (ou "guardar") as mudanças em seu diretório de trabalho que ainda não foram _commitadas_ em um estado chamado de `stash`. Isso pode ser útil quando você está trabalhando em uma determinada ramificação, mas precisa alternar para outra ramificação ou realizar alguma outra tarefa que exija um diretório de trabalho limpo.
 # 
-# 1. **Aqui está uma explicação do comando `git stash` em código e comentários:** Guardar as mudanças não commitadas em um `stash` com o comando: `git stash`
+# 1. **Aqui está uma explicação do comando `git stash` em código e comentários:** Guardar as mudanças não _commitadas_ em um `stash` com o comando: `git stash`
 # 
-#     Quando você executa `git stash`, o `Git` cria uma entrada de `stash` que contém todas as mudanças não commitadas em seu diretório de trabalho, incluindo os arquivos modificados e arquivos não rastreados. Seu diretório de trabalho ficará limpo, como se você nunca tivesse feito alterações. Isso permite que você faça outras tarefas, como alternar para outra ramificação, sem se preocupar com as mudanças em andamento.
+#     Quando você executa `git stash`, o `Git` cria uma entrada de `stash` que contém todas as mudanças não _commitadas_ em seu diretório de trabalho, incluindo os arquivos modificados e arquivos não rastreados. Seu diretório de trabalho ficará limpo, como se você nunca tivesse feito alterações. Isso permite que você faça outras tarefas, como alternar para outra ramificação, sem se preocupar com as mudanças em andamento.
 # 
 #     Após realizar a tarefa necessária em outra ramificação ou contexto, você pode aplicar as mudanças do `stash` de volta ao seu diretório de trabalho usando o comando `git stash apply` ou `git stash pop`. 
 #     
@@ -651,7 +732,7 @@
 # 
 #     - Aplica as mudanças do `stash` de volta ao diretório de trabalho: `git stash apply` ou Aplica as mudanças do `stash` de volta ao diretório de trabalho e remove o `stash`: `git stash pop`
 # 
-# Lembre-se de que o `stash` não substitui os `commits`. Ele é apenas uma maneira de armazenar temporariamente as mudanças em seu diretório de trabalho sem fazer um `commit`. Portanto, você pode usá-lo para alternar rapidamente entre tarefas e continuar trabalhando em suas mudanças inacabadas quando estiver pronto.
+# Lembre-se de que o `stash` **NÃO** substitui os `commits`. Ele é apenas uma maneira de armazenar temporariamente as mudanças em seu diretório de trabalho sem fazer um `commit`. Portanto, você pode usá-lo para alternar rapidamente entre tarefas e continuar trabalhando em suas mudanças inacabadas quando estiver pronto.
 
 # #### 4.4.1 Comando `git stash apply stash@{0}` [9]
 # 
@@ -730,7 +811,24 @@
 # Isso descartará completamente as alterações nos arquivos especificados.
 # 
 
-# ## 6. Atualizar o repositório local (mais atualizado) para o remoto (menos atualizado) a partir que um _backup_ em outra pasta
+# ### 4.6 Descartar as alterações locais da pasta `<nome_da_pasta>`
+# 
+# 1. Use este comando para resetar toda a pasta `<nome_da_pasta>` - a pasta `docs/`, em geral, a pasta de documentação dos projetos, é uma boa pasta para fazer isso, pois contém muitos arquivos do tipo binário  - para o estado do repositório remoto (`commit origin/branch`):
+# 
+# ```
+# git restore --source=origin/$(git branch --show-current) --staged --worktree <nome_da_pasta>
+# ```
+# 
+# Esse comando:
+# 
+# * Traz de volta a versão da pasta `<nome_da_pasta>` que está no repositório remoto
+# 
+# * Remove seus arquivos locais e conflitos de `merge` dessa pasta
+# 
+# * Funciona mesmo com conflitos em arquivos binários (`.pickle`, `.doctree`, `.html`, `etc.`)
+# 
+
+# ## 5. Atualizar o repositório local (mais atualizado) para o remoto (menos atualizado) a partir que um _backup_ em outra pasta
 # 
 # Para atualizar o repositório local (mais atualizado) para o remoto (menos atualizado) a partir que um backup em outra pasta execute os passos abaixo:
 # 
@@ -784,11 +882,11 @@
 # 
 # 20. **Voltar para o diretório pai:** `cd ..`
 
-# ## 7. Configurar o `Git` para não solicitar a senha sempre que executar o `git push`
+# ## 6. Configurar o `Git` para não solicitar a senha sempre que executar o `git push`
 # 
 # Para configurar o `Git` para não solicitar a senha sempre que você executar `git push`, você pode usar o protocolo HTTPS com autenticação através de tokens pessoais. Aqui está um passo a passo básico para configurar isso:
 # 
-# ### 7.1 Use uma chave SSH 
+# ### 6.1 Use uma chave SSH 
 # 
 # Uma maneira alternativa de evitar a solicitação de usuário e senha ao executar `git push`, utilizando chaves SSH. Aqui está como você pode configurar isso:
 # 
@@ -837,16 +935,10 @@
 # git push --set-upstream origin main
 # ```
 # 
-# **Vantagens do Uso de Chaves SSH**
-# 
-# -**Segurança**: As chaves SSH são mais seguras do que senhas, pois utilizam criptografia.
-# 
-# -**Facilidade de Uso**: Após a configuração inicial, você não precisará digitar sua senha toda vez que interagir com o repositório.
-# 
 # Usar chaves SSH é uma alternativa eficaz e segura para evitar a necessidade de digitar usuário e senha durante operações do Git.
 # 
 
-# ### 7.2 Crie um _token_ pessoal
+# ### 6.2 Crie um _token_ pessoal
 # 
 # 1. Vá para a plataforma de hospedagem do seu repositório `Git` (como `GitHub`, `GitLab`, `Bitbucket`).
 # 
@@ -854,7 +946,7 @@
 # 
 # 3. Crie um novo _token_ pessoal com permissões adequadas para acessar seus repositórios.
 # 
-# #### 7.2.1 Configure o `Git` para usar o _token_
+# #### 6.2.1 Configure o `Git` para usar o _token_
 # 
 # 1. Abra o `Terminal Emulator` ou `prompt` de comando.
 # 
@@ -873,17 +965,80 @@
 # 
 # Após esses passos, o `Git` usará as credenciais armazenadas no arquivo `~/.git-credentials` (incluindo o token) para autenticar suas operações de `git push`. Isso armazenará suas credenciais (usuário e _token_) em um arquivo `~/.git-credentials` no seu diretório pessoal.
 # 
-# ### 7.2.2 Atualize a URL do Repositório Remoto:
+# ### 6.2.2 Atualize a URL do Repositório Remoto:
 # 
 # 1. Se já estiver usando HTTPS para clonar ou adicionar o repositório, a URL provavelmente já está configurada. Caso contrário, atualize a URL do repositório remoto para usar HTTPS: `git remote set-url origin https://SEU_USUARIO@SEU_REPO.git`
 # 
-# ### 7.2.3 Teste o `git push`
+# ### 6.2.3 Teste o `git push`
 # 
 # 1. Tente fazer um `git push` para o repositório remoto.
 # 
 #     Você não deverá mais ser solicitado a digitar sua senha; o `Git` utilizará o token pessoal para autenticação.
 # 
 # Este método armazena as credenciais de forma persistente, o que evita a necessidade de digitar a senha a cada `git push`. Certifique-se de manter o arquivo `~/.git-credentials` seguro em seu sistema.
+
+# ## 7. Passo a passo simples e comum
+# 
+# 1. Iniciar o repositório (se necessário):
+# 
+# ```
+# git init
+# ```
+# 
+# 2. Verificar o status:
+# 
+# ```
+# git status
+# ```
+# 
+# 3. Buscar as atualizações do repositório remoto:
+# 
+# ```
+# git fetch origin
+# ```
+# 
+# 4. Puxar as atualizações do repositório remoto:
+# 
+# ```
+# git pull
+# ```
+# 
+# 5. Verificar o status novamente:
+# 
+# ```
+# git status
+# ```
+# 
+# 6. Salvar alterações temporariamente (se necessário):
+# 
+# ```
+# git stash
+# ```
+# 
+# 7. Aplicar alterações do stash (se necessário):
+# 
+# ```
+# git stash apply
+# ```
+# 
+# 8. Adicionar arquivos ao staging:
+# 
+# ```
+# git add .
+# ```
+# 
+# 9. Fazer commit das alterações:
+# 
+# ```
+# git commit -m "Descrição das alterações"
+# ```
+# 
+# 10. Enviar as alterações para o repositório remoto:
+# 
+# ```
+# git push -u origin HEAD:main
+# ```
+# 
 
 # <!-- LICENÇA -->
 # ## Licença
