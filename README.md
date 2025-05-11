@@ -367,7 +367,7 @@ Os nomes comumente escolhidos em vez de `master` são `main`, `trunk` e `develop
 
 #### 2.6.1 Comando `git checkout <codigo_da_hash>` [7]
 
-O comando `git checkout <codigo_da_hash>` (para o caso real: git checkout a3636068`) é usado no `Git` para mudar o estado do repositório para o estado em que estava no momento do commit especificado pelo hash `a3636068`. Aqui está uma explicação detalhada:
+O comando `git checkout <codigo_da_hash>` (para o caso real: `git checkout a3636068`) é usado no `Git` para mudar o estado do repositório para o estado em que estava no momento do `commit` especificado pelo `hash a3636068`. Aqui está uma explicação detalhada:
 
 - **`git checkout`:** Este é um comando versátil usado no `Git` para trocar de branches ou restaurar arquivos da árvore de trabalho.
 
@@ -377,30 +377,30 @@ Quando você executa `git checkout a3636068`, o seguinte acontece:
 
 1. **Mudança de Estado:** O repositório muda para o estado em que estava no momento do commit `a3636068`. Isso significa que todos os arquivos no diretório de trabalho serão revertidos para como estavam no momento daquele commit.
 
-2. **Detached HEAD State:** Você entrará no estado "Detached HEAD". Isso significa que você não estará mais em uma branch específica. Qualquer novo commit criado a partir desse ponto estará "flutuando" e não pertencerá a nenhuma branch, a menos que você crie uma nova branch a partir deste ponto.
+2. **`Detached HEAD State`:** Você entrará no estado `Detached HEAD`. Isso significa que você não estará mais em uma branch específica. Qualquer novo commit criado a partir desse ponto estará "flutuando" e não pertencerá a nenhuma branch, a menos que você crie uma nova branch a partir deste ponto.
 
 3. **Exploração e Testes:** Este comando é útil para explorar o estado do repositório em um ponto específico no passado, verificar alterações antigas, realizar testes, entre outros.
 
-É importante notar que ao fazer mudanças enquanto estiver em um estado "Detached HEAD", você deve criar uma nova branch para preservar essas mudanças, pois se retornar para uma branch diferente sem fazer isso, as mudanças feitas serão perdidas. 
+É importante notar que ao fazer mudanças enquanto estiver em um estado `Detached HEAD`, você deve criar uma nova branch para preservar essas mudanças, pois se retornar para uma branch diferente sem fazer isso, as mudanças feitas serão perdidas. 
 
 
 ## 2.7 Comando `git status` [1][2]
 
-O comando `git status` é um dos comandos mais utilizados no `Git`, e é usado para verificar o estado do repositório `Git` local em relação ao seu diretório de trabalho e à área de preparação (também conhecida como "staging area"), ver Figura (1).
+O comando `git status` é um dos comandos mais utilizados no `Git`, e é usado para verificar o estado do repositório `Git` local em relação ao seu diretório de trabalho e à área de preparação (também conhecida como `staging area`), ver Figura (1).
 
 Quando você executa `git status`, o `Git` informa sobre algumas informações importantes:
 
 1. **Branch Atual:** Mostra em qual ramificação (branch) você está trabalhando atualmente.
 
-2. **Changes not staged for commit:** Lista de arquivos modificados no diretório de trabalho, mas ainda não adicionados à área de preparação (staging area) para um novo commit. Essas mudanças não serão incluídas no próximo commit, a menos que você as adicione manualmente usando o comando git add.
+2. **`Changes not staged for commit`:** Lista de arquivos modificados no diretório de trabalho, mas ainda não adicionados à área de preparação (staging area) para um novo `commit`. Essas mudanças não serão incluídas no próximo `commit`, a menos que você as adicione manualmente usando o comando git add.
 
-3. **Changes to be committed:** Lista de arquivos que foram adicionados à área de preparação (staging area) e estão prontos para serem incluídos no próximo commit. Essas mudanças serão efetivadas no repositório após o comando git commit.
+3. **`Changes to be committed`:** Lista de arquivos que foram adicionados à área de preparação (staging area) e estão prontos para serem incluídos no próximo commit. Essas mudanças serão efetivadas no repositório após o comando `git commit`.
 
-4. **Untracked files:** Lista de arquivos que o `Git` não está rastreando atualmente. Isso significa que o `Git` não está ciente de quaisquer alterações nesses arquivos. Para começar a rastreá-los, você deve adicioná-los à área de preparação usando o comando git add.
+4. **`Untracked files`:** Lista de arquivos que o `Git` não está rastreando atualmente. Isso significa que o `Git` não está ciente de quaisquer alterações nesses arquivos. Para começar a rastreá-los, você deve adicioná-los à área de preparação usando o comando `git add`.
 
-O resultado do comando git status é uma visão geral do estado do seu repositório, mostrando o que foi modificado, o que está preparado para o próximo commit e quais arquivos ainda não estão sendo rastreados pelo `Git`.
+O resultado do comando `git status` é uma visão geral do estado do seu repositório, mostrando o que foi modificado, o que está preparado para o próximo `commit` e quais arquivos ainda não estão sendo rastreados pelo `Git`.
 
-É uma boa prática executar o comando git status frequentemente para se manter atualizado sobre o estado do seu repositório e garantir que você esteja preparado para criar commits com as alterações corretas.
+É uma boa prática executar o comando git status frequentemente para se manter atualizado sobre o estado do seu repositório e garantir que você esteja preparado para criar `commits` com as alterações corretas.
 
 <div align="center">
     <img src="figures/working_tree_staging_area_and_git_directory.png" alt="Minha Imagem" />
@@ -446,7 +446,7 @@ Para editar um `git commit` já salvo, você pode seguir os seguintes passos:
 
 #### 2.8.2 Comando `git reset HEAD <nome_do_arquivo>` [9]
 
-Para remover arquivos do estado "Changes to be committed" no `Git`, você pode usar o comando `git reset`. Este comando irá desfazer a adição dos arquivos à área de `staging` (também conhecida como `index`), retornando-os para o estado `"Changes not staged for commit"`.
+Para remover arquivos do estado `Changes to be committed` no `Git`, você pode usar o comando `git reset`. Este comando irá desfazer a adição dos arquivos à área de `staging` (também conhecida como `index`), retornando-os para o estado `"Changes not staged for commit"`.
 
 1. Aqui está um exemplo de como usar o comando: `git reset <nome_do_arquivo>`
 
