@@ -808,7 +808,29 @@ Lembre-se de que o `git restore --staged` apenas remove arquivos ou alterações
 Isso descartará completamente as alterações nos arquivos especificados.
 
 
-### 4.6 Descartar as alterações locais da pasta `<nome_da_pasta>`
+### 4.6 Descartar as alterações locais
+
+#### 4.6.1 Arquivo `<nome_do_arquivo>`
+
+1. Use este comando para resetar o arquivo `<nome_do_arquivo>` para o estado do repositório remoto (`commit origin/branch`):
+
+    ```bash
+    git restore --source=origin/$(git branch --show-current) --staged --worktree <nome_do_arquivo>
+    ```
+
+    Esse comando:
+
+    * Traz de volta a versão do arquivo `<nome_do_arquivo>` que está no repositório remoto
+    * Remove suas alterações locais e conflitos de `merge` desse arquivo
+    * Funciona mesmo com conflitos em arquivos binários (`.pickle`, `.doctree`, `.html`, etc.)
+
+4.6.1 **(Opcional)**: Se quiser confirmar que o arquivo voltou ao estado remoto:
+
+```bash
+git status <nome_do_arquivo>
+
+
+#### 4.6.2 Pasta `<nome_da_pasta>`
 
 1. Use este comando para resetar toda a pasta `<nome_da_pasta>` - a pasta `docs/`, em geral, a pasta de documentação dos projetos, é uma boa pasta para fazer isso, pois contém muitos arquivos do tipo binário  - para o estado do repositório remoto (`commit origin/branch`):
 
