@@ -812,17 +812,17 @@ Isso descartará completamente as alterações nos arquivos especificados.
 
 1. Use este comando para resetar toda a pasta `<nome_da_pasta>` - a pasta `docs/`, em geral, a pasta de documentação dos projetos, é uma boa pasta para fazer isso, pois contém muitos arquivos do tipo binário  - para o estado do repositório remoto (`commit origin/branch`):
 
-```bash
-git restore --source=origin/$(git branch --show-current) --staged --worktree <nome_da_pasta>/
-```
+    ```bash
+    git restore --source=origin/$(git branch --show-current) --staged --worktree <nome_da_pasta>/
+    ```
 
-Esse comando:
+    Esse comando:
 
-* Traz de volta a versão da pasta `<nome_da_pasta>` que está no repositório remoto
+    * Traz de volta a versão da pasta `<nome_da_pasta>` que está no repositório remoto
 
-* Remove seus arquivos locais e conflitos de `merge` dessa pasta
+    * Remove seus arquivos locais e conflitos de `merge` dessa pasta
 
-* Funciona mesmo com conflitos em arquivos binários (`.pickle`, `.doctree`, `.html`, `etc.`)
+    * Funciona mesmo com conflitos em arquivos binários (`.pickle`, `.doctree`, `.html`, `etc.`)
 
 4.6.1 **(Opcional)**: Se quiser confirmar que a pasta voltou ao estado remoto:
 
@@ -891,15 +891,15 @@ Para atualizar o repositório local (mais atualizado) para o remoto (menos atual
 
 20. **Voltar para o diretório pai:** `cd ..`
 
-## 6. Configurar o `Git` para não solicitar a senha sempre que executar o `git push`
+## 6. Configurar o `Git` para **NÃO** solicitar a senha sempre que executar o `git push`
 
-Para configurar o `Git` para não solicitar a senha sempre que você executar `git push`, você pode usar o protocolo HTTPS com autenticação através de tokens pessoais. Aqui está um passo a passo básico para configurar isso:
+Para configurar o `Git` para **NÃO** solicitar a senha sempre que você executar `git push`, você pode usar o protocolo HTTPS com autenticação através de tokens pessoais. Aqui está um passo a passo básico para configurar isso:
 
 ### 6.1 Use uma chave SSH 
 
 Uma maneira alternativa de evitar a solicitação de usuário e senha ao executar `git push`, utilizando chaves SSH. Aqui está como você pode configurar isso:
 
-1. **Gerar uma Chave SSH**: Se você ainda não tem uma chave SSH, você pode gerar uma usando o seguinte comando no `Terminal Emulator`: `ssh-keygen -t rsa -b 4096 -C "seu_email@example.com"`
+1. **Gerar uma Chave SSH**: Se você ainda **NÃO** tem uma chave SSH, você pode gerar uma usando o seguinte comando no `Terminal Emulator`: `ssh-keygen -t rsa -b 4096 -C "seu_email@example.com"`
 
     Pressione `Enter` para aceitar os valores padrão e, se desejar, defina uma senha.
 
@@ -930,9 +930,9 @@ Uma maneira alternativa de evitar a solicitação de usuário e senha ao executa
 
 6. **Atualizar a URL do Repositório Remoto**: Certifique-se de que a URL do seu repositório remoto esteja configurada para usar SSH:
 
-```
-git remote set-url origin git@github.com:edendenis/<nome_do_projeto>.git
-```
+    ```bash
+    git remote set-url origin git@github.com:edendenis/<nome_do_projeto>.git
+    ```
 
 7. **Testar a Conexão SSH**: Teste a conexão com o GitHub para garantir que a chave SSH esteja funcionando: `ssh -T git@github.com`
 
@@ -940,9 +940,9 @@ git remote set-url origin git@github.com:edendenis/<nome_do_projeto>.git
 
 8. **Fazer o `Push`**: Agora você pode fazer `git push` sem ser solicitado a digitar seu usuário e senha:
 
-```
-git push --set-upstream origin main
-```
+    ```bash
+    git push --set-upstream origin main
+    ```
 
 Usar chaves SSH é uma alternativa eficaz e segura para evitar a necessidade de digitar usuário e senha durante operações do Git.
 
@@ -971,7 +971,6 @@ Este comando diz ao `Git` para armazenar suas credenciais em um arquivo local no
 
     - Substitua `<SEU_REPO:.git` pelo endereço HTTPS do seu repositório.
 
-
 Após esses passos, o `Git` usará as credenciais armazenadas no arquivo `~/.git-credentials` (incluindo o token) para autenticar suas operações de `git push`. Isso armazenará suas credenciais (usuário e _token_) em um arquivo `~/.git-credentials` no seu diretório pessoal.
 
 ### 6.2.2 Atualize a URL do Repositório Remoto:
@@ -990,63 +989,63 @@ Este método armazena as credenciais de forma persistente, o que evita a necessi
 
 1. Iniciar o repositório (se necessário):
 
-```
-git init
-```
+    ```bash
+    git init
+    ```
 
 2. Verificar o status:
 
-```
-git status
-```
+    ```bash
+    git status
+    ```
 
 3. Buscar as atualizações do repositório remoto:
 
-```
-git fetch origin
-```
+    ```bash
+    git fetch origin
+    ```
 
 4. Puxar as atualizações do repositório remoto:
 
-```
-git pull
-```
+    ```bash
+    git pull
+    ```
 
 5. Verificar o status novamente:
 
-```
-git status
-```
+    ```bash
+    git status
+    ```
 
 6. Salvar alterações temporariamente (se necessário):
 
-```
-git stash
-```
+    ```bash
+    git stash
+    ```
 
 7. Aplicar alterações do stash (se necessário):
 
-```
-git stash apply
-```
+    ```bash
+    git stash apply
+    ```
 
 8. Adicionar arquivos ao staging:
 
-```
-git add .
-```
+    ```bash
+    git add .
+    ```
 
 9. Fazer commit das alterações:
 
-```
-git commit -m "Descrição das alterações"
-```
+    ```bash
+    git commit -m "Descrição das alterações"
+    ```
 
 10. Enviar as alterações para o repositório remoto:
 
-```
-git push -u origin HEAD:main
-```
+    ```bash
+    git push -u origin HEAD:main
+    ```
 
 
 <!-- LICENÇA -->
