@@ -426,7 +426,8 @@
 
 # ### 2.6 Comando `git checkout`
 # 
-# 1. No Terminal do Sistema Operacional (SO), executar o comando: `git checkout` para verificar qual a `branch` está selecionada;
+# 1. No `Terminal Emulator` do Sistema Operacional (SO), executar o comando: `git checkout` para verificar qual a `branch` está selecionada;
+# 
 # 2. Como a `branch` de desenvolvimento é a `develop`, é conveniente, selecioná-la caso não esteja selecionada, para isso, digitar: `git checkout`.
 
 # #### 2.6.1 Comando `git checkout <codigo_da_hash>` [7]
@@ -447,6 +448,26 @@
 # 
 # É importante notar que ao fazer mudanças enquanto estiver em um estado `Detached HEAD`, você deve criar uma nova branch para preservar essas mudanças, pois se retornar para uma branch diferente sem fazer isso, as mudanças feitas serão perdidas. 
 # 
+
+# #### 2.6.2 Comando `git checkout --theirs -- <caminho/do/arquivo>` [7]
+# 
+# O comando `git checkout --theirs -- <caminho/do/arquivo>` é usado durante a resolução de conflitos de *merge* no `Git`. Ele instrui o `Git` a **resolver o conflito escolhendo a versão do arquivo que veio do repositório remoto** (isto é, da *branch* que está sendo mesclada).
+# 
+# - **`git checkout`:** Este comando também serve para restaurar arquivos de uma *branch*, *commit* ou estado específico.
+# 
+# - **`--theirs`:** Indica que, em caso de conflito, você deseja manter o conteúdo **do lado remoto**, ou seja, da *branch* que está sendo mesclada com a sua (por exemplo, o que veio do `origin/master` durante um `git pull`).
+# 
+# - **`-- <caminho/do/arquivo>`:** Especifica o(s) arquivo(s) em conflito que você deseja resolver usando a versão remota.
+# 
+# ##### Quando utilizar
+# 
+# Este comando é especialmente útil quando ocorre um conflito do tipo `modify/delete`, onde o arquivo foi **modificado na *branch* remota** e **removido na sua *branch* local** (ou vice-versa). Nesses casos, o Git precisa de uma decisão explícita de qual versão deve ser mantida.
+# 
+# ##### Exemplo de uso
+# 
+# ```bash
+# git checkout --theirs -- <caminho/do/arquivo>
+# ```
 
 # ## 2.7 Comando `git status` [1][2]
 # 
