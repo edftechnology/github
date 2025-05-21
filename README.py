@@ -3,12 +3,12 @@
 
 # <!-- LOGOTIPO DO PROJETO -->
 # <div style="display: flex; justify-content: center;">
-#    <a href="https://github.com/edendenis/git">
+#    <a href="https://github.com/edendenis/github">
 #      <img src="figures/gold_edf_technology_logo_transparent_background_and_gold_name.png" alt="Logo" width="160" height="160">
 #    </a>
 # </div>
 # 
-# <h3 align="center">Configurar/Instalar/Usar o `Git` e descrição dos seus principais comandos</h3>
+# <h3 align="center">Configurar/Instalar/Usar o `GitHub` e descrição dos seus principais comandos</h3>
 # 
 # <!-- <div style="display: flex; justify-content: center;">
 #   <a href="https://zenodo.org/doi/10.5281/zenodo.10668919">
@@ -17,16 +17,16 @@
 # </div> -->
 # 
 # <p align="center">
-#  Neste documento estão contidos os principais comandos para configurar/instalar/usar o `Git`.
+#  Neste documento estão contidos os principais comandos para configurar/instalar/usar o `GitHub`.
 #  <br />
-#  <a href="https://github.com/edendenis/git"><strong>Explore os documentos »</strong></a>
+#  <a href="https://github.com/edendenis/github"><strong>Explore os documentos »</strong></a>
 #  <br />
 #  <br />
-#  <a href="https://github.com/edendenis/git">Ver demonstração</a>
+#  <a href="https://github.com/edendenis/github">Ver demonstração</a>
 #  ·
-#  <a href="https://github.com/edendenis/git">Relatar bug</a>
+#  <a href="https://github.com/edendenis/github">Relatar bug</a>
 #  ·
-#  <a href="https://github.com/edendenis/git">Solicitar recurso</a>
+#  <a href="https://github.com/edendenis/github">Solicitar recurso</a>
 # </p>
 # 
 
@@ -45,7 +45,11 @@
 # 
 # ### `Git`
 # 
-# O `Git` é um sistema de controle de versão distribuído amplamente utilizado para rastrear e gerenciar o código-fonte de projetos de desenvolvimento de software. Desenvolvido por Linus Torvalds, o criador do `Linux`, o `Git` é conhecido por sua eficiência, flexibilidade e capacidade de trabalhar tanto em projetos individuais quanto em equipes de desenvolvimento. Ele permite que os desenvolvedores acompanhem as alterações feitas no código, revertam para versões anteriores, colaborem em projetos e gerenciem conflitos de maneira eficaz. O `Git` também é suportado por várias plataformas de hospedagem de código, como o GitHub, o `GitHub` e o Bitbucket, o que o torna uma escolha central para o desenvolvimento colaborativo e a gestão de código-fonte em projetos de software.
+# O `Git` é um sistema de controle de versão distribuído amplamente utilizado para rastrear e gerenciar o código-fonte de projetos de desenvolvimento de _software_. Desenvolvido por Linus Torvalds, o criador do `Linux`, o `Git` é conhecido por sua eficiência, flexibilidade e capacidade de trabalhar tanto em projetos individuais quanto em equipes de desenvolvimento. Ele permite que os desenvolvedores acompanhem as alterações feitas no código, revertam para versões anteriores, colaborem em projetos e gerenciem conflitos de maneira eficaz. O `Git` também é suportado por várias plataformas de hospedagem de código, como o `GitHub`, o `GitHub` e o `Bitbucket`, o que o torna uma escolha central para o desenvolvimento colaborativo e a gestão de código-fonte em projetos de _software_.
+# 
+# ### `GitHub`
+# 
+# O `GitHub` é uma plataforma de hospedagem e colaboração de código-fonte baseada em Git, que oferece repositórios remotos para versionamento, revisão de `pull requests`, `issues` e integração contínua. Com recursos como `GitHub` Actions, `GitHub` Packages e uma interface web intuitiva, ele facilita o trabalho em equipe, o controle de qualidade e a automação de fluxos de desenvolvimento, tornando-se um ponto central para projetos de código aberto e corporativos.
 
 # ## 1. Sobre os _branches_ do `Git` [1][2]
 # 
@@ -108,28 +112,63 @@
 
 # 2. Certifique-se de que seu sistema esteja limpo e atualizado.
 # 
-#     2.1 Limpar o `cache` do gerenciador de pacotes `apt`. Especificamente, ele remove todos os arquivos de pacotes (`.deb`) baixados pelo `apt` e armazenados em `/var/cache/apt/archives/`. Digite o seguinte comando: `sudo apt clean` 
+#     2.1 Limpar o `cache` do gerenciador de pacotes `apt`. Especificamente, ele remove todos os arquivos de pacotes (`.deb`) baixados pelo `apt` e armazenados em `/var/cache/apt/archives/`. Digite o seguinte comando:
 #     
-#     2.2 Remover pacotes `.deb` antigos ou duplicados do cache local. É útil para liberar espaço, pois remove apenas os pacotes que não podem mais ser baixados (ou seja, versões antigas de pacotes que foram atualizados). Digite o seguinte comando: `sudo apt autoclean`
-# 
-#     2.3 Remover pacotes que foram automaticamente instalados para satisfazer as dependências de outros pacotes e que não são mais necessários. Digite o seguinte comando: `sudo apt autoremove -y`
-# 
-#     2.4 Buscar as atualizações disponíveis para os pacotes que estão instalados em seu sistema. Digite o seguinte comando e pressione `Enter`: `sudo apt update`
-# 
-#     2.5 **Corrigir pacotes quebrados**: Isso atualizará a lista de pacotes disponíveis e tentará corrigir pacotes quebrados ou com dependências ausentes: `sudo apt --fix-broken install`
-# 
-#     2.6 Limpar o `cache` do gerenciador de pacotes `apt`. Especificamente, ele remove todos os arquivos de pacotes (`.deb`) baixados pelo `apt` e armazenados em `/var/cache/apt/archives/`. Digite o seguinte comando: `sudo apt clean` 
+#     ```bash
+#     sudo apt clean
+#     ``` 
 #     
-#     2.7 Para ver a lista de pacotes a serem atualizados, digite o seguinte comando e pressione `Enter`:  `sudo apt list --upgradable`
-# 
-#     2.8 Realmente atualizar os pacotes instalados para as suas versões mais recentes, com base na última vez que você executou `sudo apt update`. Digite o seguinte comando e pressione `Enter`: `sudo apt full-upgrade -y`
+#     2.2 Remover pacotes `.deb` antigos ou duplicados do cache local. É útil para liberar espaço, pois remove apenas os pacotes que não podem mais ser baixados (ou seja, versões antigas de pacotes que foram atualizados). Digite o seguinte comando:
 #     
+#     ```bash
+#     sudo apt autoclean
+#     ```
+# 
+#     2.3 Remover pacotes que foram automaticamente instalados para satisfazer as dependências de outros pacotes e que não são mais necessários. Digite o seguinte comando:
+#     
+#     ```bash
+#     sudo apt autoremove -y
+#     ```
+# 
+#     2.4 Buscar as atualizações disponíveis para os pacotes que estão instalados em seu sistema. Digite o seguinte comando e pressione `Enter`: 
+#     
+#     ```bash
+#     sudo apt update
+#     ```
+# 
+#     2.5 **Corrigir pacotes quebrados**: Isso atualizará a lista de pacotes disponíveis e tentará corrigir pacotes quebrados ou com dependências ausentes:
+#     
+#     ```bash
+#     sudo apt --fix-broken install
+#     ```
+# 
+#     2.6 Limpar o `cache` do gerenciador de pacotes `apt`. Especificamente, ele remove todos os arquivos de pacotes (`.deb`) baixados pelo `apt` e armazenados em `/var/cache/apt/archives/`. Digite o seguinte comando:
+#     
+#     ```bash
+#     sudo apt clean
+#     ``` 
+#     
+#     2.7 Para ver a lista de pacotes a serem atualizados, digite o seguinte comando e pressione `Enter`:  
+#     
+#     ```bash
+#     sudo apt list --upgradable
+#     ```
+# 
+#     2.8 Realmente atualizar os pacotes instalados para as suas versões mais recentes, com base na última vez que você executou `sudo apt update`. Digite o seguinte comando e pressione `Enter`:
+#     
+#     ```bash
+#     sudo apt full-upgrade -y
+#     ```
 
-# 3. No `Terminal Emulator` do Sistema Operacional (SO), executar o comando: `sudo apt install git-all -y`
+# 3. No `Terminal Emulator` do Sistema Operacional (SO), executar o comando: 
+# 
+#     ```bash
+#     sudo apt install git-all -y
+#     ```
 
 # 4. **Por favor dizer ao `Git` quem é você**: Depois de instalar o `Git`, indique com os comandos abaixo seus usuário e nome:
 # 
-#   ```
+#   ```bash
 #   ** Please tell me who you are.
 # 
 #   Run
@@ -151,51 +190,53 @@
 # 
 # 1. **Adicionar o repositório do `Git LFS`**: 
 # 
-# Primeiro, você precisa adicionar o repositório do `Git LFS` à lista de fontes do seu sistema. Para fazer isso, execute os seguintes comandos no terminal:
+#     Primeiro, você precisa adicionar o repositório do `Git LFS` à lista de fontes do seu sistema. Para fazer isso, execute os seguintes comandos no terminal:
 # 
-# ```
-# sudo apt-get install wget
-# sudo mkdir -p /etc/apt/keyrings
-# wget -qO- https://packagecloud.io/github/git-lfs/gpgkey | sudo tee /etc/apt/keyrings/github.asc
-# sudo sh -c 'echo "deb [signed-by=/etc/apt/keyrings/github.asc] https://packagecloud.io/github/git-lfs/ubuntu/ $(lsb_release -c | awk "{print $2}") main" > /etc/apt/sources.list.d/github_git-lfs.list'
-# ```
+#     ```bash
+#     sudo apt-get install wget
+#     sudo mkdir -p /etc/apt/keyrings
+#     wget -qO- https://packagecloud.io/github/git-lfs/gpgkey | sudo tee /etc/apt/keyrings/github.asc
+#     sudo sh -c 'echo "deb [signed-by=/etc/apt/keyrings/github.asc] https://packagecloud.io/github/git-lfs/ubuntu/ $(lsb_release -c | awk "{print $2}") main" > /etc/apt/sources.list.d/github_git-lfs.list'
+#     ```
 # 
-# Este comando vai baixar a chave GPG do repositório e adicionar a URL do repositório à lista de fontes do seu sistema.
+#     Este comando vai baixar a chave GPG do repositório e adicionar a URL do repositório à lista de fontes do seu sistema.
+#     ```
 # 
 # 2. **Atualizar os pacotes**:
 # 
-# Agora, execute o comando para atualizar a lista de pacotes:
+#     Agora, execute o comando para atualizar a lista de pacotes:
 # 
-# ```
-# sudo apt update
-# ```
+#     ```bash
+#     sudo apt update
+#     ```
 # 
 # 3. **Instalar o `Git LFS`**:
 # 
-# Depois de adicionar o repositório e atualizar a lista de pacotes, instale o `Git LFS` com o comando:
+#     Depois de adicionar o repositório e atualizar a lista de pacotes, instale o `Git LFS` com o comando:
 # 
-# ```
-# sudo apt-get install git-lfs -y
+#     ```bash
+#     sudo apt-get install git-lfs -y
+#     ```
 # 
 
 # #### 2.1.2 Inicializar o `Git LFS`
 # 
-# Depois de instalar o `Git LFS`, você precisa inicializá-lo no seu sistema. Execute o seguinte comando:
+# 1. Depois de instalar o `Git LFS`, você precisa inicializá-lo no seu sistema. Execute o seguinte comando:
 # 
-# ```
-# git lfs install
-# ```
+#     ```bash
+#     git lfs install
+#     ```
 # 
 # Isso configura o `Git LFS` no seu repositório `Git` e também define a configuração global para o `Git`, para que o LFS funcione corretamente com todos os repositórios.
 # 
 
 # #### 2.1.3 Verificar a Instalação
 # 
-# Para verificar se o `Git LFS` foi instalado corretamente, você pode executar:
+# 1. Para verificar se o `Git LFS` foi instalado corretamente, você pode executar:
 # 
-# ```
-# git lfs version
-# ```
+#     ```bash
+#     git lfs version
+#     ```
 # 
 # Isso retornará a versão do `Git LFS` instalada, confirmando que a instalação foi bem-sucedida.
 # 
@@ -206,24 +247,24 @@
 # 
 # 1. **Adicionar tipos de arquivo para o `Git LFS`**:
 # 
-# Se você quiser que certos tipos de arquivos (como arquivos `.FCStd`, imagens, vídeos ou outros arquivos grandes) sejam gerenciados pelo `Git LFS`, você deve dizer ao `Git LFS` para rastrear esses tipos de arquivos. Por exemplo, para rastrear todos os arquivos `.FCStd`, você pode executar:
+#     Se você quiser que certos tipos de arquivos (como arquivos `.FCStd`, imagens, vídeos ou outros arquivos grandes) sejam gerenciados pelo `Git LFS`, você deve dizer ao `Git LFS` para rastrear esses tipos de arquivos. Por exemplo, para rastrear todos os arquivos `.FCStd`, você pode executar:
 # 
-# ```
-# git lfs track "*.FCStd"
-# ```
+#     ```bash
+#     git lfs track "*.FCStd"
+#     ```
 # 
 # Isso cria um arquivo `.gitattributes` no seu repositório, que instrui o `Git LFS` a gerenciar os arquivos correspondentes a esses padrões.
 # 
 # 2. **Adicionar, `commit` e push dos arquivos `LFS`**:
 # 
-# Uma vez que os arquivos estão sendo rastreados pelo `Git LFS`, você pode adicioná-los ao repositório como faria normalmente com o `Git`:
+#     Uma vez que os arquivos estão sendo rastreados pelo `Git LFS`, você pode adicioná-los ao repositório como faria normalmente com o `Git`:
 # 
-# ```
-# git add .gitattributes
-# git add <arquivo_lfs>
-# git commit -m "Adicionando arquivo grande com LFS"
-# git push origin main
-# ```
+#     ```bash
+#     git add .gitattributes
+#     git add <arquivo_lfs>
+#     git commit -m "Adicionando arquivo grande com LFS"
+#     git push origin main
+#     ```
 # 
 
 # ### 2.2 Configurar/Instalar/usar o `Git` no `Windows` a partir da fonte
@@ -240,19 +281,27 @@
 # 
 #     - Navegue até o diretório onde o instalador do `Git` foi baixado. Por exemplo, se o arquivo foi baixado na pasta de `Downloads`, você pode usar o comando: `cd ~\Downloads`
 # 
-#     - Execute o instalador do `Git`. Se o arquivo se chamar `Git-2.31.1-64-bit.exe`, por exemplo, você digitará: `.\Git-2.31.1-64-bit.exe`
+#     - Execute o instalador do `Git`. Se o arquivo se chamar `Git-2.31.1-64-bit.exe`, por exemplo, você digitará:
+#     
+#     ```cmd
+#     .\Git-2.31.1-64-bit.exe
+#     ```
 #     
 #     O nome do arquivo varia de acordo com a versão baixada.
 # 
 #     - Siga as instruções na tela para completar a instalação. Durante a instalação, você pode aceitar as configurações padrão ou personalizá-las conforme sua necessidade.
 # 
-# 3. Depois de concluir a instalação, você pode verificar se o `Git` foi instalado corretamente abrindo um novo terminal do `PowerShell` e digitando: `git --version`
+# 3. Depois de concluir a instalação, você pode verificar se o `Git` foi instalado corretamente abrindo um novo terminal do `PowerShell` e digitando:
 # 
-#     Isso deve retornar a versão do Git que foi instalada.
+#     ```cmd
+#     git --version
+#     ```
+# 
+#     Isso deve retornar a versão do `Git` que foi instalada.
 
 # 4. **Por favor dizer ao `Git` quem é você**: Depois de instalar o `Git`, indique com os comandos abaixo seus usuário e nome:
 # 
-#   ```
+#   ```cmd
 #   ** Please tell me who you are.
 # 
 #   Run
@@ -421,7 +470,11 @@
 
 # ### 2.5 Clonar o repositório do `Git`
 # 
-# 1. No `Terminal` do Sistema Operacional (SO), executar o comando: `git clone -b <nome_da_branch> <URL_da_branch>`, por exemplo, como caso real: `git clone -b develop git@GitHub.com:iae-apr/proplib.git` 
+# 1. No `Terminal` do Sistema Operacional (SO), executar o comando: `git clone -b <nome_da_branch> <URL_da_branch>`, por exemplo, como caso real:
+# 
+#     ```bash
+#     git clone -b develop git@GitHub.com:edendenis/github.git
+#     ``` 
 # 
 
 # ### 2.6 Comando `git checkout`
@@ -485,22 +538,21 @@
 # 
 # O resultado do comando `git status` é uma visão geral do estado do seu repositório, mostrando o que foi modificado, o que está preparado para o próximo `commit` e quais arquivos ainda não estão sendo rastreados pelo `Git`.
 # 
-# É uma boa prática executar o comando git status frequentemente para se manter atualizado sobre o estado do seu repositório e garantir que você esteja preparado para criar `commits` com as alterações corretas.
-
-# <div align="center">
-#     <img src="figures/working_tree_staging_area_and_git_directory.png" alt="Minha Imagem" />
-#     <p>Figura. 1: Árvore de trabalho, área de preparação e diretório do `Git`. [3]</p>
-# </div>
+# É uma boa prática executar o comando `git status` frequentemente para se manter atualizado sobre o estado do seu repositório e garantir que você esteja preparado para criar `commits` com as alterações corretas.
 
 # # 2.8 Comando `git add` [1][2]
 # 
-# O comando `git add` é usado no `Git` para adicionar alterações feitas nos arquivos do diretório de trabalho à área de preparação (staging area). A área de preparação é uma etapa intermediária entre o diretório de trabalho e o próximo `commit` que você irá criar. Quando você executa `git add`, você está instruindo o `Git` a incluir as alterações específicas dos arquivos selecionados na próxima confirmação (`commit`).
+# O comando `git add` é usado no `Git` para adicionar alterações feitas nos arquivos do diretório de trabalho à área de preparação (`staging area`). A área de preparação é uma etapa intermediária entre o diretório de trabalho e o próximo `commit` que você irá criar. Quando você executa `git add`, você está instruindo o `Git` a incluir as alterações específicas dos arquivos selecionados na próxima confirmação (`commit`).
 # 
 # Aqui estão alguns detalhes sobre o funcionamento do comando `git add`:
 # 
 # - **Adicionar Alterações Específicas:** O comando `git add` permite que você selecione quais alterações de arquivos você deseja incluir na área de preparação. Isso significa que você pode escolher quais mudanças serão incluídas no próximo `commit` e quais não serão.
 # 
-# - **Sintaxe Básica:** Para adicionar alterações em um arquivo específico, você pode usar o comando `git add nome_do_arquivo`. Por exemplo, para adicionar as alterações do arquivo "app.py", você usaria: `git add app.py`.
+# - **Sintaxe Básica:** Para adicionar alterações em um arquivo específico, você pode usar o comando `git add nome_do_arquivo`. Por exemplo, para adicionar as alterações do arquivo `app.py`, você usaria:
+# 
+#     ```bash
+#     git add app.py
+#     ```
 # 
 # - **Adicionar Todas as Alterações:** Se você quiser adicionar todas as alterações de todos os arquivos que foram modificados no diretório de trabalho, você pode usar o comando `git add .` (o ponto faz parte do comando). O ponto `.` representa todos os arquivos modificados no diretório atual.
 # 
@@ -535,8 +587,12 @@
 # 
 # 1. Aqui está um exemplo de como usar o comando: `git reset <nome_do_arquivo>`
 # 
-# Se você quiser remover todos os arquivos da área de staging, pode usar o comando sem especificar um arquivo: `git reset`
+#     Se você quiser remover todos os arquivos da área de staging, pode usar o comando sem especificar um arquivo:
 #     
+#     ```bash
+#     git reset
+#     ```
+#         
 #     Isso irá desfazer a adição de todos os arquivos que estão atualmente na área de `staging`. Note que isso não irá modificar os arquivos em si, apenas remove a marcação deles como prontos para `commit`. As alterações feitas nos arquivos permanecerão intactas.
 # 
 
@@ -548,19 +604,39 @@
 # 
 # Aqui estão algumas formas de usar o comando `git diff` para visualizar as diferenças:
 # 
-# 1. **Visualizar a diferença para arquivos modificados:** Para ver a diferença nos arquivos que foram modificados no diretório de trabalho, mas ainda não foram adicionados à área de preparação, você pode simplesmente executar o comando `git diff`. Isso mostrará as alterações lado a lado.: `git diff`
+# 1. **Visualizar a diferença para arquivos modificados:** Para ver a diferença nos arquivos que foram modificados no diretório de trabalho, mas ainda não foram adicionados à área de preparação, você pode simplesmente executar o comando `git diff`. Isso mostrará as alterações lado a lado.:
+# 
+#     ```bash
+#     git diff
+#     ```
 # 
 # 
-# 2. **Visualizar a diferença para arquivos adicionados à área de preparação:** Se você quiser ver as alterações dos arquivos que já foram adicionados à área de preparação (_staging area_), use o seguinte comando: `git diff --staged`
+# 2. **Visualizar a diferença para arquivos adicionados à área de preparação:** Se você quiser ver as alterações dos arquivos que já foram adicionados à área de preparação (_staging area_), use o seguinte comando:
+# 
+#     ```bash
+#     git diff --staged
+#     ```
 # 
 # 
-# 3. **Visualizar a diferença para um arquivo específico:** Se você quiser visualizar as diferenças apenas para um arquivo específico, basta fornecer o nome do arquivo após o comando `git diff`: `git diff nome_do_arquivo`
+# 3. **Visualizar a diferença para um arquivo específico:** Se você quiser visualizar as diferenças apenas para um arquivo específico, basta fornecer o nome do arquivo após o comando:
+# 
+#     ```bash
+#     git diff`: `git diff <nome_do_arquivo>
+#     ```
 # 
 # 
-# 4. **Visualizar a diferença para um arquivo específico adicionado à área de preparação:** Para visualizar as diferenças de um arquivo específico que já foi adicionado à área de preparação, você pode usar o mesmo comando anterior com a opção `--staged`: `git diff --staged nome_do_arquivo`
+# 4. **Visualizar a diferença para um arquivo específico adicionado à área de preparação:** Para visualizar as diferenças de um arquivo específico que já foi adicionado à área de preparação, você pode usar o mesmo comando anterior com a opção `--staged`:
+# 
+#     ```bash
+#     git diff --staged <nome_do_arquivo>
+#     ```
 # 
 # 
-# 5. **Visualizar a diferença resumida (por linhas):** Você também pode usar a opção `-U` para exibir um número específico de linhas ao redor das alterações: `git diff -U3`
+# 5. **Visualizar a diferença resumida (por linhas):** Você também pode usar a opção `-U` para exibir um número específico de linhas ao redor das alterações: 
+# 
+#     ```bash
+#     git diff -U3
+#     ```
 # 
 # O número `3` no exemplo acima indica que o `Git` exibirá três linhas de contexto ao redor de cada alteração.
 # 
@@ -574,7 +650,7 @@
 # 
 # 1. **Crie um script de filtro Git:** Crie um script Python que remova os metadados que você não quer acompanhar. Por exemplo, crie um arquivo chamado `filter_nb_metadata.py` e adicione o seguinte código:
 # 
-#     ```
+#     ```bash
 #     #!/usr/bin/env python
 #     import sys
 #     import json
@@ -587,28 +663,52 @@
 #     json.dump(nb, sys.stdout, sort_keys=True, indent=1, ensure_ascii=False)
 #     ```
 # 
-# 2. Não esqueça de tornar o script executável com o comando: `chmod +x filter_nb_metadata.py`
+# 2. Não esqueça de tornar o script executável com o comando:
 # 
-#     Se precisar use o `sudo` no comando acima, ou seja: `sudo +x filter_nb_metadata.py`
+#     ```bash
+#     chmod +x filter_nb_metadata.py
+#     ```
 # 
-#     2.1 Para confirmar se o script se tornou executável, verifique as permissões do arquivo com o comando: `ls -l filter_nb_metadata.py`
+#     Se precisar use o `sudo` no comando acima, ou seja:
+#     
+#     ```bash
+#     sudo +x filter_nb_metadata.py
+#     ```
+# 
+#     2.1 Para confirmar se o script se tornou executável, verifique as permissões do arquivo com o comando:
+#     
+#     ```bash
+#     ls -l filter_nb_metadata.py
+#     ```
 # 
 #     Você deve ver algo como `-rwxr-xr-x` para o seu usuário. Se não for esse o caso, você precisará alterar as permissões com:
+# 
+#     ```bash
+#     sudo chmod 754 
+#     ```
 #     
-# 3. **Adicione o script ao seu repositório `Git` como um atributo:** Crie o arquivo `.gitattributes` no seu repositório no seu repositório com o comando: `nano .gitattributes`
+# 3. **Adicione o script ao seu repositório `Git` como um atributo:** Crie o arquivo `.gitattributes` no seu repositório no seu repositório com o comando:
+# 
+#     ```bash
+#     nano .gitattributes
+#     ```
 #     
-#     Se precisar use o `sudo` no comando acima, ou seja: `sudo nano .gitattributes`
+#     Se precisar use o `sudo` no comando acima, ou seja:
+#     
+#     ```bash
+#     sudo nano .gitattributes`
+#     ```
 # 
 # 4. Adicione a(s) linha(s) dentro do arquivo `.gitattributes`, como segue:
 # 
-#     ```
+#     ```bash
 #     #!/usr/bin/env python3
 #     *.ipynb filter=nbmetadata
 #     ```
 # 
-# 5. **Configure o filtro `Git`:** Configure o `Git` para usar o script como filtro para arquivos `.ipynb`:
+# 5. **Configure o filtro `Git`:** Configure o `Git` para usar o _script_ como filtro para arquivos `.ipynb`:
 # 
-#     ```
+#     ```bash
 #     git config filter.nbmetadata.clean './filter_nb_metadata.py'
 #     git config filter.nbmetadata.smudge cat
 #     ```
@@ -635,14 +735,23 @@
 # 
 #     4.1 Opções Adicionais:
 # 
-#     4.1.1 **Pular o Commit:** Se você decidir que um commit específico que está causando conflitos não precisa ser aplicado, você pode pular o `commit` com: g`it rebase --skip`
+#     4.1.1 **Pular o Commit:** Se você decidir que um commit específico que está causando conflitos não precisa ser aplicado, você pode pular o `commit` com:
 #     
-#     Isso é útil se o c`ommit` contém mudanças que já não são relevantes ou se resolver o conflito é muito complicado e você tem certeza de que omitir as mudanças não afetará negativamente seu projeto.
+#     ```bash
+#     git rebase --skip
+#     ```
+#     
+#     Isso é útil se o `commit` contém mudanças que já não são relevantes ou se resolver o conflito é muito complicado e você tem certeza de que omitir as mudanças não afetará negativamente seu projeto.
 # 
-# Abortar o Rebase: Se você achar que o rebase está muito complicado ou se você começou por engano, você pode abortar o processo de rebase e retornar ao estado anterior com git rebase --abort.
+# **Abortar o Rebase**: Se você achar que o `rebase` está muito complicado ou se você começou por engano, você pode abortar o processo de rebase e retornar ao estado anterior com:
+# 
+# ```bash
+# git rebase --abort
+# ```
 # 
 # Em resumo, `git fetch` é uma maneira de manter-se atualizado com o estado do repositório remoto sem mesclar automaticamente as mudanças em seu trabalho local. Isso dá a você mais controle sobre como integrar as alterações e evita possíveis conflitos indesejados.
 # 
+
 # #### 4.1.1 Comando `git pull`
 # 
 # Aqui está uma explicação do comando `git pull` em código e comentários:
@@ -692,35 +801,67 @@
 # 
 # Para consultar os últimos `commits` no `Git` através do `Terminal Emulator`, você pode utilizar o comando `git log`. Aqui estão algumas das formas mais comuns de usar o `git log` para visualizar o histórico de `commits`:
 # 
-# 1. **Visualizar uma lista simples de commits:** `git log`
+# 1. **Visualizar uma lista simples de commits:**
 # 
-#     Este comando mostrará uma lista detalhada dos `commits`, incluindo o autor, a data e a mensagem de cada commit.
+#     ```bash
+#     git log
+#     ```
 # 
-# 2. **Limitar o número de commits mostrados:** `git log -n <número>`
+#     Este comando mostrará uma lista detalhada dos `commits`, incluindo o autor, a data e a mensagem de cada `commit`.
+# 
+# 2. **Limitar o número de commits mostrados:**
+# 
+#     ```bash
+#     git log -n <número>
+#     ```
 # 
 #     Substitua <número> pelo número de `commits` que você deseja ver. Por exemplo, `git log -n 5` mostrará os últimos cinco `commits`.
 # 
-# 3. **Mostrar commits em uma linha:** `git log --oneline`
+# 3. **Mostrar commits em uma linha:**
+# 
+#     ```bash
+#     git log --oneline
+#     ```
 # 
 #     Esta opção exibe cada `commit` em uma única linha, mostrando apenas o identificador do `commit` (`hash`) e a mensagem do `commit`.
 # 
-# 4. **Mostrar commits com estatísticas de mudanças:** `git log --stat`
+# 4. **Mostrar commits com estatísticas de mudanças:**
+# 
+#     ```bash
+#     git log --stat
+#     ```
 # 
 #     Além da informação normal, isso mostrará estatísticas de mudança para cada `commit`, como quantos arquivos foram alterados e o número de linhas adicionadas ou removidas.
 # 
-# 5. **Mostrar um gráfico dos branches e merges:**  `git log --graph`
+# 5. **Mostrar um gráfico dos branches e merges:**
+# 
+#     ```bash
+#     git log --graph
+#     ```
 # 
 #     Isso adiciona um gráfico ASCII ao lado das mensagens de `commit`, mostrando a estrutura de `branches` e `merges`.
 # 
-# 6. **Filtrar commits por autor:** `git log --author="Nome do Autor"`
+# 6. **Filtrar commits por autor:**
+# 
+#     ```bash
+#     git log --author="Nome do Autor"
+#     ```
 # 
 #     Substitua "Nome do Autor" pelo nome do autor para ver apenas os `commits` feitos por essa pessoa.
 # 
-# 7. **Mostrar commits desde uma data específica:**  `git log --since="2023-01-01"`
+# 7. **Mostrar commits desde uma data específica:**  
+# 
+#     ```bash
+#     git log --since="2023-01-01"
+#     ```
 # 
 #     Substitua `"2023-01-01"` pela data desejada para ver `commits` desde aquela data.
 # 
-# 8. **Mostrar commits antes de uma data específica:** `git log --until="2023-01-01"`
+# 8. **Mostrar commits antes de uma data específica:**
+# 
+#     ```bash
+#     git log --until="2023-01-01"
+#     ```
 # 
 #     Similar ao comando `--since`, mas mostra `commits` anteriores à data especificada.
 # 
@@ -733,7 +874,7 @@
 # 
 # A sintaxe básica do comando `git push` é a seguinte:
 # 
-# ```
+# ```bash
 # git push --set-upstream <remote_name> <branch_name>
 # ```
 # 
@@ -741,15 +882,27 @@
 # 
 # `--set-upstream`: O argumento `--set-upstream` (ou sua forma abreviada -u) no comando `git push` é usado para configurar a ramificação local para rastrear uma ramificação remota após a realização bem-sucedida do push. Aqui está uma explicação mais detalhada:
 # 
-# `<remote_name>` é o nome do repositório remoto para o qual você deseja enviar suas alterações. Por padrão, o repositório remoto principal é chamado de "origin", mas você pode configurar outros repositórios remotos, se necessário.
+# `<remote_name>` é o nome do repositório remoto para o qual você deseja enviar suas alterações. Por padrão, o repositório remoto principal é chamado de `origin`, mas você pode configurar outros repositórios remotos, se necessário.
 # 
-# `<branch_name>` é o nome da ramificação (branch) que você deseja enviar para o repositório remoto. Por exemplo, se você estiver trabalhando na ramificação "feature-branch" e quiser enviar suas alterações para o repositório remoto, você usaria `git push origin feature-branch`.
+# `<branch_name>` é o nome da ramificação (branch) que você deseja enviar para o repositório remoto. Por exemplo, se você estiver trabalhando na ramificação "feature-branch" e quiser enviar suas alterações para o repositório remoto, você usaria:
+# 
+#     ```bash
+#     git push origin feature-branch
+#     ```
 # 
 # **ATENÇÃO:** Antes de fazer `git push`, é importante garantir que você tenha concluído as etapas anteriores corretamente:
 # 
-# 1. **`git add`**: Adicione as alterações que você deseja incluir no próximo commit à área de preparação (staging area) usando: `git add`
+# 1. **`git add`**: Adicione as alterações que você deseja incluir no próximo commit à área de preparação (staging area) usando:
 # 
-# 2. **`git commit:`** Crie um commit com as alterações adicionadas à área de preparação usando: `git commit`
+#     ```bash
+#     git add
+#     ```
+# 
+# 2. **`git commit:`** Crie um commit com as alterações adicionadas à área de preparação usando:
+# 
+#     ```bash
+#     git commit
+#     ```
 # 
 #     2.1 Para salvar e fechar um arquivo no Vim, você deve seguir os seguintes passos:
 # 
@@ -771,32 +924,48 @@
 # 
 # - **OBSERVAÇÂO(ÔES):**
 # 
-#     - Para editar um `commit` no `Git` que ainda não foi enviado com `git push`, você pode usar o comando: `git commit --amend`
+#     - Para editar um `commit` no `Git` que ainda não foi enviado com `git push`, você pode usar o comando:
+#     
+#         ```bash
+#         git commit --amend
+#         ```
 #     
 #         Esse comando permite que você modifique o último `commit` feito. Aqui está como você pode proceder:
 # 
-# 3. **`git push`:** Somente após concluir essas etapas, você estará pronto para fazer `git push` e enviar as alterações ao repositório remoto, usando o comando: `git push`
+# 3. **`git push`:** Somente após concluir essas etapas, você estará pronto para fazer `git push` e enviar as alterações ao repositório remoto, usando o comando:
+# 
+#     ```bash
+#     git push
+#     ```
 # 
 # O comando `git push` é fundamental para colaboração em projetos de desenvolvimento em equipe, pois permite que todos os membros compartilhem suas alterações e mantenham o repositório remoto atualizado com o trabalho realizado em seus repositórios locais.
 
 # ### 4.4 Comando `git merge` [4]
 # 
-# O comando `git merge` é usado para incorporar as alterações de uma ramificação (`branch`) em outra. Geralmente, você mescla uma ramificação secundária em uma ramificação principal para trazer as alterações feitas na ramificação secundária para a principal. Aqui está uma explicação mais detalhada do que o comando "git merge" faz: `git merge <nome_da_ramificação>`
+# O comando `git merge` é usado para incorporar as alterações de uma ramificação (`branch`) em outra. Geralmente, você mescla uma ramificação secundária em uma ramificação principal para trazer as alterações feitas na ramificação secundária para a principal. Aqui está uma explicação mais detalhada do que o comando `git merge` faz:
+# 
+# ```bash
+# git merge <nome_da_ramificacao>
+# ```
 # 
 # 1. **<nome_da_ramificação>:** Este é o nome da ramificação que você deseja mesclar na ramificação atual (geralmente a ramificação onde você está atualmente).
 # O processo de mesclagem funciona da seguinte maneira:
 # 
 # 2. **Escolhendo a Ramificação de Destino:** Você primeiro muda para a ramificação de destino onde deseja incorporar as alterações. Isso pode ser feito usando o comando `git checkout`, da seguinte maneira: git checkout <ramificação_destino>
 # 
-# 3. **Executando o `git merge`:** Após estar na ramificação de destino, você executa o comando "git merge" seguido do nome da ramificação que deseja mesclar nela. `git merge <nome_da_ramificação>`
+# 3. **Executando o `git merge`:** Após estar na ramificação de destino, você executa o comando "git merge" seguido do nome da ramificação que deseja mesclar nela:
+# 
+#     ```bash
+#     git merge <nome_da_ramificacao>
+#     ```
 # 
 #     O `Git` tenta aplicar as alterações da ramificação especificada (<nome_da_ramificação>) na ramificação de destino.
 # 
 # 4. **Resolvendo Conflitos (se necessário):** Se houver conflitos entre as alterações nas duas ramificações (ou seja, se ambas tiverem modificado as mesmas partes do código), você precisará resolver esses conflitos manualmente. O `Git` sinalizará os conflitos e você deve editar os arquivos para escolher quais alterações manter.
 # 
-# 5. **Confirmação da Mesclagem:** Após resolver todos os conflitos (se houver), você deve confirmar a mesclagem criando um novo commit de mesclagem. O `Git` adiciona automaticamente uma mensagem de commit que descreve a mesclagem.
+# 5. **Confirmação da Mesclagem:** Após resolver todos os conflitos (se houver), você deve confirmar a mesclagem criando um novo `commit` de mesclagem. O `Git` adiciona automaticamente uma mensagem de `commit` que descreve a mesclagem.
 # 
-# 6. **Finalização da Mesclagem:** Após criar o commit de mesclagem, as alterações da ramificação secundária agora estão incorporadas na ramificação de destino. Você pode continuar trabalhando na ramificação de destino ou realizar outras operações conforme necessário.
+# 6. **Finalização da Mesclagem:** Após criar o `commit` de mesclagem, as alterações da ramificação secundária agora estão incorporadas na ramificação de destino. Você pode continuar trabalhando na ramificação de destino ou realizar outras operações conforme necessário.
 # 
 # O comando `git merge` é uma ferramenta poderosa para integrar o trabalho de várias pessoas em um projeto e garantir que as alterações sejam incorporadas de maneira ordenada e controlada. Ele é frequentemente usado em fluxos de trabalho de desenvolvimento colaborativo com várias ramificações.
 
@@ -804,15 +973,33 @@
 # 
 # O comando `git stash` é usado para temporariamente salvar (ou "guardar") as mudanças em seu diretório de trabalho que ainda não foram _commitadas_ em um estado chamado de `stash`. Isso pode ser útil quando você está trabalhando em uma determinada ramificação, mas precisa alternar para outra ramificação ou realizar alguma outra tarefa que exija um diretório de trabalho limpo.
 # 
-# 1. **Aqui está uma explicação do comando `git stash` em código e comentários:** Guardar as mudanças não _commitadas_ em um `stash` com o comando: `git stash`
+# 1. **Aqui está uma explicação do comando `git stash` em código e comentários:** Guardar as mudanças não _commitadas_ em um `stash` com o comando:
+# 
+#     ```bash
+#     git stash
+#     ```
 # 
 #     Quando você executa `git stash`, o `Git` cria uma entrada de `stash` que contém todas as mudanças não _commitadas_ em seu diretório de trabalho, incluindo os arquivos modificados e arquivos não rastreados. Seu diretório de trabalho ficará limpo, como se você nunca tivesse feito alterações. Isso permite que você faça outras tarefas, como alternar para outra ramificação, sem se preocupar com as mudanças em andamento.
 # 
-#     Após realizar a tarefa necessária em outra ramificação ou contexto, você pode aplicar as mudanças do `stash` de volta ao seu diretório de trabalho usando o comando `git stash apply` ou `git stash pop`. 
+#     Após realizar a tarefa necessária em outra ramificação ou contexto, você pode aplicar as mudanças do `stash` de volta ao seu diretório de trabalho usando o comando:
+#     
+#     ```bash
+#     git stash apply
+#     ```
+#     
+#     ou
+#     
+#     ```bash
+#     git stash pop
+#     ``` 
 #     
 #     Aqui está como fazer isso:
 # 
-#     - Aplica as mudanças do `stash` de volta ao diretório de trabalho: `git stash apply` ou Aplica as mudanças do `stash` de volta ao diretório de trabalho e remove o `stash`: `git stash pop`
+#     - Aplica as mudanças do `stash` de volta ao diretório de trabalho: `git stash apply` ou Aplica as mudanças do `stash` de volta ao diretório de trabalho e remove o `stash`: 
+#     
+#     ```bash
+#     git stash pop
+#     ```
 # 
 # Lembre-se de que o `stash` **NÃO** substitui os `commits`. Ele é apenas uma maneira de armazenar temporariamente as mudanças em seu diretório de trabalho sem fazer um `commit`. Portanto, você pode usá-lo para alternar rapidamente entre tarefas e continuar trabalhando em suas mudanças inacabadas quando estiver pronto.
 
@@ -820,9 +1007,17 @@
 # 
 # Para retornar as mudanças ao seu primeiro `stash`, você pode usar o comando `git stash apply` especificando qual entrada de `stash` deseja aplicar. As entradas de `stash` são numeradas e você pode referenciá-las pelo número. O primeiro `stash` é referenciado como `stash@{0}`. Aqui está como fazer isso:
 # 
-# - Aplica as mudanças do primeiro `stash` de volta ao diretório de trabalho: `git stash apply stash@{0}`
+# - Aplica as mudanças do primeiro `stash` de volta ao diretório de trabalho:
 # 
-#     Isso irá aplicar as mudanças do primeiro `stash` de volta ao seu diretório de trabalho, mas as mudanças ainda permanecerão no `stash`. Se você deseja remover o primeiro `stash` após aplicá-lo, você pode usar o comando `git stash drop`:
+#     ```bash
+#     git stash apply stash@{0}
+#     ```
+# 
+#     Isso irá aplicar as mudanças do primeiro `stash` de volta ao seu diretório de trabalho, mas as mudanças ainda permanecerão no `stash`. Se você deseja remover o primeiro `stash` após aplicá-lo, você pode usar o comando:
+#     
+#     ```bash
+#     git stash drop
+#     ```
 # 
 # - Remove o primeiro `stash` após aplicá-lo: `git stash drop stash@{0}`
 # 
@@ -841,7 +1036,7 @@
 # 
 #     A saída será semelhante a:
 # 
-#     ```
+#     ```bash
 #     stash@{0}: WIP on main: 9a0b1c2 Add feature X
 #     stash@{1}: WIP on main: 3d4e5f6 Fix bug in Y
 #     stash@{2}: WIP on feature-branch: 7g8h9i0 Update README
@@ -859,15 +1054,35 @@
 # 
 # **Detalhes Adicionais**
 # 
-# - **Ver Detalhes de um Stash Específico**: Para ver o conteúdo de um `stash` específico, use `git stash show` seguido do identificador do `stash`, como `stash@{0}`: `git stash show stash@{0}`
+# - **Ver Detalhes de um Stash Específico**: Para ver o conteúdo de um `stash` específico, use `git stash show` seguido do identificador do `stash`, como `stash@{0}`:
 # 
-#     Se você quiser ver as mudanças detalhadas (`diff`), use a opção `-p`: `git stash show -p stash@{0}`
+#     ```bash
+#     git stash show stash@{0}
+#     ```
 # 
-# - **Aplicar um Stash**: Para aplicar um `stash` específico e mantê-lo na lista de `stashes`, use: `git stash apply stash@{0}`
+#     Se você quiser ver as mudanças detalhadas (`diff`), use a opção `-p`:
+#     
+#     ```bash
+#     git stash show -p stash@{0}
+#     ```
 # 
-# - **Remover um Stash**: Para remover um `stash` da lista após aplicá-lo ou se não for mais necessário, use: `git stash drop stash@{0}`
+# - **Aplicar um Stash**: Para aplicar um `stash` específico e mantê-lo na lista de `stashes`, use:
 # 
-# - **Limpar Todos os Stashes**: Para remover todos os stashes de uma vez, use: `git stash clear`
+#     ```bash
+#     git stash apply stash@{0}
+#     ```
+# 
+# - **Remover um Stash**: Para remover um `stash` da lista após aplicá-lo ou se não for mais necessário, use:
+# 
+#     ```bash
+#     git stash drop stash@{0}
+#     ```
+# 
+# - **Limpar Todos os Stashes**: Para remover todos os stashes de uma vez, use: 
+# 
+#     ```bash
+#     git stash clear
+#     ```
 # 
 # Esses comandos permitem que você gerencie e visualize os stashes de forma eficiente no seu repositório `Git`.
 
@@ -877,7 +1092,11 @@
 # 
 # Aqui está como você pode usar o `git restore --staged`:
 # 
-# 1. Remove arquivos ou alterações do índice (`stage`): `git restore --staged <arquivo1> <arquivo2> ...`
+# 1. Remove arquivos ou alterações do índice (`stage`):
+# 
+#     ```bash
+#     git restore --staged <arquivo1> <arquivo2> ...
+#     ```
 # 
 # Você pode especificar os nomes dos arquivos que deseja remover do índice como argumentos para o comando `git restore --staged`. Depois de executar esse comando, as alterações nesses arquivos serão retiradas do índice, mas as mudanças no seu diretório de trabalho permanecerão intactas. Isso significa que você pode modificar esses arquivos novamente e eles não estarão prontos para serem commitados até que você os adicione novamente ao índice usando `git add`.
 # 
@@ -885,7 +1104,7 @@
 # 
 # 1. Remove arquivos ou alterações do índice e do diretório de trabalho
 # 
-#     ```
+#     ```bash
 #     git restore --staged <arquivo1> <arquivo2> ...
 #     git restore <arquivo1> <arquivo2> ...
 #     ```
@@ -915,91 +1134,180 @@
 # git status <nome_do_arquivo>
 # 
 
-# In[ ]:
-
-
-#### 4.6.2 Pasta `<nome_da_pasta>`
-
-1. Use este comando para resetar toda a pasta `<nome_da_pasta>` - a pasta `docs/`, em geral, a pasta de documentação dos projetos, é uma boa pasta para fazer isso, pois contém muitos arquivos do tipo binário  - para o estado do repositório remoto (`commit origin/branch`):
-
-    ```bash
-    git restore --source=origin/$(git branch --show-current) --staged --worktree <nome_da_pasta>/
-    ```
-
-    Esse comando:
-
-    * Traz de volta a versão da pasta `<nome_da_pasta>` que está no repositório remoto
-
-    * Remove seus arquivos locais e conflitos de `merge` dessa pasta
-
-    * Funciona mesmo com conflitos em arquivos binários (`.pickle`, `.doctree`, `.html`, `etc.`)
-
-4.6.1 **(Opcional)**: Se quiser confirmar que a pasta voltou ao estado remoto:
-
-```bash
-git status <nome_da_pasta>/
-```
-
-Ou use:
-
-```bash
-git diff origin/$(git branch --show-current) <nome_da_pasta>/
-```
-
+# #### 4.6.2 Pasta `<nome_da_pasta>`
+# 
+# 1. Use este comando para resetar toda a pasta `<nome_da_pasta>` - a pasta `docs/`, em geral, a pasta de documentação dos projetos, é uma boa pasta para fazer isso, pois contém muitos arquivos do tipo binário  - para o estado do repositório remoto (`commit origin/branch`):
+# 
+#     ```bash
+#     git restore --source=origin/$(git branch --show-current) --staged --worktree <nome_da_pasta>/
+#     ```
+# 
+#     Esse comando:
+# 
+#     * Traz de volta a versão da pasta `<nome_da_pasta>` que está no repositório remoto
+# 
+#     * Remove seus arquivos locais e conflitos de `merge` dessa pasta
+# 
+#     * Funciona mesmo com conflitos em arquivos binários (`.pickle`, `.doctree`, `.html`, `etc.`)
+# 
+# 4.6.1 **(Opcional)**: Se quiser confirmar que a pasta voltou ao estado remoto:
+# 
+# ```bash
+# git status <nome_da_pasta>/
+# ```
+# 
+# Ou use:
+# 
+# ```bash
+# git diff origin/$(git branch --show-current) <nome_da_pasta>/
+# ```
+# 
 
 # ## 5. Atualizar o repositório local (mais atualizado) para o remoto (menos atualizado) a partir que um _backup_ em outra pasta
 # 
 # Para atualizar o repositório local (mais atualizado) para o remoto (menos atualizado) a partir que um backup em outra pasta execute os passos abaixo:
 # 
-# 1. **Atribuir a palavra `"Attentus"` a uma variável:** `projeto="attentus_vba"`
+# 1. **Atribuir a palavra `"Attentus"` a uma variável:**
 # 
-# 2. **Remover o diretório do projeto existente, se houver:** `rm -rf "$projeto"`
+#     ```bash
+#     projeto="attentus_vba"
+#     ```
 # 
-# 3. **Clonar o repositório do `GitHub`:** `git clone git@github.com:edendenis/"$projeto"`
+# 2. **Remover o diretório do projeto existente, se houver:**
+# 
+#     ```bash
+#     rm -rf "$projeto"
+#     ```
+# 
+# 3. **Clonar o repositório do `GitHub`:**
+# 
+#     ```bash
+#     git clone git@github.com:edendenis/"$projeto"
+#     ```
 # 
 #     3.1 Digite a senha do `GitHub` caso seja solicitado
 # 
-# 4. **Entrar no diretório do projeto:** `cd "$projeto"`
+# 4. **Entrar no diretório do projeto:**
 # 
-# 5. **Remover o diretório `.git` existente, se houver:** `rm -rf .git`
+#     ```bash
+#     cd "$projeto"
+#     ```
 # 
-# 6. **Inicializar um novo repositório Git (se necessário):** `git init`
+# 5. **Remover o diretório `.git` existente, se houver:**
 # 
-# 7. **Verificar repositórios remotos configurados:** Primeiro, verifique os repositórios remotos atualmente configurados no seu projeto com o comando: `git remote -v`
+#     ```bash
+#     rm -rf .git
+#     ```
 # 
-#     7.1 **Adicionar o repositório remoto `origin`, se necessário:** Se o `origin` não estiver listado, você precisará adicioná-lo. Para projetos hospedados no `GitHub` e que você deseja acessar via SSH (como indicado pela sua tentativa de usar a URL SSH `git@github.com:edendenis/[projeto].git`), use o seguinte comando: `git remote add origin git@github.com:edendenis/"$projeto".git`
+# 6. **Inicializar um novo repositório Git (se necessário):**
 # 
-# 8. **Verificar a configuração do repositório remoto:** `git remote -v`
+#     ```bash
+#     git init
+#     ```
 # 
-# 8. **Definir o URL do repositório remoto:** `git remote set-url origin git@github.com:edendenis/"$projeto".git`
+# 7. **Verificar repositórios remotos configurados:** Primeiro, verifique os repositórios remotos atualmente configurados no seu projeto com o comando:
 # 
-# 10. **Verificar a configuração do repositório remoto:** `git remote -v`
+#     ```bash
+#     git remote -v
+#     ```
 # 
-# 11. **Copiar os arquivos de backup para o diretório do projeto:** `cp -r /home/edenedfsls/Documents/EDF/APPS/excel_vba/excel_vba_public/0_BACKUP/"$projeto"/ /home/edenedfsls/Documents/EDF/APPS/excel_vba/excel_vba_public/"$projeto"/`
+#     7.1 **Adicionar o repositório remoto `origin`, se necessário:** Se o `origin` não estiver listado, você precisará adicioná-lo. Para projetos hospedados no `GitHub` e que você deseja acessar via SSH (como indicado pela sua tentativa de usar a URL SSH `git@github.com:edendenis/[projeto].git`), use o seguinte comando:
+#     
+#     ```bash
+#     git remote add origin git@github.com:edendenis/"$projeto".git
+#     ```
 # 
-# 10. **Verificar o _status_ do repositório Git:** `git status`
+# 8. **Verificar a configuração do repositório remoto:**
 # 
-# 11. **Adicionar todos os arquivos ao staging area:** `git add .`
+#     ```bash
+#     git remote -v
+#     ```
 # 
-# 12. **Remover os `arquivos/diretórios` do diretório `.references/` do staging area (se necessário):** `git rm --cached -r .references/`
+# 8. **Definir o URL do repositório remoto:** 
 # 
-# 13. **Verificar o `status` do repositório Git após a remoção dos `arquivos/diretórios` do diretório `.references/`:** `git status`
+#     ```bash
+#     git remote set-url origin git@github.com:edendenis/"$projeto".git
+#     ```
 # 
-# 14. **Fazer `commit` das alterações:** `git commit -m "Update repository"`
+# 10. **Verificar a configuração do repositório remoto:**
 # 
-# 15. **Verificar o status do repositório Git após o `commit`:** `git status`
+#     ```bash
+#     git remote -v
+#     ```
 # 
-# 16. **Fazer `push` das alterações e definir a ramificação local para rastrear a ramificação remota:** `git push origin HEAD:main  # git push --set-upstream origin main`
+# 11. **Copiar os arquivos de backup para o diretório do projeto:** 
+# 
+#     ```bash
+#     cp -r /home/edenedfsls/Documents/EDF/APPS/excel_vba/excel_vba_public/0_BACKUP/"$projeto"/ /home/edenedfsls/Documents/EDF/APPS/excel_vba/excel_vba_public/"$projeto"/
+#     ```
+# 
+# 10. **Verificar o _status_ do repositório Git:**
+# 
+#     ```bash
+#     git status
+#     ```
+# 
+# 11. **Adicionar todos os arquivos ao staging area:**
+# 
+#     ```bash
+#     git add .
+#     ```
+# 
+# 12. **Remover os `arquivos/diretórios` do diretório `.references/` do staging area (se necessário):**
+# 
+#     ```bash
+#     git rm --cached -r .references/
+#     ```
+# 
+# 13. **Verificar o `status` do repositório Git após a remoção dos `arquivos/diretórios` do diretório `.references/`:**
+# 
+#     ```bash
+#     git status
+#     ```
+# 
+# 14. **Fazer `commit` das alterações:**
+# 
+#     ```bash
+#     git commit -m "Update repository"
+#     ```
+# 
+# 15. **Verificar o status do repositório Git após o `commit`:**
+# 
+#     ```bash
+#     git status
+#     ```
+# 
+# 16. **Fazer `push` das alterações e definir a ramificação local para rastrear a ramificação remota:**
+# 
+#     ```bash
+#     git push origin HEAD:main  # git push --set-upstream origin main
+#     ```
 # 
 #     16.1 Digite a senha do `GitHub` caso seja solicitado
 # 
-# 17. **Voltar para o diretório de backup:** `cd ..`
+# 17. **Voltar para o diretório de backup:**
 # 
-# 18. **Entrar no diretório de backup:** `cd 0_BACKUP/`
+#     ```bash
+#     cd ..
+#     ```
 # 
-# 19. **Remover o diretório do projeto no backup:** `rm -rf "$projeto"`
+# 18. **Entrar no diretório de backup:**
 # 
-# 20. **Voltar para o diretório pai:** `cd ..`
+#     ```bash
+#     cd 0_BACKUP/
+#     ```
+# 
+# 19. **Remover o diretório do projeto no backup:**
+# 
+#     ```bash
+#     rm -rf "$projeto"
+#     ```
+# 
+# 20. **Voltar para o diretório pai:**
+# 
+#     ```bash
+#     cd ..
+#     ```
 
 # ## 6. Configurar o `Git` para **NÃO** solicitar a senha sempre que executar o `git push`
 # 
@@ -1059,7 +1367,7 @@ git diff origin/$(git branch --show-current) <nome_da_pasta>/
 
 # ### 6.2 Crie um _token_ pessoal
 # 
-# 1. Vá para a plataforma de hospedagem do seu repositório `Git` (como `GitHub`, `GitHub`, `Bitbucket`).
+# 1. Vá para a plataforma de hospedagem do seu repositório `Git` (como `GitHub`, `GitHub`, `Bitbucket` etc.).
 # 
 # 2. Nas configurações da sua conta, encontre a seção de `Tokens Pessoais` (ou similar).
 # 
@@ -1069,11 +1377,19 @@ git diff origin/$(git branch --show-current) <nome_da_pasta>/
 # 
 # 1. Abra o `Terminal Emulator` ou `prompt` de comando.
 # 
-# 2. Configure o `Git` para usar o `credential.helper` store para armazenar suas credenciais: `git config --global credential.helper store`
+# 2. Configure o `Git` para usar o `credential.helper` store para armazenar suas credenciais:
+# 
+#     ```bash
+#     git config --global credential.helper store
+#     ```
 # 
 # Este comando diz ao `Git` para armazenar suas credenciais em um arquivo local no seu sistema.
 # 
-# 3. Crie o arquivo `~/.git-credentials` com suas credenciais (usuário e _token_): `echo "https://<SEU_USUARIO>:<SEU_TOKEN_AQUI>@github.com/<SEU_REPO>/<SEU_PROJETO>.git" > ~/.git-credentials`
+# 3. Crie o arquivo `~/.git-credentials` com suas credenciais (usuário e _token_):
+# 
+#     ```bash
+#     echo "https://<SEU_USUARIO>:<SEU_TOKEN_AQUI>@github.com/<SEU_REPO>/<SEU_PROJETO>.git" > ~/.git-credentials
+#     ```
 # 
 #     - Substitua `<SEU_USUARIO>` pelo seu nome de usuário no Git (ou o nome de usuário da plataforma de hospedagem do seu repositório).
 # 
@@ -1085,7 +1401,11 @@ git diff origin/$(git branch --show-current) <nome_da_pasta>/
 # 
 # ### 6.2.2 Atualize a URL do Repositório Remoto:
 # 
-# 1. Se já estiver usando HTTPS para clonar ou adicionar o repositório, a URL provavelmente já está configurada. Caso contrário, atualize a URL do repositório remoto para usar HTTPS: `git remote set-url origin https://SEU_USUARIO@SEU_REPO.git`
+# 1. Se já estiver usando HTTPS para clonar ou adicionar o repositório, a URL provavelmente já está configurada. Caso contrário, atualize a URL do repositório remoto para usar HTTPS:
+# 
+#     ```bash
+#     git remote set-url origin https://SEU_USUARIO@SEU_REPO.git
+#     ```
 # 
 # ### 6.2.3 Teste o `git push`
 # 
