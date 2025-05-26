@@ -1147,7 +1147,7 @@ git status <nome_do_arquivo>
 
     * Funciona mesmo com conflitos em arquivos binários (`.pickle`, `.doctree`, `.html`, `etc.`)
 
-4.6.1 **(Opcional)**: Se quiser confirmar que a pasta voltou ao estado remoto:
+1.1 **(Opcional)**: Se quiser confirmar que a pasta voltou ao estado remoto:
 
 ```bash
 git status <nome_da_pasta>/
@@ -1157,6 +1157,15 @@ Ou use:
 
 ```bash
 git diff origin/$(git branch --show-current) <nome_da_pasta>/
+```
+
+
+##### Restaurar uma pasta inteira para um `commit` específico
+
+Para restaurar uma pasta inteira para o estado de um `commit` específico sem afetar outras partes do repositório, você pode usar o seguinte comando:
+
+```bash
+git restore --source=<commit_hash> --staged --worktree <nome_da_pasta>/
 ```
 
 
