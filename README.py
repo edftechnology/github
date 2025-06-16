@@ -1183,7 +1183,7 @@
 #     git log --all -- <path/to/nome_do_arquivo>
 #     ```
 # 
-#     Esse comando irá listar todos os `commits` onde o arquivo <nome_do_arquivo> foi alterado. A partir do `hash` do `commit`, você pode verificar os detalhes desse `commit`, como a data e a mensagem.
+#     Esse comando irá listar todos os `commits` onde o arquivo `<nome_do_arquivo>` foi alterado. A partir do `hash` do `commit`, você pode verificar os detalhes desse `commit`, como a data e a mensagem.
 
 # ## 5. Atualizar o repositório local (mais atualizado) para o remoto (menos atualizado) a partir que um _backup_ em outra pasta
 # 
