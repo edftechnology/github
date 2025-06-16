@@ -1128,11 +1128,11 @@
 #     * Remove suas alterações locais e conflitos de `merge` desse arquivo
 #     * Funciona mesmo com conflitos em arquivos binários (`.pickle`, `.doctree`, `.html`, etc.)
 # 
-# 4.6.1 **(Opcional)**: Se quiser confirmar que o arquivo voltou ao estado remoto:
+#     **(Opcional)**: Se quiser confirmar que o arquivo voltou ao estado remoto:
 # 
-# ```bash
-# git status <nome_do_arquivo>
-# 
+#     ```bash
+#     git status <nome_do_arquivo>
+#     ```
 
 # #### 4.6.2 Pasta `<nome_da_pasta>`
 # 
@@ -1150,20 +1150,20 @@
 # 
 #     * Funciona mesmo com conflitos em arquivos binários (`.pickle`, `.doctree`, `.html`, `etc.`)
 # 
-# 1.1 **(Opcional)**: Se quiser confirmar que a pasta voltou ao estado remoto:
+#     1.1 **(Opcional)**: Se quiser confirmar que a pasta voltou ao estado remoto:
 # 
-# ```bash
-# git status <nome_da_pasta>/
-# ```
+#     ```bash
+#     git status <nome_da_pasta>/
+#     ```
 # 
-# Ou use:
+#     Ou use:
 # 
-# ```bash
-# git diff origin/$(git branch --show-current) <nome_da_pasta>/
-# ```
+#     ```bash
+#     git diff origin/$(git branch --show-current) <nome_da_pasta>/
+#     ```
 # 
 
-# ##### Restaurar uma pasta inteira para um `commit` específico
+# #### 4.6.3 Restaurar uma pasta inteira para um `commit` específico
 # 
 # Para restaurar uma pasta inteira para o estado de um `commit` específico sem afetar outras partes do repositório, você pode usar o seguinte comando:
 # 
@@ -1171,6 +1171,19 @@
 # git restore --source=<commit_hash> --staged --worktree <nome_da_pasta>/
 # ```
 # 
+
+# #### 4.6.4 Procurar o arquivo no histórico de `commits`
+# 
+# Use o comando `git log` para procurar pelo arquivo nos `commits` anteriores.
+# 
+# 
+# 1. O comando `git log --all` irá exibir todos os `commits`, e você pode usar o parâmetro `--` para buscar por um arquivo específico:
+# 
+#     ```bash
+#     git log --all -- <path/to/nome_do_arquivo>
+#     ```
+# 
+#     Esse comando irá listar todos os `commits` onde o arquivo <nome_do_arquivo> foi alterado. A partir do `hash` do `commit`, você pode verificar os detalhes desse `commit`, como a data e a mensagem.
 
 # ## 5. Atualizar o repositório local (mais atualizado) para o remoto (menos atualizado) a partir que um _backup_ em outra pasta
 # 
@@ -1566,11 +1579,11 @@
 
 # ## Referências
 # 
-# [1] CHACON, S e STRAUB, B.. ***Progit: everything you need to know about git***. Apress, Second edition, 2020.
+# [1] CHACON, S AND STRAUB, B.. ***Progit: everything you need to know about git***. Apress, Second edition, 2020.
 # 
 # [2] OPENAI. ***Enviar repositório local ao github.*** Disponível em: <https://chat.openai.com/c/0b137275-7e88-41e4-b679-6ebce8603a01> (texto adaptado). ChatGPT. Acessado em: 03/08/2023 09:09.
 # 
-# [3] CHACON, S e STRAUB, B.. ***Progit: everything you need to know about git***. Apress, page 16, Second edition, 2020.
+# [3] CHACON, S AND STRAUB, B.. ***Progit: everything you need to know about git***. Apress, page 16, Second edition, 2020.
 # 
 # [4] OPENAI. ***GitHub: comando "git fetch".*** Disponível em: <https://chat.openai.com/c/31c7e7f1-51c8-47ae-978b-6a01c5730131> (texto adaptado). ChatGPT. Acesso em: 20/09/2023 21:38.
 # 
