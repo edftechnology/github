@@ -1022,10 +1022,12 @@
 # 
 #     ```bash
 #     git fetch --all
-#     git branch -r | grep <nome_da_nova_branch>
+#     git branch -r | grep <parte_do_nome_da_branch>
 #     ```
 # 
-# 2. **Crie a branch localmente a partir da remota**:
+# 2. Irá aparecer uma lista de `branches`.
+# 
+# 3. **Crie a `branch` localmente a partir da remota**:
 #     
 #     ```bash
 #     git checkout -b <nome_da_nova_branch> origin/<nome_da_nova_branch>
@@ -1033,13 +1035,13 @@
 #     
 #     Isso cria uma `branch` local com base na remota.
 # 
-# 3. **Vá para a `branch main`**
+# 4. **Vá para a `branch main`**
 # 
 #     ```bash
 #     git switch main
 #     ```
 # 
-# 4. **Faça o `merge` da `branch` nova na `main`**
+# 5. **Faça o `merge` da `branch` nova na `main`**
 # 
 #     ```bash
 #     git merge <nome_da_nova_branch>
@@ -1047,15 +1049,14 @@
 # 
 #     Se houver conflitos, o `Git` irá avisar e você terá que resolvê-los antes de continuar.
 # 
-# 5. (Opcional, mas recomendado) Faça o `push` da `main` atualizada para o `GitHub`
+# 6. (Opcional, mas recomendado) Faça o `push` da `main` atualizada para o `GitHub`
 # 
 #     ```bash
 #     git push origin main
 #     ```
 # 
-# ##### Excluir a `branch` local após o `merge`
-# 
-# ###### Excluir a `branch` local após o `merge` no repositório local
+
+# ##### Excluir a `branch` local após o `merge` no repositório local
 # 
 # 1. Para excluir a `branch` local após o `merge` no repositório local
 # 
@@ -1063,12 +1064,14 @@
 # git branch -d <nome_da_nova_branch>
 # ```
 # 
-# 2. Para excluir uma `branch` do repositório remoto usando o `Terminal Emulator`, você pode usar o seguinte comando:
+# ##### Excluir a `branch` local após o `merge` no repositório remoto
+# 
+# 
+# 1. Para excluir uma `branch` do repositório remoto usando o `Terminal Emulator`, você pode usar o seguinte comando:
 # 
 # ```bash
 # git push origin --delete <nome-da-branch>
 # ```
-# 
 
 # #### 2.5.17 Comando `git stash` [9]
 # 
@@ -1278,9 +1281,9 @@
 # 
 # Para restaurar uma pasta inteira para o estado de um `commit` específico sem afetar outras partes do repositório, você pode usar o seguinte comando:
 # 
-#     ```bash
-#     git restore --source=<commit_hash> --staged --worktree <nome_da_pasta>/
-#     ```
+# ```bash
+# git restore --source=<commit_hash> --staged --worktree <nome_da_pasta>/
+# ```
 # 
 # 
 # 
