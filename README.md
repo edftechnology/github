@@ -341,7 +341,6 @@ Para gerar uma chave SSH no `Linux Ubuntu`, você pode seguir os passos abaixo:
 
 1. Abra o `Terminal Emulator`. Você pode fazer isso pressionando: `Ctrl + Alt + T`
 
-
 2. Certifique-se de que seu sistema esteja limpo e atualizado.
 
     2.1 Limpar o `cache` do gerenciador de pacotes `apt`. Especificamente, ele remove todos os arquivos de pacotes (`.deb`) baixados pelo `apt` e armazenados em `/var/cache/apt/archives/`. Digite o seguinte comando:
@@ -350,7 +349,7 @@ Para gerar uma chave SSH no `Linux Ubuntu`, você pode seguir os passos abaixo:
     sudo apt clean
     ``` 
     
-    2.2 Remover pacotes `.deb` antigos ou duplicados do cache local. É útil para liberar espaço, pois remove apenas os pacotes que não podem mais ser baixados (ou seja, versões antigas de pacotes que foram atualizados). Digite o seguinte comando:
+    2.2 Remover pacotes `.deb` antigos ou duplicados do `cache` local. É útil para liberar espaço, pois remove apenas os pacotes que não podem mais ser baixados (ou seja, versões antigas de pacotes que foram atualizados). Digite o seguinte comando:
     
     ```bash
     sudo apt autoclean
@@ -1012,6 +1011,8 @@ O processo de mesclagem funciona da seguinte maneira:
 
 O comando `git merge` é uma ferramenta poderosa para integrar o trabalho de várias pessoas em um projeto e garantir que as alterações sejam incorporadas de maneira ordenada e controlada. Ele é frequentemente usado em fluxos de trabalho de desenvolvimento colaborativo com várias ramificações.
 
+
+
 ##### Puxar uma nova `branch` remota para o seu repositório local e fazer o `merge` dela com a `branch main`
 
 1. **Verifique se a `branch` existe remotamente**:
@@ -1049,12 +1050,21 @@ O comando `git merge` é uma ferramenta poderosa para integrar o trabalho de vá
     git push origin main
     ```
 
-##### Excluir a branch local após o merge
+##### Excluir a `branch` local após o `merge`
+
+###### Excluir a `branch` local após o `merge` no repositório local
+
+1. Para excluir a `branch` local após o `merge` no repositório local
 
 ```bash
 git branch -d <nome_da_nova_branch>
 ```
 
+2. Para excluir uma `branch` do repositório remoto usando o `Terminal Emulator`, você pode usar o seguinte comando:
+
+```bash
+git push origin --delete <nome-da-branch>
+```
 
 
 #### 2.5.17 Comando `git stash` [9]
