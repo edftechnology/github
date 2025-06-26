@@ -48,6 +48,8 @@ O `Git` é um sistema de controle de versão distribuído amplamente utilizado p
 
 O `GitHub` é uma plataforma de hospedagem e colaboração de código-fonte baseada em Git, que oferece repositórios remotos para versionamento, revisão de `pull requests`, `issues` e integração contínua. Com recursos como `GitHub` Actions, `GitHub` Packages e uma interface web intuitiva, ele facilita o trabalho em equipe, o controle de qualidade e a automação de fluxos de desenvolvimento, tornando-se um ponto central para projetos de código aberto e corporativos.
 
+
+
 ## 1. Sobre os _branches_ do `Git` [1][2]
 
 Ramos (`branches`) no `Git` são um recurso fundamental e poderoso do sistema de controle de versão `Git`. Um ramo em `Git` é um ponteiro leve e móvel para um `commit` específico. Quando você cria um novo ramo, permite que você se desvie da linha principal de desenvolvimento (geralmente o ramo `main` ou `main`) e trabalhe em novas funcionalidades, correções de _bugs_ ou experimentos sem afetar o código principal.
@@ -97,6 +99,8 @@ Aqui estão alguns conceitos-chave relacionados aos ramos (`branches`) do `Git`:
 9. **Ramos remotos:** Ramos remotos representam ramos em um repositório remoto (por exemplo, no `GitHub`, `GitHub` ou `Bitbucket`). Você pode enviar seus ramos locais para um repositório remoto e trazer ramos remotos para o seu repositório local.
 
 O uso de ramos no `Git` permite que os desenvolvedores trabalhem colaborativamente em diferentes partes do projeto simultaneamente. Ele facilita o isolamento do código, a experimentação e a capacidade de trabalhar em várias funcionalidades ao mesmo tempo. Ramos são um conceito fundamental no `Git` que promove a organização do código, a manutenibilidade e o trabalho em equipe.
+
+
 
 ## 2. Configurar/Instalar/usar o `Git` [1]
 
@@ -181,7 +185,9 @@ Para configurar/instalar/usar o `Git` no `Linux Ubuntu`, você pode seguir estas
 
 - **`"Your name"`**: por exemplo: `"Eden Denis"` 
 
-#### 2.1. Instalar o `Git LFS` (Git Large File Storage) no `Linux Ubuntu`
+
+
+#### 2.1.1 Instalar o `Git LFS` (Git Large File Storage) no `Linux Ubuntu`
 
 Para instalar o `Git LFS` no `Linux Ubuntu`, você pode seguir os passos abaixo. O `Git LFS` é um pacote separado, mas fácil de instalar. Veja como fazer isso:
 
@@ -216,6 +222,7 @@ Para instalar o `Git LFS` no `Linux Ubuntu`, você pode seguir os passos abaixo.
     ```
 
 
+
 #### 2.1.2 Inicializar o `Git LFS`
 
 1. Depois de instalar o `Git LFS`, você precisa inicializá-lo no seu sistema. Execute o seguinte comando:
@@ -227,6 +234,8 @@ Para instalar o `Git LFS` no `Linux Ubuntu`, você pode seguir os passos abaixo.
 Isso configura o `Git LFS` no seu repositório `Git` e também define a configuração global para o `Git`, para que o LFS funcione corretamente com todos os repositórios.
 
 
+
+
 #### 2.1.3 Verificar a Instalação
 
 1. Para verificar se o `Git LFS` foi instalado corretamente, você pode executar:
@@ -236,6 +245,8 @@ Isso configura o `Git LFS` no seu repositório `Git` e também define a configur
     ```
 
 Isso retornará a versão do `Git LFS` instalada, confirmando que a instalação foi bem-sucedida.
+
+
 
 
 #### 2.1.4 Usando o `Git LFS`
@@ -262,6 +273,8 @@ Isso cria um arquivo `.gitattributes` no seu repositório, que instrui o `Git LF
     git commit -m "Adicionando arquivo grande com LFS"
     git push origin main
     ```
+
+
 
 
 ### 2.2 Configurar/Instalar/usar o `Git` no `Windows` a partir da fonte
@@ -314,13 +327,15 @@ Para instalar o `git-all` no `Windows` usando o `PowerShell`, você seguirá bas
 
 - **`"Your name"`**: por exemplo: `"Eden Denis"` 
 
+
+
 ## 2.3 Criar chave Secure SHell `ssh` para a conta do usuário [4][5]
 
 ### 2.3.1 Verificar se foi liberado o acesso ao `Git`
 
 Antes de seguir os passos de uma das Seções abaixo (`Linux` e/ou `Windows`), confirmar com um dos administradores do `Git` se foi liberado o acesso para a sua conta de e-mail. Se não, solicitar o acesso antes de prosseguir com o passo a passo de uma Seções abaix (`Linux` e/ou `Windows`). 
 
-### 2.3.2 `Linux Ubuntu`
+#### `Linux Ubuntu`
 
 Para gerar uma chave SSH no `Linux Ubuntu`, você pode seguir os passos abaixo:
 
@@ -407,7 +422,9 @@ Para gerar uma chave SSH no `Linux Ubuntu`, você pode seguir os passos abaixo:
 
     Lembre-se de proteger sua chave privada e evitar compartilhá-la com outras pessoas. É recomendável usar autenticação por chave SSH em vez de senhas, pois oferece uma camada adicional de segurança.
 
-#### Configurar o `Git` para usar SSH
+
+
+### 2.4 Configurar o `Git` para usar SSH
 
 1. **Altere o URL remoto do seu repositório para usar SSH**:
 
@@ -415,7 +432,7 @@ Para gerar uma chave SSH no `Linux Ubuntu`, você pode seguir os passos abaixo:
     git remote set-url origin git@github.com:edendenis/<nome_do_projeto>.git
     ```
 
-### 2.3.3 `Windows` [5]
+#### 2.4.3 `Windows` [5]
 
 Para gerar uma chave SSH no Windows para uso no `Git`, você pode seguir as etapas abaixo:
 
@@ -451,7 +468,11 @@ Depois de copiar a chave pública, você poderá fazer login no servidor remoto 
 
 Lembre-se de proteger sua chave privada e evitar compartilhá-la com outras pessoas. É recomendável usar autenticação por chave SSH em vez de senhas, pois oferece uma camada adicional de segurança.
 
-### 2.4 Comando `git init`
+
+
+### 2.5 Comandos
+
+#### 2.5.1 `git init`
 
 O comando `git init` é usado para iniciar um novo repositório `Git` em um diretório. Quando você executa este comando em um diretório vazio ou existente, ele cria um repositório `Git` local, que é um local onde você pode armazenar e gerenciar seu código fonte e seu histórico de alterações. Aqui está uma explicação mais detalhada em código e comentários:
 
@@ -459,13 +480,17 @@ O comando `git init` é usado para iniciar um novo repositório `Git` em um dire
 
     Este comando cria um diretório oculto chamado `.git` na pasta onde você executou o `git init`. É dentro deste diretório `.git` que o `Git` armazena todas as informações sobre o repositório, incluindo o histórico de `commits`, as configurações e outras informações relacionadas ao controle de versão.
 
-#### 2.4.1 Configurar o `branch` padrão ou alterar o `branch`
+
+
+#### 2.5.2 Configurar o `branch` padrão ou alterar o `branch`
 
 Usando `main` como nome do `branch` inicial. Este nome de branch padrão está sujeito a alterações. Para configurar o nome inicial da filial a ser usada em todos os seus novos repositórios, que suprimirão este aviso, chame `git config --global init.defaultBranch <nome>`, você pode alterar o `branch` para `develop` com o seguinte comando: `git config --global init.defaultBranch develop` 
 
 Os nomes comumente escolhidos em vez de `main` são `main`, `trunk` e `development`. O branch recém-criado pode ser renomeado através deste comando: `git branch -m <nome>`
 
-### 2.5 Clonar o repositório do `Git`
+
+
+#### 2.5.3 Clonar o repositório do `Git`
 
 1. No `Terminal` do Sistema Operacional (SO), executar o comando: `git clone -b <nome_da_branch> <URL_da_branch>`, por exemplo, como caso real:
 
@@ -474,13 +499,17 @@ Os nomes comumente escolhidos em vez de `main` são `main`, `trunk` e `developme
     ``` 
 
 
-### 2.6 Comando `git checkout`
+
+
+#### 2.5.4 Comando `git checkout`
 
 1. No `Terminal Emulator` do Sistema Operacional (SO), executar o comando: `git checkout` para verificar qual a `branch` está selecionada;
 
 2. Como a `branch` de desenvolvimento é a `develop`, é conveniente, selecioná-la caso não esteja selecionada, para isso, digitar: `git checkout`.
 
-#### 2.6.1 Comando `git checkout <codigo_da_hash>` [7]
+
+
+#### 2.5.5 Comando `git checkout <codigo_da_hash>` [7]
 
 O comando `git checkout <codigo_da_hash>` (para o caso real: `git checkout a3636068`) é usado no `Git` para mudar o estado do repositório para o estado em que estava no momento do `commit` especificado pelo `hash a3636068`. Aqui está uma explicação detalhada:
 
@@ -499,19 +528,19 @@ Quando você executa `git checkout a3636068`, o seguinte acontece:
 É importante notar que ao fazer mudanças enquanto estiver em um estado `Detached HEAD`, você deve criar uma nova branch para preservar essas mudanças, pois se retornar para uma branch diferente sem fazer isso, as mudanças feitas serão perdidas. 
 
 
-#### 2.6.2 Comando `git checkout --theirs -- <caminho/do/arquivo>` [7]
+##### Comando `git checkout --theirs -- <caminho/do/arquivo>` [7]
 
-O comando `git checkout --theirs -- <caminho/do/arquivo>` é usado durante a resolução de conflitos de *merge* no `Git`. Ele instrui o `Git` a **resolver o conflito escolhendo a versão do arquivo que veio do repositório remoto** (isto é, da *branch* que está sendo mesclada).
+O comando `git checkout --theirs -- <caminho/do/arquivo>` é usado durante a resolução de conflitos de `merge` no `Git`. Ele instrui o `Git` a **resolver o conflito escolhendo a versão do arquivo que veio do repositório remoto** (isto é, da `branch` que está sendo mesclada).
 
-- **`git checkout`:** Este comando também serve para restaurar arquivos de uma *branch*, *commit* ou estado específico.
+- **`git checkout`:** Este comando também serve para restaurar arquivos de uma `branch`, *commit* ou estado específico.
 
-- **`--theirs`:** Indica que, em caso de conflito, você deseja manter o conteúdo **do lado remoto**, ou seja, da *branch* que está sendo mesclada com a sua (por exemplo, o que veio do `origin/master` durante um `git pull`).
+- **`--theirs`:** Indica que, em caso de conflito, você deseja manter o conteúdo **do lado remoto**, ou seja, da `branch` que está sendo mesclada com a sua (por exemplo, o que veio do `origin/master` durante um `git pull`).
 
 - **`-- <caminho/do/arquivo>`:** Especifica o(s) arquivo(s) em conflito que você deseja resolver usando a versão remota.
 
 ##### Quando utilizar
 
-Este comando é especialmente útil quando ocorre um conflito do tipo `modify/delete`, onde o arquivo foi **modificado na *branch* remota** e **removido na sua *branch* local** (ou vice-versa). Nesses casos, o Git precisa de uma decisão explícita de qual versão deve ser mantida.
+Este comando é especialmente útil quando ocorre um conflito do tipo `modify/delete`, onde o arquivo foi **modificado na `branch` remota** e **removido na sua `branch` local** (ou vice-versa). Nesses casos, o Git precisa de uma decisão explícita de qual versão deve ser mantida.
 
 ##### Exemplo de uso
 
@@ -519,7 +548,9 @@ Este comando é especialmente útil quando ocorre um conflito do tipo `modify/de
 git checkout --theirs -- <caminho/do/arquivo>
 ```
 
-## 2.7 Comando `git status` [1][2]
+
+
+#### 2.5.6 Comando `git status` [1][2]
 
 O comando `git status` é um dos comandos mais utilizados no `Git`, e é usado para verificar o estado do repositório `Git` local em relação ao seu diretório de trabalho e à área de preparação (também conhecida como `staging area`), ver Figura (1).
 
@@ -537,7 +568,9 @@ O resultado do comando `git status` é uma visão geral do estado do seu reposit
 
 É uma boa prática executar o comando `git status` frequentemente para se manter atualizado sobre o estado do seu repositório e garantir que você esteja preparado para criar `commits` com as alterações corretas.
 
-# 2.8 Comando `git add` [1][2]
+
+
+#### 2.5.7 Comando `git add` [1][2]
 
 O comando `git add` é usado no `Git` para adicionar alterações feitas nos arquivos do diretório de trabalho à área de preparação (`staging area`). A área de preparação é uma etapa intermediária entre o diretório de trabalho e o próximo `commit` que você irá criar. Quando você executa `git add`, você está instruindo o `Git` a incluir as alterações específicas dos arquivos selecionados na próxima confirmação (`commit`).
 
@@ -563,7 +596,9 @@ Aqui estão alguns detalhes sobre o funcionamento do comando `git add`:
 
 **ATENÇÂO:** Lembre-se de que após usar o comando `git add` para adicionar as alterações à área de preparação, você ainda precisará criar um `commit` usando o comando `git commit` para tornar as alterações parte do histórico do repositório.
 
-### 2.8.2 Editar o `git commit`
+
+
+#### 2.5.8 Editar o `git commit`
 
 Para editar um `git commit` já salvo, você pode seguir os seguintes passos:
 
@@ -578,7 +613,9 @@ Para editar um `git commit` já salvo, você pode seguir os seguintes passos:
     - Se o `commit` que você quer editar não for o último, você precisará usar o `git rebase`. Por exemplo, se você quiser editar um `commit` que está três `commits` atrás, você usaria `git rebase -i HEAD~3`. Isso abrirá uma lista dos últimos três `commits` no seu editor de texto padrão.
 
 
-#### 2.8.2 Comando `git reset HEAD <nome_do_arquivo>` [9]
+
+
+#### 2.5.9 Comando `git reset HEAD <nome_do_arquivo>` [9]
 
 Para remover arquivos do estado `Changes to be committed` no `Git`, você pode usar o comando `git reset`. Este comando irá desfazer a adição dos arquivos à área de `staging` (também conhecida como `index`), retornando-os para o estado `"Changes not staged for commit"`.
 
@@ -593,9 +630,8 @@ Para remover arquivos do estado `Changes to be committed` no `Git`, você pode u
     Isso irá desfazer a adição de todos os arquivos que estão atualmente na área de `staging`. Note que isso não irá modificar os arquivos em si, apenas remove a marcação deles como prontos para `commit`. As alterações feitas nos arquivos permanecerão intactas.
 
 
-## 3. Outros comandos
 
-### 3.1 Comando `git diff` [1][2]
+#### 2.5.10 Comando `git diff` [1][2]
 
 Para visualizar as diferenças entre o diretório de trabalho (_working directory_) e a área de preparação (_staging area_), você pode usar o comando `git diff`. Esse comando compara o estado atual dos arquivos no diretório de trabalho com as alterações que foram adicionadas à área de preparação, mas ainda não foram efetivadas em um `commit`.
 
@@ -639,7 +675,7 @@ O número `3` no exemplo acima indica que o `Git` exibirá três linhas de conte
 
 O comando `git diff` é uma ferramenta muito útil para revisar as alterações antes de efetivar um commit, permitindo que você verifique quais modificações serão incluídas no próximo commit e ajuda a evitar possíveis erros ou problemas no histórico do repositório.
 
-#### 3.1.1 Configurar o `git diff` para **NÃO** apontar mudanças nas informações de células colapsadas ou expandidas em notebooks do Jupyter
+##### Configurar o `git diff` para **NÃO** apontar mudanças nas informações de células colapsadas ou expandidas em notebooks do Jupyter
 
 Para evitar que o `git diff` aponte mudanças nas informações de células colapsadas ou expandidas em notebooks do Jupyter, você pode usar um filtro de difusão do `git` que ignore as mudanças em metadados específicos.
 
@@ -714,9 +750,9 @@ Aqui está um passo a passo de como configurar isso:
 
 Agora, quando você usar `git diff`, o `Git` usará seu script de filtro para limpar (clean) os notebooks antes de compará-los, efetivamente ignorando as mudanças nos metadados que você especificou. Isso significa que as informações de células colapsadas ou expandidas não aparecerão mais no `diff`.
 
-## 4. Como puxar as atualizações para o repositório local
 
-### 4.1 Comando `git fetch` [1][2]
+
+#### 2.5.11 Comando `git fetch` [1][2]
 
 O comando `git fetch` é usado no sistema de controle de versão `Git` para buscar atualizações de um repositório remoto para o seu repositório local. No entanto, o `git fetch` não integra automaticamente as mudanças em seu código local; em vez disso, ele traz as alterações mais recentes do repositório remoto para que você possa visualizá-las e decidir como deseja proceder.
 
@@ -749,7 +785,9 @@ git rebase --abort
 Em resumo, `git fetch` é uma maneira de manter-se atualizado com o estado do repositório remoto sem mesclar automaticamente as mudanças em seu trabalho local. Isso dá a você mais controle sobre como integrar as alterações e evita possíveis conflitos indesejados.
 
 
-#### 4.1.1 Comando `git pull`
+
+
+#### 2.5.12 Comando `git pull`
 
 Aqui está uma explicação do comando `git pull` em código e comentários:
 
@@ -767,7 +805,9 @@ O `git pull` é útil quando você deseja manter seu repositório local sincroni
 
 Lembre-se de que, ao usar o `git pull`, você pode encontrar conflitos se suas alterações locais entrarem em conflito com as alterações do repositório remoto. Nesse caso, você precisará resolvê-los manualmente antes de poder concluir o `git pull`.
 
-### 4.2 Comando `git log` [4]
+
+
+#### 2.5.13 Comando `git log` [4]
 
 O comando `git log` é usado para exibir o histórico de commits em um repositório `Git`. Ele mostra informações detalhadas sobre os commits, incluindo o hash do `commit`, autor, data e hora, e a mensagem associada ao `commit`. Aqui está uma explicação mais detalhada de como o comando funciona: `git log`
 
@@ -785,7 +825,9 @@ O comando `git log` exibe os commits em ordem cronológica reversa, com o `commi
 
 Este comando é útil para visualizar o histórico de desenvolvimento do seu projeto, permitindo que você acompanhe quem fez quais alterações e quando essas alterações foram feitas. Você também pode usar várias opções e argumentos adicionais com o "git log" para personalizar a saída, como limitar o número de commits exibidos, filtrar por autor, data ou mensagem de `commit`, e muito mais.
 
-### 4.2.1 Comando `git log --oneline` [7]
+
+
+#### 2.5.14 Comando `git log --oneline` [7]
 
 O comando `git log --oneline` no `Git` é utilizado para exibir um histórico conciso dos commits no repositório. Este comando apresenta cada commit em uma única linha, tornando mais fácil e rápido de visualizar as mudanças ao longo do tempo. Aqui está o que ele faz:
 
@@ -794,7 +836,7 @@ O comando `git log --oneline` no `Git` é utilizado para exibir um histórico co
 - **`--oneline`:** Esta opção modifica a saída do comando git log para mostrar cada commit em uma única linha. Isso inclui o identificador do commit (hash) abreviado e a mensagem do commit.
 O resultado é uma visão compacta e fácil de ler do histórico do repositório, útil para obter uma rápida visão geral das mudanças recentes.
 
-### 4.2.2 Consultar os últimos `commits`
+##### Consultar os últimos `commits`
 
 Para consultar os últimos `commits` no `Git` através do `Terminal Emulator`, você pode utilizar o comando `git log`. Aqui estão algumas das formas mais comuns de usar o `git log` para visualizar o histórico de `commits`:
 
@@ -865,7 +907,9 @@ Para consultar os últimos `commits` no `Git` através do `Terminal Emulator`, v
 Esses são apenas alguns exemplos de como você pode usar `git log` para explorar o histórico de `commits`. O `Git` oferece muitas outras opções e filtros que podem ser aplicados ao comando `git log` para personalizar a saída de acordo com suas necessidades.
 
 
-### 4.3 Comando `git push` [1][2]
+
+
+#### 2.5.15 Comando `git push` [1][2]
 
 O comando `git push` é usado para enviar as alterações locais do seu repositório `Git` para um repositório remoto, como GitHub, GitHub, Bitbucket ou outro servidor `Git`. Quando você faz `git push`, você está enviando os commits que você criou no seu repositório local para o repositório remoto, tornando as suas alterações disponíveis para outras pessoas que trabalham no mesmo projeto.
 
@@ -937,7 +981,9 @@ Lembre-se de que se o arquivo foi aberto com permissões de administrador (usand
 
 O comando `git push` é fundamental para colaboração em projetos de desenvolvimento em equipe, pois permite que todos os membros compartilhem suas alterações e mantenham o repositório remoto atualizado com o trabalho realizado em seus repositórios locais.
 
-### 4.4 Comando `git merge` [4]
+
+
+#### 2.5.16 Comando `git merge` [4]
 
 O comando `git merge` é usado para incorporar as alterações de uma ramificação (`branch`) em outra. Geralmente, você mescla uma ramificação secundária em uma ramificação principal para trazer as alterações feitas na ramificação secundária para a principal. Aqui está uma explicação mais detalhada do que o comando `git merge` faz:
 
@@ -966,7 +1012,52 @@ O processo de mesclagem funciona da seguinte maneira:
 
 O comando `git merge` é uma ferramenta poderosa para integrar o trabalho de várias pessoas em um projeto e garantir que as alterações sejam incorporadas de maneira ordenada e controlada. Ele é frequentemente usado em fluxos de trabalho de desenvolvimento colaborativo com várias ramificações.
 
-### 4.4 Comando `git stash` [9]
+##### Puxar uma nova `branch` remota para o seu repositório local e fazer o `merge` dela com a `branch main`
+
+1. **Verifique se a `branch` existe remotamente**:
+
+    ```bash
+    git fetch --all
+    git branch -r | grep <nome_da_nova_branch>
+    ```
+
+2. **Crie a branch localmente a partir da remota**:
+    
+    ```bash
+    git checkout -b <nome_da_nova_branch> origin/<nome_da_nova_branch>
+    ```
+    
+    Isso cria uma `branch` local com base na remota.
+
+3. **Vá para a `branch main`**
+
+    ```bash
+    git switch main
+    ```
+
+4. **Faça o `merge` da `branch` nova na `main`**
+
+    ```bash
+    git merge <nome_da_nova_branch>
+    ```
+
+    Se houver conflitos, o `Git` irá avisar e você terá que resolvê-los antes de continuar.
+
+5. (Opcional, mas recomendado) Faça o `push` da `main` atualizada para o `GitHub`
+
+    ```bash
+    git push origin main
+    ```
+
+##### Excluir a branch local após o merge
+
+```bash
+git branch -d <nome_da_nova_branch>
+```
+
+
+
+#### 2.5.17 Comando `git stash` [9]
 
 O comando `git stash` é usado para temporariamente salvar (ou "guardar") as mudanças em seu diretório de trabalho que ainda não foram _commitadas_ em um estado chamado de `stash`. Isso pode ser útil quando você está trabalhando em uma determinada ramificação, mas precisa alternar para outra ramificação ou realizar alguma outra tarefa que exija um diretório de trabalho limpo.
 
@@ -1000,7 +1091,7 @@ O comando `git stash` é usado para temporariamente salvar (ou "guardar") as mud
 
 Lembre-se de que o `stash` **NÃO** substitui os `commits`. Ele é apenas uma maneira de armazenar temporariamente as mudanças em seu diretório de trabalho sem fazer um `commit`. Portanto, você pode usá-lo para alternar rapidamente entre tarefas e continuar trabalhando em suas mudanças inacabadas quando estiver pronto.
 
-#### 4.4.1 Comando `git stash apply stash@{0}` [9]
+##### Comando `git stash apply stash@{0}` [9]
 
 Para retornar as mudanças ao seu primeiro `stash`, você pode usar o comando `git stash apply` especificando qual entrada de `stash` deseja aplicar. As entradas de `stash` são numeradas e você pode referenciá-las pelo número. O primeiro `stash` é referenciado como `stash@{0}`. Aqui está como fazer isso:
 
@@ -1021,7 +1112,9 @@ Para retornar as mudanças ao seu primeiro `stash`, você pode usar o comando `g
 Lembre-se de que, se você tiver mais de um `stash` e quiser aplicar um `stash` específico, basta substituir `stash@{0}` pelo número da entrada de `stash` que deseja aplicar. Por exemplo, `stash@{1}` para o segundo `stash`, `stash@{2}` para o terceiro `stash`, e assim por diante.
 
 
-#### Ver lista de itens armazenados no `git stash`
+
+
+##### Ver lista de itens armazenados no `git stash`
 
 Para ver a lista de itens armazenados no `git stash`, você pode usar o comando `git stash list`. Esse comando exibe uma lista de todos os `stashes` que você fez, mostrando cada um com um identificador único e uma descrição do `stash`.
 
@@ -1083,7 +1176,9 @@ Aqui está como você pode usar o comando:
 
 Esses comandos permitem que você gerencie e visualize os stashes de forma eficiente no seu repositório `Git`.
 
-#### 4.5 Comando `git restore --staged <arquivo1> <arquivo2>`
+
+
+#### 2.5.18 Comando `git restore --staged <arquivo1> <arquivo2>`
 
 Esse comando é usado para remover arquivos ou alterações do índice (também conhecido como área de `stage`) sem modificar o seu diretório de trabalho. Ele pode ser útil quando você adicionou arquivos ao índice, mas deseja removê-los antes de efetuar um `commit`.
 
@@ -1109,9 +1204,11 @@ Lembre-se de que o `git restore --staged` apenas remove arquivos ou alterações
 Isso descartará completamente as alterações nos arquivos especificados.
 
 
-### 4.6 Descartar as alterações locais
 
-#### 4.6.1 Arquivo `<nome_do_arquivo>`
+
+#### 2.5.19 Descartar as alterações locais
+
+##### Descartar as alterações locais do arquivo `<nome_do_arquivo>`
 
 1. Use este comando para resetar o arquivo `<nome_do_arquivo>` para o estado do repositório remoto (`commit origin/branch`):
 
@@ -1122,7 +1219,9 @@ Isso descartará completamente as alterações nos arquivos especificados.
     Esse comando:
 
     * Traz de volta a versão do arquivo `<nome_do_arquivo>` que está no repositório remoto
+
     * Remove suas alterações locais e conflitos de `merge` desse arquivo
+    
     * Funciona mesmo com conflitos em arquivos binários (`.pickle`, `.doctree`, `.html`, etc.)
 
     **(Opcional)**: Se quiser confirmar que o arquivo voltou ao estado remoto:
@@ -1131,7 +1230,7 @@ Isso descartará completamente as alterações nos arquivos especificados.
     git status <nome_do_arquivo>
     ```
 
-#### 4.6.2 Pasta `<nome_da_pasta>`
+##### Descartar as alterações locais pasta `<nome_da_pasta>`
 
 1. Use este comando para resetar toda a pasta `<nome_da_pasta>` - a pasta `docs/`, em geral, a pasta de documentação dos projetos, é uma boa pasta para fazer isso, pois contém muitos arquivos do tipo binário  - para o estado do repositório remoto (`commit origin/branch`):
 
@@ -1160,16 +1259,20 @@ Isso descartará completamente as alterações nos arquivos especificados.
     ```
 
 
-#### 4.6.3 Restaurar uma pasta inteira para um `commit` específico
+
+
+#### 2.5.20 Restaurar uma pasta inteira para um `commit` específico
 
 Para restaurar uma pasta inteira para o estado de um `commit` específico sem afetar outras partes do repositório, você pode usar o seguinte comando:
 
-```bash
-git restore --source=<commit_hash> --staged --worktree <nome_da_pasta>/
-```
+    ```bash
+    git restore --source=<commit_hash> --staged --worktree <nome_da_pasta>/
+    ```
 
 
-#### 4.6.4 Procurar o arquivo no histórico de `commits`
+
+
+#### 2.5.21 Procurar o arquivo no histórico de `commits`
 
 Use o comando `git log` para procurar pelo arquivo nos `commits` anteriores.
 
@@ -1181,6 +1284,8 @@ Use o comando `git log` para procurar pelo arquivo nos `commits` anteriores.
     ```
 
     Esse comando irá listar todos os `commits` onde o arquivo `<nome_do_arquivo>` foi alterado. A partir do `hash` do `commit`, você pode verificar os detalhes desse `commit`, como a data e a mensagem.
+
+
 
 ## 5. Atualizar o repositório local (mais atualizado) para o remoto (menos atualizado) a partir que um _backup_ em outra pasta
 
@@ -1328,6 +1433,8 @@ Para atualizar o repositório local (mais atualizado) para o remoto (menos atual
     cd ..
     ```
 
+
+
 ## 6. Configurar o `Git` para **NÃO** solicitar a senha sempre que executar o `git push`
 
 Para configurar o `Git` para **NÃO** solicitar a senha sempre que você executar `git push`, você pode usar o protocolo HTTPS com autenticação através de tokens pessoais. Aqui está um passo a passo básico para configurar isso:
@@ -1384,6 +1491,8 @@ Uma maneira alternativa de evitar a solicitação de usuário e senha ao executa
 Usar chaves SSH é uma alternativa eficaz e segura para evitar a necessidade de digitar usuário e senha durante operações do Git.
 
 
+
+
 ### 6.2 Crie um _token_ pessoal
 
 1. Vá para a plataforma de hospedagem do seu repositório `Git` (como `GitHub`, `GitHub`, `Bitbucket` etc.).
@@ -1391,6 +1500,8 @@ Usar chaves SSH é uma alternativa eficaz e segura para evitar a necessidade de 
 2. Nas configurações da sua conta, encontre a seção de `Tokens Pessoais` (ou similar).
 
 3. Crie um novo _token_ pessoal com permissões adequadas para acessar seus repositórios.
+
+
 
 #### 6.2.1 Configure o `Git` para usar o _token_
 
@@ -1418,6 +1529,8 @@ Este comando diz ao `Git` para armazenar suas credenciais em um arquivo local no
 
 Após esses passos, o `Git` usará as credenciais armazenadas no arquivo `~/.git-credentials` (incluindo o token) para autenticar suas operações de `git push`. Isso armazenará suas credenciais (usuário e _token_) em um arquivo `~/.git-credentials` no seu diretório pessoal.
 
+
+
 ### 6.2.2 Atualize a URL do Repositório Remoto:
 
 1. Se já estiver usando HTTPS para clonar ou adicionar o repositório, a URL provavelmente já está configurada. Caso contrário, atualize a URL do repositório remoto para usar HTTPS:
@@ -1426,6 +1539,8 @@ Após esses passos, o `Git` usará as credenciais armazenadas no arquivo `~/.git
     git remote set-url origin https://SEU_USUARIO@SEU_REPO.git
     ```
 
+
+
 ### 6.2.3 Teste o `git push`
 
 1. Tente fazer um `git push` para o repositório remoto.
@@ -1433,6 +1548,8 @@ Após esses passos, o `Git` usará as credenciais armazenadas no arquivo `~/.git
     Você não deverá mais ser solicitado a digitar sua senha; o `Git` utilizará o token pessoal para autenticação.
 
 Este método armazena as credenciais de forma persistente, o que evita a necessidade de digitar a senha a cada `git push`. Certifique-se de manter o arquivo `~/.git-credentials` seguro em seu sistema.
+
+
 
 ## 7. Passo a passo simples e comum
 
@@ -1497,6 +1614,8 @@ Este método armazena as credenciais de forma persistente, o que evita a necessi
     ```
 
 
+
+
 <!-- LICENÇA -->
 ## Licença
 
@@ -1528,6 +1647,8 @@ Consulte os [problemas abertos](https://github.com/edendenis/google_chrome/issue
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
 
+
+
 <!-- CONTRIBUIÇÔES -->
 ## Contribuições
 
@@ -1548,6 +1669,8 @@ Não se esqueça de dar uma estrela ao projeto! Obrigado novamente!
 5. Abra uma solicitação `pull`
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+
+
 
 
 <!-- ACKNOWLEDGMENTS -->
@@ -1574,6 +1697,8 @@ Não se esqueça de dar uma estrela ao projeto! Obrigado novamente!
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
 
+
+
 ## Referências
 
 [1] CHACON, S AND STRAUB, B.. ***Progit: everything you need to know about git***. Apress, Second edition, 2020.
@@ -1591,4 +1716,5 @@ Não se esqueça de dar uma estrela ao projeto! Obrigado novamente!
 [7] OPEN I. ***Salvar e fechar no vim.*** Disponível em: <https://chat.openai.com/c/efd5cbbb-2acb-4d58-8a04-9887d73fb8e8> (texto adaptado). Chat GPT. Acessado em: 09/11/2023 15:37.
 
 [8] OPENAI. ***Remover arquivos da staging.*** Disponível em: <https://chat.openai.com/c/d640a993-7f4d-41c4-923e-3ccc5d04f709> (texto adaptado). Chat GPT. Acessado em: 22/11/2023 12:04.
+
 
