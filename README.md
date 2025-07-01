@@ -1712,7 +1712,19 @@ Uma maneira alternativa de evitar a solicitação de usuário e senha ao executa
     ssh-add ~/.ssh/id_rsa 2>/dev/null
     ```
 
-4. **Copiar a Chave Pública:** Copie a chave pública para que você possa adicioná-la ao `GitHub`:
+4. Atualizar o arquivo ``~/.bashrc`, `~/.zshrc` etc:
+
+    ```bash
+    source ~/.bashrc
+    ```
+
+    ou
+
+    ```bash
+    source ~/.zshrc
+    ```
+
+5. **Copiar a Chave Pública:** Copie a chave pública para que você possa adicioná-la ao `GitHub`:
 
     ```
     cat ~/.ssh/id_rsa.pub
@@ -1720,27 +1732,27 @@ Uma maneira alternativa de evitar a solicitação de usuário e senha ao executa
 
     Copie o conteúdo da saída.
 
-5. **Adicionar a Chave SSH ao `GitHub`**:
+6. **Adicionar a Chave SSH ao `GitHub`**:
 
-    5.1 Vá para as configurações da sua conta no `GitHub`.
+    6.1 Vá para as configurações da sua conta no `GitHub`.
 
-    5.2 Acesse SSH and GPG keys.
+    6.2 Acesse SSH and GPG keys.
 
-    5.3 Clique em New SSH key.
+    6.3 Clique em New SSH key.
 
-    5.4 Cole a chave que você copiou no campo apropriado e salve.
+    6.4 Cole a chave que você copiou no campo apropriado e salve.
 
-6. **Atualizar a URL do Repositório Remoto**: Certifique-se de que a URL do seu repositório remoto esteja configurada para usar SSH:
+7. **Atualizar a URL do Repositório Remoto**: Certifique-se de que a URL do seu repositório remoto esteja configurada para usar SSH:
 
     ```bash
     git remote set-url origin git@github.com:edendenis/<nome_do_projeto>.git
     ```
 
-7. **Testar a Conexão SSH**: Teste a conexão com o `GitHub` para garantir que a chave SSH esteja funcionando: `ssh -T git@github.com`
+8. **Testar a Conexão SSH**: Teste a conexão com o `GitHub` para garantir que a chave SSH esteja funcionando: `ssh -T git@github.com`
 
     Você deve ver uma mensagem de boas-vindas.
 
-8. **Fazer o `Push`**: Agora você pode fazer `git push` sem ser solicitado a digitar seu usuário e senha:
+9. **Fazer o `Push`**: Agora você pode fazer `git push` sem ser solicitado a digitar seu usuário e senha:
 
     ```bash
     git push --set-upstream origin main
