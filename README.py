@@ -1707,7 +1707,15 @@
 #     ssh-add ~/.ssh/id_rsa
 #     ```
 # 
-# 3. **Copiar a Chave Pública:** Copie a chave pública para que você possa adicioná-la ao `GitHub`:
+# 3. **Dica**: você pode automatizar isso no seu terminal adicionando ao seu `~/.bashrc`, `~/.zshrc` etc. Exemplo (para Bash):
+# 
+#     ```bash
+#     # ~/.bashrc
+#     eval "$(ssh-agent -s)"
+#     ssh-add ~/.ssh/id_rsa 2>/dev/null
+#     ```
+# 
+# 4. **Copiar a Chave Pública:** Copie a chave pública para que você possa adicioná-la ao `GitHub`:
 # 
 #     ```
 #     cat ~/.ssh/id_rsa.pub
@@ -1715,15 +1723,15 @@
 # 
 #     Copie o conteúdo da saída.
 # 
-# 4. **Adicionar a Chave SSH ao GitHub**:
+# 5. **Adicionar a Chave SSH ao `GitHub`**:
 # 
-#     4.1 Vá para as configurações da sua conta no `GitHub`.
+#     5.1 Vá para as configurações da sua conta no `GitHub`.
 # 
-#     4.2 Acesse SSH and GPG keys.
+#     5.2 Acesse SSH and GPG keys.
 # 
-#     4.3 Clique em New SSH key.
+#     5.3 Clique em New SSH key.
 # 
-#     4.4 Cole a chave que você copiou no campo apropriado e salve.
+#     5.4 Cole a chave que você copiou no campo apropriado e salve.
 # 
 # 6. **Atualizar a URL do Repositório Remoto**: Certifique-se de que a URL do seu repositório remoto esteja configurada para usar SSH:
 # 
