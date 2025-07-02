@@ -1077,7 +1077,13 @@
 
 # ##### Comando para excluir todas as branches locais, exceto `main`
 # 
-# 1. **Execute o comando**:
+# 1. **Recomendo antes**: Se quiser verificar quais branches locais serão excluídas, execute:
+# 
+#     ```bash
+#     git branch | grep -v "main"
+#     ```
+# 
+# 2. **Execute o comando abaixo para excluir todas as branches locais, exceto `main`**:
 # 
 #     ```bash
 #     git branch | grep -v "main" | grep -q . && git branch | grep -v "main" | xargs git branch -D
@@ -1089,15 +1095,27 @@
 # 
 #     - `grep -v "main"`: remove a branch `main` da lista.
 # 
-#     - `grep -q .`: verifica se ainda restam branches após a filtragem (impede erro do xargs caso a lista esteja vazia).
+#     - `grep -q .`: verifica se ainda restam branches após a filtragem (evita erro do `xargs` se a lista estiver vazia).
 # 
-#     - `&&`: só executa o próximo comando se o `grep -q .` anterior retornar com sucesso (ou seja, se houver branches para excluir).
+#     - `&&`: só executa o próximo comando se o `grep -q .` retornar com sucesso (ou seja, se houver branches para excluir).
 # 
-#     - `xargs git branch -D`: executa `git branch -D` (exclusão forçada) para cada uma das branches listadas.
+#     - `xargs git branch -D`: executa `git branch -D` (exclusão forçada) para cada branch listada.
+# 
+# 3. **Execute o comando para verificar quais branches permaneceram localmente**:
+# 
+#     ```bash
+#     git branch | cat
+#     ```
 
 # ##### Comando para excluir todas as branches remotas, exceto `main`
 # 
-# 1. **Execute o comando**:
+# 1. **Recomendo antes**: Se quiser confirmar uma última vez quais branches serão apagadas, execute novamente:
+# 
+#     ```bash
+#     git branch -r | grep -v 'origin/main' | sed 's/origin\///'
+#     ```
+# 
+# 2. **Execute o comando**:
 # 
 #     ```bash
 #     git branch -r | grep -v 'origin/main' | sed 's/origin\///' | xargs -I {} git push origin --delete {}
@@ -1112,6 +1130,12 @@
 #     - `sed 's/origin\///'`: remove o prefixo `origin/` para obter o nome real da `branch`.
 # 
 #     - `xargs -I {}`: para cada `branch`, executa o comando `git push origin --delete {}`.
+# 
+# 3. **Execute o comando para verificar quais branches permaneceram remotamente**:
+# 
+#     ```bash
+#     git branch -r | cat
+#     ```
 
 # #### 2.5.17 Comando `git stash` [9]
 # 
