@@ -1061,6 +1061,8 @@ O comando `git merge` é uma ferramenta poderosa para integrar o trabalho de vá
     git branch -d <nome_da_nova_branch>
     ```
 
+
+
 ##### Excluir a `branch` local após o `merge` no repositório remoto
 
 
@@ -1069,6 +1071,44 @@ O comando `git merge` é uma ferramenta poderosa para integrar o trabalho de vá
     ```bash
     git push origin --delete <nome-da-branch>
     ```
+
+##### Comando para excluir todas as branches locais, exceto `main`
+
+1. **Execute o comando**:
+
+    ```bash
+    git branch | grep -v "main" | grep -q . && git branch | grep -v "main" | xargs git branch -D
+    ```
+
+    **Explicação**:
+
+    - `git branch`: lista todas as branches locais.
+
+    - `grep -v "main"`: remove a branch `main` da lista.
+
+    - `grep -q .`: verifica se ainda restam branches após a filtragem (impede erro do xargs caso a lista esteja vazia).
+
+    - `&&`: só executa o próximo comando se o `grep -q .` anterior retornar com sucesso (ou seja, se houver branches para excluir).
+
+    - `xargs git branch -D`: executa `git branch -D` (exclusão forçada) para cada uma das branches listadas.
+
+##### Comando para excluir todas as branches remotas, exceto `main`
+
+1. **Execute o comando**:
+
+    ```bash
+    git branch -r | grep -v 'origin/main' | sed 's/origin\///' | xargs -I {} git push origin --delete {}
+    ```
+
+    **Explicação**:
+
+    - `git branch -r`: lista todas as branches remotas.
+
+    - `grep -v 'origin/main'`: remove a branch `origin/main` da lista.
+
+    - `sed 's/origin\///'`: remove o prefixo `origin/` para obter o nome real da `branch`.
+
+    - `xargs -I {}`: para cada `branch`, executa o comando `git push origin --delete {}`.
 
 #### 2.5.17 Comando `git stash` [9]
 
