@@ -1948,6 +1948,79 @@ Este método armazena as credenciais de forma persistente, o que evita a necessi
 
 
 
+<!-- SUBMÓDULOS DO GIT -->
+## O que são submódulos `Git`?
+
+Submódulos são repositórios `Git` dentro de outro repositório, mas gerenciados oficialmente pelo `Git`, de forma rastreável e limpa.
+
+### Com submódulo
+
+O repositório principal sabe que o diretório `diretorio/secundario/` é um repositório `Git` separado.
+
+Ele não inclui os arquivos diretamente, mas armazena um ponteiro fixo para um `commit` específico de cada subprojeto.
+
+Você pode clonar o repositório principal, e depois inicializar e atualizar os submódulos com:
+
+```bash
+git clone <repo-principal>
+cd TG_TRABALHO_DE_GRADUACAO
+git submodule update --init --recursive
+```
+
+### Exemplo com submódulo
+```bash
+# dentro do repositório principal
+cd <diretorio/do/repositorio/principal>
+
+# adicionar o repositório 'audithas' como submódulo
+git submodule add git@github.com:edendenis/audithas.git diretorio/secundario/projeto1
+
+# repetir para os outros
+git submodule add git@github.com:edendenis/audithas.git diretorio/secundario/projeto2
+git submodule add git@github.com:edendenis/audithas.git diretorio/secundario/projeto3
+
+# commit as mudanças
+git commit -m "adicionando repositorios secundatios como submódulos"
+```
+
+### Como o `Git` armazena isso?
+
+- O `Git` cria um arquivo chamado `.gitmodules` na raiz do repositório principal.
+
+- Esse arquivo descreve os submódulos e seus caminhos.
+
+- O `Git` não rastreia os arquivos do submódulo, mas sim o commit exato em que o submódulo está fixado.
+
+### Vantagens dos submódulos
+
+| Vantagem                       | Descrição                                                                                                |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------- |
+| Separação de responsabilidades | Cada subprojeto tem seu próprio controle de versão                                                      |
+| Reutilização                   | Você pode usar `praeparatio`, por exemplo, em outro repositório com facilidade                           |
+| Controle                       | O repositório principal fixa cada submódulo em um commit específico — ótimo para versões estáveis        |
+| Modularidade                   | Útil para projetos científicos onde diferentes partes evoluem separadamente                              |
+
+### Desvantagens (ou cuidados)
+
+| Limitação                    | Explicação                                                                                             |
+|------------------------------|---------------------------------------------------------------------------------------------------------|
+| Mais comandos para lembrar   | Clonagem exige `git submodule update --init`                                                            |
+| Não é "recursivo" por padrão | Se você `git clone` sem o comando acima, os submódulos vêm vazios                                      |
+| Atualizar submódulo é manual | Se você atualizar o submódulo, precisa `commit` no sub e depois `commit` no principal para fixar novo ponteiro |
+
+### Quando usar submódulos?
+Use se:
+
+- Cada app é independente e pode ser versionado sozinho.
+
+- Você quer reaproveitar os apps em outros projetos.
+
+- Você precisa travar uma versão estável específica de cada app.
+
+- Você tem equipe separada para cada parte.
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+
 <!-- LICENÇA -->
 ## Licença
 
