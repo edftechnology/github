@@ -1955,29 +1955,46 @@ Submódulos são repositórios `Git` dentro de outro repositório, mas gerenciad
 
 ### Com submódulo
 
-O repositório principal sabe que o diretório `diretorio/secundario/` é um repositório `Git` separado.
+O repositório principal sabe que o diretório `repositorio/secundario/` é um repositório `Git` separado.
 
 Ele não inclui os arquivos diretamente, mas armazena um ponteiro fixo para um `commit` específico de cada subprojeto.
 
 Você pode clonar o repositório principal, e depois inicializar e atualizar os submódulos com:
 
 ```bash
-git clone <repo-principal>
-cd TG_TRABALHO_DE_GRADUACAO
+git clone <repositorio/do/repositorio/principal>
+cd <repositorio/do/repositorio/principal>
 git submodule update --init --recursive
 ```
 
 ### Exemplo com submódulo
 ```bash
 # dentro do repositório principal
-cd <diretorio/do/repositorio/principal>
+cd <repositorio/do/repositorio/principal>
 
 # adicionar o repositório 'audithas' como submódulo
-git submodule add git@github.com:edendenis/audithas.git diretorio/secundario/projeto1
+git submodule add git@github.com:edendenis/<projeto1>.git repositorio/secundario/projeto1
 
 # repetir para os outros
-git submodule add git@github.com:edendenis/audithas.git diretorio/secundario/projeto2
-git submodule add git@github.com:edendenis/audithas.git diretorio/secundario/projeto3
+git submodule add git@github.com:edendenis/<projeto2>.git repositorio/secundario/projeto2
+git submodule add git@github.com:edendenis/<projeto3>.git repositorio/secundario/projeto3
+
+# commit as mudanças
+git commit -m "adicionando repositorios secundatios como submódulos"
+```
+
+#### Exemplo real com submódulo
+
+```bash
+# dentro do repositório principal
+cd TG_TRABALHO_DE_GRADUACAO>
+
+# adicionar o repositório 'audithas' como submódulo
+git submodule add git@github.com:edendenis/audithas.git apps/audithas
+
+# repetir para os outros
+git submodule add git@github.com:edendenis/k_means_python.git apps/k_means_python_master_degree  # Perceber que, de fato, o nome do repositório remoto NÃO é igual ao nome do repositório local
+git submodule add git@github.com:edendenis/praeparatio.git apps/praeparatio
 
 # commit as mudanças
 git commit -m "adicionando repositorios secundatios como submódulos"
