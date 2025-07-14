@@ -2041,34 +2041,58 @@
 # 
 # <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
-# ### Alterar um submódulo
+# ### Tutorial para limpar e readicionar submódulo
 # 
-# Para alterar a URL do submódulo
+# o Git ainda mantém a referência no índice (index). Ou seja, ele ainda "acha" que o caminho `codes/python/big_rocket_data` já está sendo rastreado.
 # 
-# 1. **Atualize a URL no arquivo `.gitmodules`**: Edite diretamente com seu editor favorito (ex: `nano`, `vim`, `code` etc.):
+# ✅ Solução completa (passo a passo)
+# Execute os seguintes comandos exatamente nesta ordem para garantir uma limpeza completa:
 # 
+# 1. Remova do índice do Git:
 # ```bash
-# sudo nano .gitmodules
+# git rm --cached -r codes/python/big_rocket_data
+# ```
+# 2. Remova o diretório se ainda existir:
+# ```bash
+# rm -rf codes/python/big_rocket_data
+# ```
+# 3. Remova a entrada "órfã" de submódulo (caso exista):
+# ```bash
+# rm -rf .git/modules/codes/python/big_rocket_data
+# ```
+# 4. Verifique se ainda está no .gitmodules:
+# Se aparecer alguma linha como essa:
+# ```ini
+# [submodule "codes/python/big_rocket_data"]
+# ```
+# Então edite e remova manualmente essa entrada do .gitmodules:
+# ```bash
+# nano .gitmodules
+# ```
+# 5. (Opcional, mas seguro) Verifique também o .git/config:
+# ```bash
+# nano .git/config
+# ```
+# Remova se houver algum bloco como:
+# ```ini
+# [submodule "codes/python/big_rocket_data"]
+#     url = ...
+# ```
+# 6. Agora sim: adicione novamente o submódulo
+# ```bash
+# git submodule add git@github.com:edendenis/big_rocket_data.git codes/python/big_rocket_data
+# ```
+# 7. Adicione e faça commit
+# ```bash
+# git add .gitmodules codes/python/big_rocket_data
+# git commit -m "Adiciona submódulo big_rocket_data corretamente"
 # ```
 # 
-# 2. **Altere a URL**: Altere a URL, por exemplo:
-# 
-# ```bash
-# [submodule "apps/k_means_python_master_degree"]
-#     path = apps/k_means_python_master_degree
-#     url = git@github.com:edendenis/k_means_monography_python.git
-# ```
-# 
-# 3. **Atualize a URL no arquivo de configuração do `Git`**: Você precisa atualizar também o arquivo `.git/config` do repositório principal:
-# 
-# ```bash
-# git config submodule.apps/k_means_python_master_degree.url git@github.com:edendenis/k_means_monography_python.git
-# ```
 
 # <!-- LICENÇA -->
 # ## Licença
 # 
-# Distribuído sob a licença `MIT`. Consulte `LICENSE.txt` para obter mais informações.
+# Distribuído sob a licença MIT. Consulte `LICENSE.txt` para obter mais informações.
 # 
 # <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 # 
