@@ -2041,10 +2041,34 @@
 # 
 # <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
+# ### Alterar um submódulo
+# 
+# Para alterar a URL do submódulo
+# 
+# 1. **Atualize a URL no arquivo `.gitmodules`**: Edite diretamente com seu editor favorito (ex: `nano`, `vim`, `code` etc.):
+# 
+# ```bash
+# sudo nano .gitmodules
+# ```
+# 
+# 2. **Altere a URL**: Altere a URL, por exemplo:
+# 
+# ```bash
+# [submodule "apps/k_means_python_master_degree"]
+#     path = apps/k_means_python_master_degree
+#     url = git@github.com:edendenis/k_means_monography_python.git
+# ```
+# 
+# 3. **Atualize a URL no arquivo de configuração do `Git`**: Você precisa atualizar também o arquivo `.git/config` do repositório principal:
+# 
+# ```bash
+# git config submodule.apps/k_means_python_master_degree.url git@github.com:edendenis/k_means_monography_python.git
+# ```
+
 # <!-- LICENÇA -->
 # ## Licença
 # 
-# Distribuído sob a licença MIT. Consulte `LICENSE.txt` para obter mais informações.
+# Distribuído sob a licença `MIT`. Consulte `LICENSE.txt` para obter mais informações.
 # 
 # <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 # 
