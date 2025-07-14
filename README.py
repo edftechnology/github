@@ -2038,6 +2038,53 @@
 # - Você precisa travar uma versão estável específica de cada app.
 # 
 # - Você tem equipe separada para cada parte.
+
+# ### Tutorial para limpar e readicionar submódulo
+#
+# o Git ainda mantém a referência no índice (index). Ou seja, ele ainda "acha" que o caminho `codes/python/big_rocket_data` já está sendo rastreado.
+#
+# ✅ Solução completa (passo a passo)
+# Execute os seguintes comandos exatamente nesta ordem para garantir uma limpeza completa:
+#
+# 1. Remova do índice do Git:
+# ```bash
+# git rm --cached -r codes/python/big_rocket_data
+# ```
+# 2. Remova o diretório se ainda existir:
+# ```bash
+# rm -rf codes/python/big_rocket_data
+# ```
+# 3. Remova a entrada "órfã" de submódulo (caso exista):
+# ```bash
+# rm -rf .git/modules/codes/python/big_rocket_data
+# ```
+# 4. Verifique se ainda está no .gitmodules:
+# Se aparecer alguma linha como essa:
+# ```ini
+# [submodule "codes/python/big_rocket_data"]
+# ```
+# Então edite e remova manualmente essa entrada do .gitmodules:
+# ```bash
+# nano .gitmodules
+# ```
+# 5. (Opcional, mas seguro) Verifique também o .git/config:
+# ```bash
+# nano .git/config
+# ```
+# Remova se houver algum bloco como:
+# ```ini
+# [submodule "codes/python/big_rocket_data"]
+#     url = ...
+# ```
+# 6. Agora sim: adicione novamente o submódulo
+# ```bash
+# git submodule add git@github.com:edendenis/big_rocket_data.git codes/python/big_rocket_data
+# ```
+# 7. Adicione e faça commit
+# ```bash
+# git add .gitmodules codes/python/big_rocket_data
+# git commit -m "Adiciona submódulo big_rocket_data corretamente"
+# ```
 # 
 # <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
