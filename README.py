@@ -1154,6 +1154,7 @@
 #     git switch main
 #     git merge "$BRANCH_NAME"
 #     git status --short
+#     git push
 #     ```
 # 
 # **Observações importantes**

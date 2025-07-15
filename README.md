@@ -1151,6 +1151,7 @@ Tornar o nome da `branch` uma variável de `shell` o que facilita muito para rea
     git switch main
     git merge "$BRANCH_NAME"
     git status --short
+    git push
     ```
 
 **Observações importantes**
