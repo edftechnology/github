@@ -1137,6 +1137,35 @@
 #     git branch -r | cat
 #     ```
 
+# ##### Tornar o nome da `branch` uma variável de `shell`
+# 
+# Tornar o nome da `branch` uma variável de `shell` o que facilita muito para reaproveitar comandos. Aqui vai como fazer isso corretamente no `Terminal Emulator`:
+# 
+# 1. **Exemplo com variável de nome de branch**:
+# 
+#     ```bash
+#     # Defina o nome da branch como variável
+#     BRANCH_NAME="codex/add-instructions-to-readme.ipynb"
+# 
+#     # Use a variável nos comandos
+#     git fetch --all
+#     git checkout -b "$BRANCH_NAME" "origin/$BRANCH_NAME"
+#     git pull
+#     git switch main
+#     git merge "$BRANCH_NAME"
+#     git status --short
+#     ```
+# 
+# **Observações importantes**
+# 
+# * **Sempre coloque o nome entre aspas** (`"$BRANCH"`) se contiver barras `/`, pois isso evita que o `shell` interprete como diretório.
+# 
+# * Se você já tiver uma `branch local` com esse nome, o comando `checkout -b` vai falhar. Use só `checkout` nesse caso:
+# 
+# ```bash
+# git checkout "$BRANCH"
+# ```
+
 # #### 2.5.17 Comando `git stash` [9]
 # 
 # O comando `git stash` é usado para temporariamente salvar (ou "guardar") as mudanças em seu diretório de trabalho que ainda não foram _commitadas_ em um estado chamado de `stash`. Isso pode ser útil quando você está trabalhando em uma determinada ramificação, mas precisa alternar para outra ramificação ou realizar alguma outra tarefa que exija um diretório de trabalho limpo.
