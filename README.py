@@ -1148,6 +1148,12 @@
 #     BRANCH_NAME="codex/add-instructions-to-readme.ipynb"
 # 
 #     # Use a variável nos comandos
+#     git switch main
+#     git status --short
+#     git add .
+#     git commit -m "meging from codex branch"
+#     git status --short
+#     git push
 #     git fetch --all
 #     git checkout -b "$BRANCH_NAME" "origin/$BRANCH_NAME"
 #     git pull
@@ -1155,6 +1161,7 @@
 #     git merge "$BRANCH_NAME"
 #     git status --short
 #     git push
+#     git status
 #     ```
 # 
 # **Observações importantes**

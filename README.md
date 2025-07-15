@@ -1145,6 +1145,12 @@ Tornar o nome da `branch` uma variável de `shell` o que facilita muito para rea
     BRANCH_NAME="codex/add-instructions-to-readme.ipynb"
 
     # Use a variável nos comandos
+    git switch main
+    git status --short
+    git add .
+    git commit -m "meging from codex branch"
+    git status --short
+    git push
     git fetch --all
     git checkout -b "$BRANCH_NAME" "origin/$BRANCH_NAME"
     git pull
@@ -1152,6 +1158,7 @@ Tornar o nome da `branch` uma variável de `shell` o que facilita muito para rea
     git merge "$BRANCH_NAME"
     git status --short
     git push
+    git status
     ```
 
 **Observações importantes**
