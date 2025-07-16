@@ -1153,14 +1153,14 @@ Tornar o nome da `branch` uma variável de `shell` o que facilita muito para rea
     git status --short
     git commit -m "merging from branch $BRANCH_NAME"
     git status --short
-    git push -u origin main
+    git push
     git fetch --all
     git checkout -b "$BRANCH_NAME" "origin/$BRANCH_NAME"
     git pull
     git switch main
     git merge "$BRANCH_NAME" --no-edit
     git status --short
-    git push -u origin main
+    git push
     git status
     ```
 
