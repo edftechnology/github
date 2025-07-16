@@ -1145,7 +1145,6 @@ Tornar o nome da `branch` uma variável de `shell` o que facilita muito para rea
     BRANCH_NAME="codex/add-instructions-to-readme.ipynb"
 
     # Use a variável nos comandos
-    git init
     git switch main
     git fetch --all
     git pull

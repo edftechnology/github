@@ -1148,7 +1148,6 @@
 #     BRANCH_NAME="codex/add-instructions-to-readme.ipynb"
 # 
 #     # Use a variável nos comandos
-#     git init
 #     git switch main
 #     git fetch --all
 #     git pull
