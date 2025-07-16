@@ -1153,7 +1153,8 @@
 #     git pull
 #     git status --short
 #     git add .
-#     git commit -m "merging from codex branch"
+#     git status --short
+#     git commit -m "merging from branch $BRANCH_NAME"
 #     git status --short
 #     git push -u origin main
 #     git fetch --all
