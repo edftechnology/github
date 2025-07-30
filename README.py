@@ -1075,7 +1075,7 @@
 #     git push origin --delete <nome-da-branch>
 #     ```
 
-# ##### Comando para excluir todas as branches locais, exceto `main`
+# ##### Comando para excluir todas as `branches` locais, exceto `main`
 # 
 # 1. **Recomendo antes**: Se quiser verificar quais branches locais serão excluídas, execute:
 # 
@@ -1091,17 +1091,17 @@
 # 
 #     **Explicação**:
 # 
-#     - `git branch`: lista todas as branches locais.
+#     - `git branch`: lista todas as `branches` locais.
 # 
 #     - `grep -v "main"`: remove a branch `main` da lista.
 # 
-#     - `grep -q .`: verifica se ainda restam branches após a filtragem (evita erro do `xargs` se a lista estiver vazia).
+#     - `grep -q .`: verifica se ainda restam `branches` após a filtragem (evita erro do `xargs` se a lista estiver vazia).
 # 
-#     - `&&`: só executa o próximo comando se o `grep -q .` retornar com sucesso (ou seja, se houver branches para excluir).
+#     - `&&`: só executa o próximo comando se o `grep -q .` retornar com sucesso (ou seja, se houver `branches` para excluir).
 # 
 #     - `xargs git branch -D`: executa `git branch -D` (exclusão forçada) para cada branch listada.
 # 
-# 3. **Execute o comando para verificar quais branches permaneceram localmente**:
+# 3. **Execute o comando para verificar quais `branches` permaneceram localmente**:
 # 
 #     ```bash
 #     git branch | cat
@@ -1123,9 +1123,9 @@
 # 
 #     **Explicação**:
 # 
-#     - `git branch -r`: lista todas as branches remotas.
+#     - `git branch -r`: lista todas as `branches` remotas.
 # 
-#     - `grep -v 'origin/main'`: remove a branch `origin/main` da lista.
+#     - `grep -v 'origin/main'`: remove a `branch` `origin/main` da lista.
 # 
 #     - `sed 's/origin\///'`: remove o prefixo `origin/` para obter o nome real da `branch`.
 # 
@@ -1906,7 +1906,7 @@
 # 
 # 
 
-# ### 4.2.2 Atualize a URL do Repositório Remoto:
+# ### 4.2.2 Atualize a URL do Repositório Remoto
 # 
 # 1. Se já estiver usando HTTPS para clonar ou adicionar o repositório, a URL provavelmente já está configurada. Caso contrário, atualize a URL do repositório remoto para usar HTTPS:
 # 
