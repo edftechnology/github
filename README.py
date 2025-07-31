@@ -550,7 +550,27 @@
 # ```bash
 # git checkout --theirs -- <caminho/do/arquivo>
 # ```
-# 
+#
+# ##### Comando `git checkout --ours -- <caminho/do/arquivo>` [7]
+#
+# O comando `git checkout --ours -- <caminho/do/arquivo>` é usado durante a resolução de conflitos de `merge` no `Git`. Ele instrui o `Git` a **resolver o conflito escolhendo a versão do arquivo da sua branch atual**.
+#
+# - **`git checkout`:** Este comando também serve para restaurar arquivos de uma `branch`, *commit* ou estado específico.
+#
+# - **`--ours`:** Indica que, em caso de conflito, você deseja manter o conteúdo **do seu lado**, ou seja, da `branch` atual.
+#
+# - **`-- <caminho/do/arquivo>`:** Especifica o(s) arquivo(s) em conflito que você deseja resolver usando a versão local.
+#
+# ##### Quando utilizar
+#
+# Este comando é útil quando o arquivo foi **modificado na sua `branch` local** e **removido na `branch` remota** (ou vice-versa). Nesses casos, opte por priorizar as alterações feitas na sua branch.
+#
+# ##### Exemplo de uso
+#
+# ```bash
+# git checkout --ours -- <caminho/do/arquivo>
+# ```
+#
 # 
 
 # #### 2.5.6 Comando `git status` [1][2]
