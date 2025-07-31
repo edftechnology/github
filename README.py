@@ -164,6 +164,7 @@
 #     sudo apt full-upgrade -y
 #     ```
 # 
+
 # 3. No `Terminal Emulator` do Sistema Operacional (SO), executar o comando: 
 # 
 #     ```bash
@@ -1144,26 +1145,53 @@
 # 1. **Exemplo com variável de nome de branch**:
 # 
 #     ```bash
-#     # Defina o nome da branch como variável
-#     BRANCH_NAME="codex/add-instructions-to-readme.ipynb"
+#     # Conectar para não pedir mais senha (caso ainda não esteja conectado)
+#     eval "$(ssh-agent -s)" >/dev/null
+#     ssh-add ~/.ssh/id_rsa 2>/dev/null
+#     ssh -T git@github.com
 # 
-#     # Use a variável nos comandos
+#     # Trocar para main e atualizar tudo
 #     git switch main
 #     git fetch --all
-#     git pull
+#     git pull origin main
+# 
+#     # Confirmar mudanças locais e enviar
 #     git status --short
 #     git add .
 #     git status --short
-#     git commit -m "merging from branch $BRANCH_NAME"
+#     git commit -m "updating before merging"
 #     git status --short
 #     git push
-#     git fetch --all
+# 
+#     # Obter o nome da branch remota mais recente (excluindo HEAD/main/master)
+#     BRANCH_NAME=$(git for-each-ref --format="%(refname:short)" refs/remotes/origin/ \
+#     | grep -v '\->' \
+#     | grep -vE 'origin/(HEAD|main|master)$' \
+#     | sed 's|^origin/||' \
+#     | tail -n 1)
+# 
+#     # Criar nova branch local com base na remota e trocar para ela
 #     git checkout -b "$BRANCH_NAME" "origin/$BRANCH_NAME"
 #     git pull
+# 
+#     # Voltar para a main e mesclar
 #     git switch main
 #     git merge "$BRANCH_NAME" --no-edit
 #     git status --short
 #     git push
+# 
+#     # Limpar branches locais que não são "main"
+#     git branch | grep -v "main" | grep -q . && git branch | grep -v "main" | xargs git branch -D
+#     git branch | cat  # Listar o que sobrou
+# 
+#     # Listar branches remotas que não são "main"
+#     git branch -r | grep -v 'origin/main' | sed 's/origin\///'
+# 
+#     # Deletar branches remotas que não são "main"
+#     git branch -r | grep -v 'origin/main' | sed 's/origin\///' | xargs -I {} git push origin --delete {}
+# 
+#     # Confirmar se limparam corretamente
+#     git branch -r | cat
 #     git status
 #     ```
 # 
