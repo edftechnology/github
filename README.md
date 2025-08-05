@@ -1073,25 +1073,30 @@ O comando `git merge` é uma ferramenta poderosa para integrar o trabalho de vá
     git push origin --delete <nome-da-branch>
     ```
 
-##### Comando para excluir todas as `branches` locais, exceto `main`
+##### Comando para excluir todas as `branches` locais, exceto `main` e outras palavras-chave
 
 1. **Recomendo antes**: Se quiser verificar quais branches locais serão excluídas, execute:
 
     ```bash
-    git branch | grep -v "main"
+    git branch | grep -v -E "^\*|main$|ita$|ufabc$|iae$"
     ```
 
-2. **Execute o comando abaixo para excluir todas as branches locais, exceto `main`**:
+2. **Execute o comando abaixo para excluir todas as branches locais, exceto `main` e outras palavas-chave**:
 
     ```bash
-    git branch | grep -v "main" | grep -q . && git branch | grep -v "main" | xargs git branch -D
+    git branch | grep -v -E "^\*|main$|ita$|ufabc$|iae$" | grep -q . && \
+    git branch | grep -v -E "^\*|main$|ita$|ufabc$|iae$" | xargs git branch -D
     ```
 
     **Explicação**:
 
     - `git branch`: lista todas as `branches` locais.
 
-    - `grep -v "main"`: remove a branch `main` da lista.
+    - `grep -v -E "..."`: ignora as branches listadas no padrão regex.
+
+        - `"main$|ita$|ufabc$|iae$"`: protege exatamente esses nomes de branch.
+
+        - `^\*`: evita remover a branch atualmente ativa (ela vem com * na frente).
 
     - `grep -q .`: verifica se ainda restam `branches` após a filtragem (evita erro do `xargs` se a lista estiver vazia).
 
@@ -1110,24 +1115,27 @@ O comando `git merge` é uma ferramenta poderosa para integrar o trabalho de vá
 1. **Recomendo antes**: Se quiser confirmar uma última vez quais branches serão apagadas, execute novamente:
 
     ```bash
-    git branch -r | grep -v 'origin/main' | sed 's/origin\///'
+    git branch -r | grep -v -E 'origin/(main|ita|ufabc|iae)$' | sed 's|origin/||'
     ```
 
 2. **Execute o comando**:
 
     ```bash
-    git branch -r | grep -v 'origin/main' | sed 's/origin\///' | xargs -I {} git push origin --delete {}
+    git branch -r | grep -v -E 'origin/(main|ita|ufabc|iae)$' | sed 's|origin/||' | \
+    xargs -I {} git push origin --delete {}
     ```
 
     **Explicação**:
 
     - `git branch -r`: lista todas as `branches` remotas.
 
-    - `grep -v 'origin/main'`: remove a `branch` `origin/main` da lista.
+    - `grep -v -E 'origin/(main|ita|ufabc|iae)$'`: exclui da lista as branches `main`, `ita`, `ufabc` e `iae`.
 
     - `sed 's/origin\///'`: remove o prefixo `origin/` para obter o nome real da `branch`.
 
     - `xargs -I {}`: para cada `branch`, executa o comando `git push origin --delete {}`.
+
+    - `\`: quebra de linha para melhor leitura (pode ser removido se quiser em linha única).
 
 3. **Execute o comando para verificar quais branches permaneceram remotamente**:
 
@@ -1142,7 +1150,7 @@ Tornar o nome da `branch` uma variável de `shell` o que facilita muito para rea
 1. **Exemplo com variável de nome de branch**:
 
     ```bash
-    # Conectar para não pedir mais senha (caso ainda não esteja conectado)
+    # Conectar para nao pedir mais senha (caso ainda nao esteja conectado)
     eval "$(ssh-agent -s)" >/dev/null
     ssh-add ~/.ssh/id_rsa 2>/dev/null
     ssh -T git@github.com
@@ -1160,10 +1168,10 @@ Tornar o nome da `branch` uma variável de `shell` o que facilita muito para rea
     git status --short
     git push
 
-    # Obter o nome da branch remota mais recente (excluindo HEAD/main/master)
+    # Obter o nome da branch remota mais recente (excluindo HEAD, main, master e protegidas)
     BRANCH_NAME=$(git for-each-ref --format="%(refname:short)" refs/remotes/origin/ \
     | grep -v '\->' \
-    | grep -vE 'origin/(HEAD|main|master)$' \
+    | grep -vE 'origin/(HEAD|main|master|ita|ufabc|iae)$' \
     | sed 's|^origin/||' \
     | tail -n 1)
 
@@ -1177,19 +1185,23 @@ Tornar o nome da `branch` uma variável de `shell` o que facilita muito para rea
     git status --short
     git push
 
-    # Limpar branches locais que não são "main"
-    git branch | grep -v "main" | grep -q . && git branch | grep -v "main" | xargs git branch -D
-    git branch | cat  # Listar o que sobrou
+    # Limpar branches locais que nao sao protegidas
+    git branch | grep -v -E '^\*|main$|ita$|ufabc$|iae$' | grep -q . && \
+    git branch | grep -v -E '^\*|main$|ita$|ufabc$|iae$' | xargs git branch -D
 
-    # Listar branches remotas que não são "main"
-    git branch -r | grep -v 'origin/main' | sed 's/origin\///'
+    git branch | cat  # Listar branches locais restantes
 
-    # Deletar branches remotas que não são "main"
-    git branch -r | grep -v 'origin/main' | sed 's/origin\///' | xargs -I {} git push origin --delete {}
+    # Listar branches remotas que nao sao protegidas
+    git branch -r | grep -v -E 'origin/(main|ita|ufabc|iae)$' | sed 's|origin/||'
+
+    # Deletar branches remotas que nao sao protegidas
+    git branch -r | grep -v -E 'origin/(main|ita|ufabc|iae)$' | sed 's|origin/||' \
+    | xargs -I {} git push origin --delete {}
 
     # Confirmar se limparam corretamente
     git branch -r | cat
     git status
+
     ```
 
 **Observações importantes**
