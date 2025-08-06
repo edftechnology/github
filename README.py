@@ -537,7 +537,7 @@
 # 
 # - **`git checkout`:** Este comando também serve para restaurar arquivos de uma `branch`, *commit* ou estado específico.
 # 
-# - **`--theirs`:** Indica que, em caso de conflito, você deseja manter o conteúdo **do lado remoto**, ou seja, da `branch` que está sendo mesclada com a sua (por exemplo, o que veio do `origin/master` durante um `git pull`).
+# - **`--theirs`:** Indica que, em caso de conflito, você deseja manter o conteúdo **do lado remoto**, ou seja, da `branch` que está sendo mesclada com a sua (por exemplo, o que veio do `origin/main` durante um `git pull`).
 # 
 # - **`-- <caminho/do/arquivo>`:** Especifica o(s) arquivo(s) em conflito que você deseja resolver usando a versão remota.
 # 
@@ -1081,14 +1081,14 @@
 # 1. **Recomendo antes**: Se quiser verificar quais branches locais serão excluídas, execute:
 # 
 #     ```bash
-#     git branch | grep -v -E "^\*|main$|ita$|ufabc$|iae$"
+#     git branch | grep -v -E "^\*|main$|edf$|iae$|ita$|ufabc$"
 #     ```
 # 
 # 2. **Execute o comando abaixo para excluir todas as branches locais, exceto `main` e outras palavas-chave**:
 # 
 #     ```bash
-#     git branch | grep -v -E "^\*|main$|ita$|ufabc$|iae$" | grep -q . && \
-#     git branch | grep -v -E "^\*|main$|ita$|ufabc$|iae$" | xargs git branch -D
+#     git branch | grep -v -E "^\*|main$|edf$|iae$||ita$|ufabc$" | grep -q . && \
+#     git branch | grep -v -E "^\*|main$|edf$|iae$||ita$|ufabc$" | xargs git branch -D
 #     ```
 # 
 #     **Explicação**:
@@ -1097,9 +1097,9 @@
 # 
 #     - `grep -v -E "..."`: ignora as branches listadas no padrão regex.
 # 
-#         - `"main$|ita$|ufabc$|iae$"`: protege exatamente esses nomes de branch.
+#         - `"main$|edf$|iae$||ita$|ufabc$"`: protege exatamente esses nomes de branch.
 # 
-#         - `^\*`: evita remover a branch atualmente ativa (ela vem com * na frente).
+#         - `^\*`: evita remover a branch atualmente ativa (ela vem com `*` na frente).
 # 
 #     - `grep -q .`: verifica se ainda restam `branches` após a filtragem (evita erro do `xargs` se a lista estiver vazia).
 # 
@@ -1118,13 +1118,13 @@
 # 1. **Recomendo antes**: Se quiser confirmar uma última vez quais branches serão apagadas, execute novamente:
 # 
 #     ```bash
-#     git branch -r | grep -v -E 'origin/(main|ita|ufabc|iae)$' | sed 's|origin/||'
+#     git branch -r | grep -v -E 'origin/(main|edf|iae|ita|ufabc)$' | sed 's|origin/||'
 #     ```
 # 
 # 2. **Execute o comando**:
 # 
 #     ```bash
-#     git branch -r | grep -v -E 'origin/(main|ita|ufabc|iae)$' | sed 's|origin/||' | \
+#     git branch -r | grep -v -E 'origin/(main|edf|iae|ita|ufabc)$' | sed 's|origin/||' | \
 #     xargs -I {} git push origin --delete {}
 #     ```
 # 
@@ -1132,7 +1132,7 @@
 # 
 #     - `git branch -r`: lista todas as `branches` remotas.
 # 
-#     - `grep -v -E 'origin/(main|ita|ufabc|iae)$'`: exclui da lista as branches `main`, `ita`, `ufabc` e `iae`.
+#     - `grep -v -E 'origin/(main|edf|iae|ita|ufabc)$'`: exclui da lista as branches `main`, `edf`, `iae`, `ita` e `ufabc`.
 # 
 #     - `sed 's/origin\///'`: remove o prefixo `origin/` para obter o nome real da `branch`.
 # 
@@ -1171,10 +1171,10 @@
 #     git status --short
 #     git push
 # 
-#     # Obter o nome da branch remota mais recente (excluindo HEAD, main, master e protegidas)
+#     # Obter o nome da branch remota mais recente (excluindo HEAD, main e protegidas)
 #     BRANCH_NAME=$(git for-each-ref --format="%(refname:short)" refs/remotes/origin/ \
 #     | grep -v '\->' \
-#     | grep -vE 'origin/(HEAD|main|master|ita|ufabc|iae)$' \
+#     | grep -vE 'origin/(HEAD|main|edf|iaeita|ufabc)$' \
 #     | sed 's|^origin/||' \
 #     | tail -n 1)
 # 
@@ -1189,16 +1189,16 @@
 #     git push
 # 
 #     # Limpar branches locais que nao sao protegidas
-#     git branch | grep -v -E '^\*|main$|ita$|ufabc$|iae$' | grep -q . && \
-#     git branch | grep -v -E '^\*|main$|ita$|ufabc$|iae$' | xargs git branch -D
+#     git branch | grep -v -E '^\*|main$|edf$|iae$|ita$|ufabc$' | grep -q . && \
+#     git branch | grep -v -E '^\*|main$|edf$|iae$|ita$|ufabc$$' | xargs git branch -D
 # 
 #     git branch | cat  # Listar branches locais restantes
 # 
 #     # Listar branches remotas que nao sao protegidas
-#     git branch -r | grep -v -E 'origin/(main|ita|ufabc|iae)$' | sed 's|origin/||'
+#     git branch -r | grep -v -E 'origin/(main|edf|iae|ita|ufabc)$' | sed 's|origin/||'
 # 
 #     # Deletar branches remotas que nao sao protegidas
-#     git branch -r | grep -v -E 'origin/(main|ita|ufabc|iae)$' | sed 's|origin/||' \
+#     git branch -r | grep -v -E 'origin/(origin/(main|edf|iae|ita|ufabc)$' | sed 's|origin/||' \
 #     | xargs -I {} git push origin --delete {}
 # 
 #     # Confirmar se limparam corretamente
