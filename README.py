@@ -960,7 +960,7 @@
 # 
 #     2.1.2 **Fechar o arquivo:** [8]
 # 
-#     - Após salvar, você pode fechar o arquivo digitando `:q` e pressionando `Enter`. O q significa "quit", ou seja, sair.
+#     - Após salvar, você pode fechar o arquivo digitando `:q` e pressionando `Enter`. O q significa `quit`, ou seja, sair.
 # 
 #     2.1.3 **Salvar e fechar em uma única etapa:** [8]
 # 
