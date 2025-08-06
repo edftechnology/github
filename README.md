@@ -52,53 +52,55 @@ O `GitHub` é uma plataforma de hospedagem e colaboração de código-fonte base
 
 ## 1. Sobre os _branches_ do `Git` [1][2]
 
-Ramos (`branches`) no `Git` são um recurso fundamental e poderoso do sistema de controle de versão `Git`. Um ramo em `Git` é um ponteiro leve e móvel para um `commit` específico. Quando você cria um novo ramo, permite que você se desvie da linha principal de desenvolvimento (geralmente o ramo `main` ou `main`) e trabalhe em novas funcionalidades, correções de _bugs_ ou experimentos sem afetar o código principal.
+Ramos (`branches`) no `Git` são um recurso fundamental e poderoso do sistema de controle de versão `Git`. Uma `branch` em `Git` é um ponteiro leve e móvel para um `commit` específico. Quando você cria uma nova branch, permite que você se desvie da linha principal de desenvolvimento (geralmente a `branch` `main` ou `master`) e trabalhe em novas funcionalidades, correções de _bugs_ ou experimentos sem afetar o código principal.
 
-Aqui estão alguns conceitos-chave relacionados aos ramos (`branches`) do `Git`:
+Aqui estão alguns conceitos-chave relacionados as (`branches`) do `Git`:
 
-1. **Ramo `main`/principal:** O ramo padrão em um repositório `Git` é frequentemente chamado de `main`. Esse ramo representa o código estável e pronto para produção. Geralmente é a base a partir da qual outros ramos são criados.
+1. **Branch `main`/principal:** A branch padrão em um repositório `Git` é frequentemente chamado de `main`. Essa `branch` representa o código estável e pronto para produção. Geralmente é a base a partir da qual outras `branches` são criados.
 
-2. **Criando um ramo:** Você pode criar um novo ramo no `Git` usando o comando `git branch` seguido pelo nome do ramo. Por exemplo, para criar um novo ramo chamado _"feature-branch"_, você usaria:
+2. **Criando um `branch`:** Você pode criar uma nova `branch` no `Git` usando o comando `git branch` seguido pelo nome da `branch`. Por exemplo, para criar uma nova `branch` chamado `desenvolvimento`, você usaria:
 
     ```bash
-    git branch feature-branch
+    git branch desenvolvimento
     ```
 
-3. **Alternando entre ramos:** Para mudar para um ramo diferente, você usa o comando `git checkout` seguido do nome do ramo. A partir do `Git` 2.23, você também pode usar `git switch` para esse propósito. Por exemplo:
+    Altere o nome `desenvolvimento` para o nome desejado da `branch`.
+
+3. **Alternando entre `branches`:** Para mudar para uma `branch` diferente, você usa o comando `git checkout` seguido do nome da `branch`. A partir do `Git` 2.23, você também pode usar `git switch` para esse propósito. Por exemplo:
 
     ```bash
-    git checkout feature-branch
-    ```
-    
-    ou
-    
-    ```bash
-    git switch feature-branch
-    ```
-
-4. **Criando e alternando em um único passo:** Você pode criar e mudar para um novo ramo simultaneamente usando a opção `-b com git checkout` ou `git switch`. Por exemplo:
-
-    ```bash
-    git checkout -b new-feature
+    git checkout testes
     ```
     
     ou
     
     ```bash
-    git switch -c new-feature
+    git switch testes
     ```
 
-5. **Visualizando ramos:** O comando `git branch` lista todos os ramos no repositório. O ramo atual é marcado com um asterisco (*).
+4. **Criando e alternando em um único passo:** Você pode criar e mudar para uma nova `branch` simultaneamente usando a opção `-b com git checkout` ou `git switch`. Por exemplo:
 
-6. **Mesclando ramos:** Depois de terminar o trabalho em um ramo de funcionalidade, você pode mesclá-lo de volta ao ramo principal (por exemplo, `main`). Isso combina as mudanças do ramo de funcionalidade no ramo principal. Você pode usar `git merge` para fazer isso.
+    ```bash
+    git checkout -b esteira_ci_cd
+    ```
+    
+    ou
+    
+    ```bash
+    git switch -c esteira_ci_cd
+    ```pythopyth    
 
-7. **Resolvendo conflitos:** Ao mesclar ramos, se houver conflitos (ou seja, mudanças na mesma parte do código), o `Git` pedirá que você resolva os conflitos manualmente.
+5. **Visualizando `branches`:** O comando `git branch` lista todos os branches no repositório. A `branch` atual é marcado com um asterisco (*).
 
-8. **Fluxos de trabalho com ramos:** O uso de ramos no `Git` possibilita vários fluxos de trabalho, como o `"Feature Branch Workflow"`, o `"Gitflow Workflow"` e o `"Git Forking Workflow"`, entre outros. Esses fluxos de trabalho ajudam as equipes a colaborar de forma eficaz e gerenciar o código de maneira eficiente.
+6. **Mesclando `branches`:** Depois de terminar o trabalho em uma `branch` de funcionalidade, você pode mesclá-lo de volta a `branch` principal (por exemplo, `main`). Isso combina as mudanças das `branches` de funcionalidade no `branch` principal. Você pode usar `git merge` para fazer isso.
 
-9. **Ramos remotos:** Ramos remotos representam ramos em um repositório remoto (por exemplo, no `GitHub`, `GitHub` ou `Bitbucket`). Você pode enviar seus ramos locais para um repositório remoto e trazer ramos remotos para o seu repositório local.
+7. **Resolvendo conflitos:** Ao mesclar `branches`, se houver conflitos (ou seja, mudanças na mesma parte do código), o `Git` pedirá que você resolva os conflitos manualmente.
 
-O uso de ramos no `Git` permite que os desenvolvedores trabalhem colaborativamente em diferentes partes do projeto simultaneamente. Ele facilita o isolamento do código, a experimentação e a capacidade de trabalhar em várias funcionalidades ao mesmo tempo. Ramos são um conceito fundamental no `Git` que promove a organização do código, a manutenibilidade e o trabalho em equipe.
+8. **Fluxos de trabalho com `branches`:** O uso de `branches` no `Git` possibilita vários fluxos de trabalho, como o `"Feature Branch Workflow"`, o `"Gitflow Workflow"` e o `"Git Forking Workflow"`, entre outros. Esses fluxos de trabalho ajudam as equipes a colaborar de forma eficaz e gerenciar o código de maneira eficiente.
+
+9. **`Branches` remotos:** `Branches` remotos representam `branches` em um repositório remoto (por exemplo, no `GitHub`, `GitHub` ou `Bitbucket`). Você pode enviar seus `branches` locais para um repositório remoto e trazer `branches` remotos para o seu repositório local.
+
+O uso de `branches` no `Git` permite que os desenvolvedores trabalhem colaborativamente em diferentes partes do projeto simultaneamente. Ele facilita o isolamento do código, a experimentação e a capacidade de trabalhar em várias funcionalidades ao mesmo tempo. `Branches` são um conceito fundamental no `Git` que promove a organização do código, a manutenibilidade e o trabalho em equipe.
 
 
 
