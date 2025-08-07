@@ -1086,8 +1086,8 @@ O comando `git merge` é uma ferramenta poderosa para integrar o trabalho de vá
 2. **Execute o comando abaixo para excluir todas as branches locais, exceto `main` e outras palavas-chave**:
 
     ```bash
-    git branch | grep -v -E "^\*|main$|edf$|iae$||ita$|ufabc$" | grep -q . && \
-    git branch | grep -v -E "^\*|main$|edf$|iae$||ita$|ufabc$" | xargs git branch -D
+    git branch | grep -v -E "^\*|main$|edf$|iae$|ita$|ufabc$" | grep -q . && \
+    git branch | grep -v -E "^\*|main$|edf$|iae$|ita$|ufabc$" | xargs git branch -D
     ```
 
     **Explicação**:
@@ -1152,15 +1152,18 @@ Tornar o nome da `branch` uma variável de `shell` o que facilita muito para rea
 1. **Exemplo com variável de nome de branch**:
 
     ```bash
+    # Especificar a branch base (ex: main, ita, ufabc)
+    BRANCH_BASE="ita"
+
     # Conectar para nao pedir mais senha (caso ainda nao esteja conectado)
     eval "$(ssh-agent -s)" >/dev/null
     ssh-add ~/.ssh/id_rsa 2>/dev/null
     ssh -T git@github.com
 
-    # Trocar para main e atualizar tudo
-    git switch main
+    # Trocar para a branch base e atualizar
+    git switch "$BRANCH_BASE"
     git fetch --all
-    git pull origin main
+    git pull origin "$BRANCH_BASE"
 
     # Confirmar mudanças locais e enviar
     git status --short
@@ -1168,28 +1171,28 @@ Tornar o nome da `branch` uma variável de `shell` o que facilita muito para rea
     git status --short
     git commit -m "updating before merging"
     git status --short
-    git push
+    git push -u origin "$BRANCH_BASE"
 
-    # Obter o nome da branch remota mais recente (excluindo HEAD, main e protegidas)
-    BRANCH_NAME=$(git for-each-ref --format="%(refname:short)" refs/remotes/origin/ \
+    # Obter a branch remota mais recente (excluindo HEAD, branches base e protegidas)
+    BRANCH_REMOTE=$(git for-each-ref --format="%(refname:short)" refs/remotes/origin/ \
     | grep -v '\->' \
-    | grep -vE 'origin/(HEAD|main|edf|iaeita|ufabc)$' \
+    | grep -vE "origin/(HEAD|main|edf|iae|ita|ufabc)$" \
     | sed 's|^origin/||' \
     | tail -n 1)
 
-    # Criar nova branch local com base na remota e trocar para ela
-    git checkout -b "$BRANCH_NAME" "origin/$BRANCH_NAME"
+    # Criar branch local baseada na remota e mudar para ela
+    git checkout -b "$BRANCH_REMOTE" "origin/$BRANCH_REMOTE"
     git pull
 
-    # Voltar para a main e mesclar
-    git switch main
-    git merge "$BRANCH_NAME" --no-edit
+    # Voltar para a base e mesclar
+    git switch "$BRANCH_BASE"
+    git merge "$BRANCH_REMOTE" --no-edit
     git status --short
     git push
 
     # Limpar branches locais que nao sao protegidas
     git branch | grep -v -E '^\*|main$|edf$|iae$|ita$|ufabc$' | grep -q . && \
-    git branch | grep -v -E '^\*|main$|edf$|iae$|ita$|ufabc$$' | xargs git branch -D
+    git branch | grep -v -E '^\*|main$|edf$|iae$|ita$|ufabc$' | xargs git branch -D
 
     git branch | cat  # Listar branches locais restantes
 
@@ -1197,13 +1200,12 @@ Tornar o nome da `branch` uma variável de `shell` o que facilita muito para rea
     git branch -r | grep -v -E 'origin/(main|edf|iae|ita|ufabc)$' | sed 's|origin/||'
 
     # Deletar branches remotas que nao sao protegidas
-    git branch -r | grep -v -E 'origin/(origin/(main|edf|iae|ita|ufabc)$' | sed 's|origin/||' \
+    git branch -r | grep -v -E 'origin/(main|edf|iae|ita|ufabc)$' | sed 's|origin/||' \
     | xargs -I {} git push origin --delete {}
 
     # Confirmar se limparam corretamente
     git branch -r | cat
     git status
-
     ```
 
 **Observações importantes**
