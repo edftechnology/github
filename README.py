@@ -1149,121 +1149,124 @@
 #     ```
 
 # ##### Script `git_merge_and_cleanup.sh`
+# 
+# ```bash
+# #!/bin/bash
+# 
+# # Specify the base branch (e.g., main, ita, ufabc)
+# BRANCH_BASE="main"
+# 
+# # Check and remove old lock file (if exists)
+# LOCK_FILE=".git/HEAD.lock"
+# if [ -f "$LOCK_FILE" ]; then
+#   echo "[INFO] Removing old lock file: $LOCK_FILE"
+#   rm -f "$LOCK_FILE"
+# fi
+# 
+# # Connect via SSH to avoid asking for the password every time
+# eval "$(ssh-agent -s)" >/dev/null
+# ssh-add ~/.ssh/id_rsa 2>/dev/null
+# ssh -T git@github.com
+# 
+# # Check for uncommitted local changes
+# if [[ -n $(git status --porcelain) ]]; then
+#   echo "[INFO] Local changes detected. Performing automatic commit..."
+#   git add .
+#   git commit -m "Automatic backup before switch"
+# else
+#   echo "[INFO] No local changes pending."
+# fi
+# 
+# # Switch to the base branch
+# echo "[INFO] Switching to base branch: $BRANCH_BASE"
+# git switch "$BRANCH_BASE"
+# 
+# # Update repository
+# git fetch --all
+# git pull origin "$BRANCH_BASE"
+# 
+# # Push recent changes
+# git push -u origin "$BRANCH_BASE"
+# 
+# # Get the most recent remote branch (excluding protected ones)
+# BRANCH_REMOTE=$(git for-each-ref --format="%(refname:short)" refs/remotes/origin/ \
+#   | grep -v '\->' \
+#   | grep -vE "origin/(HEAD|main|edf|iae|ita|ufabc)$" \
+#   | sed 's|^origin/||' \
+#   | tail -n 1)
+# 
+# # Check if a remote branch was found
+# if [[ -z "$BRANCH_REMOTE" ]]; then
+#   echo "[WARNING] No new remote branch found to merge. Exiting script."
+#   exit 0
+# fi
+# 
+# echo "[INFO] Remote branch to be merged: $BRANCH_REMOTE"
+# 
+# # Create local branch from remote
+# if git show-ref --verify --quiet "refs/heads/$BRANCH_REMOTE"; then
+#   echo "[INFO] Local branch '$BRANCH_REMOTE' already exists. Switching..."
+#   git switch "$BRANCH_REMOTE"
+# else
+#   echo "[INFO] Creating new local branch '$BRANCH_REMOTE' from 'origin/$BRANCH_REMOTE'"
+#   git checkout -b "$BRANCH_REMOTE" "origin/$BRANCH_REMOTE"
+# fi
+# 
+# # Make sure it is up to date
+# git pull
+# 
+# # Switch back to base and perform merge
+# git switch "$BRANCH_BASE"
+# echo "[INFO] Merging with '$BRANCH_REMOTE'"
+# git merge "$BRANCH_REMOTE" --no-edit || {
+#   echo "[ERROR] An error occurred during merge. Aborting."
+#   exit 1
+# }
+# git status --short
+# git push
+# 
+# # Clean up local branches that are not protected
+# echo "[INFO] Cleaning up non-protected local branches..."
+# git branch | grep -v -E '^\*|main$|edf$|iae$|ita$|ufabc$' | grep -q . && \
+# git branch | grep -v -E '^\*|main$|edf$|iae$|ita$|ufabc$' | xargs git branch -D
+# 
+# git branch | cat  # Show remaining local branches
+# 
+# # Delete remote branches that are not protected
+# echo "[INFO] Cleaning up non-protected remote branches..."
+# git remote prune origin
+# git branch -r | grep -v -E 'origin/(main|edf|iae|ita|ufabc)$' | sed 's|origin/||' \
+#   | xargs -I {} git push origin --delete {} || true
+# 
+# # Final confirmation
+# echo "[INFO] Script completed successfully."
+# git branch -r | cat
+# git status
+# ```
+# 
 
-```bash
-#!/bin/bash
+# ### Como usar
+# 
+# 1. Salve o conteúdo acima como um arquivo, por exemplo:
+# 
+# ```bash
+# nano git_merge_and_cleanup.sh
+# ```
+# 
+# Torne executável:
+# 
+# ```bash
+# chmod +x git_merge_and_cleanup.sh
+# ```
+# 
+# Execute dentro do seu repositório:
+# 
+# ```bash
+# ./git_merge_and_cleanup.sh
+# ```
+# 
 
-# Especificar a branch base (ex: main, ita, ufabc)
-BRANCH_BASE="main"
-
-# Verifica e remove lock antigo (se existir)
-LOCK_FILE=".git/HEAD.lock"
-if [ -f "$LOCK_FILE" ]; then
-  echo "[INFO] Removendo arquivo de lock antigo: $LOCK_FILE"
-  rm -f "$LOCK_FILE"
-fi
-
-# Conectar via SSH sem pedir senha toda hora
-eval "$(ssh-agent -s)" >/dev/null
-ssh-add ~/.ssh/id_rsa 2>/dev/null
-ssh -T git@github.com
-
-# Verificar se ha mudancas locais nao commitadas
-if [[ -n $(git status --porcelain) ]]; then
-  echo "[INFO] Mudancas locais detectadas. Realizando commit automatico..."
-  git add .
-  git commit -m "Backup automatico antes do switch"
-else
-  echo "[INFO] Nenhuma mudanca local pendente."
-fi
-
-# Trocar para a branch base
-echo "[INFO] Trocando para a branch base: $BRANCH_BASE"
-git switch "$BRANCH_BASE"
-
-# Atualizar repositório
-git fetch --all
-git pull origin "$BRANCH_BASE"
-
-# Subir mudancas recentes
-git push -u origin "$BRANCH_BASE"
-
-# Obter a branch remota mais recente (excluindo protegidas)
-BRANCH_REMOTE=$(git for-each-ref --format="%(refname:short)" refs/remotes/origin/   | grep -v '\->'   | grep -vE "origin/(HEAD|main|edf|iae|ita|ufabc)$"   | sed 's|^origin/||'   | tail -n 1)
-
-# Verificar se encontrou alguma branch
-if [[ -z "$BRANCH_REMOTE" ]]; then
-  echo "[AVISO] Nenhuma branch remota nova encontrada para mesclar. Encerrando script."
-  exit 0
-fi
-
-echo "[INFO] Branch remota a ser mesclada: $BRANCH_REMOTE"
-
-# Criar branch local a partir da remota
-if git show-ref --verify --quiet "refs/heads/$BRANCH_REMOTE"; then
-  echo "[INFO] Branch local '$BRANCH_REMOTE' ja existe. Fazendo checkout..."
-  git switch "$BRANCH_REMOTE"
-else
-  echo "[INFO] Criando nova branch local '$BRANCH_REMOTE' a partir de 'origin/$BRANCH_REMOTE'"
-  git checkout -b "$BRANCH_REMOTE" "origin/$BRANCH_REMOTE"
-fi
-
-# Garantir que esta atualizado
-git pull
-
-# Voltar para a base e fazer merge
-git switch "$BRANCH_BASE"
-echo "[INFO] Fazendo merge com '$BRANCH_REMOTE'"
-git merge "$BRANCH_REMOTE" --no-edit || {
-  echo "[ERRO] Ocorreu um erro durante o merge. Abortando."
-  exit 1
-}
-git status --short
-git push
-
-# Limpar branches locais que nao sao protegidas
-echo "[INFO] Limpando branches locais nao protegidas..."
-git branch | grep -v -E '^\*|main$|edf$|iae$|ita$|ufabc$' | grep -q . &&  git branch | grep -v -E '^\*|main$|edf$|iae$|ita$|ufabc$' | xargs git branch -D
-
-git branch | cat  # Mostrar branches locais restantes
-
-# Deletar branches remotas nao protegidas
-echo "[INFO] Limpando branches remotas nao protegidas..."
-git remote prune origin
-git branch -r | grep -v -E 'origin/(main|edf|iae|ita|ufabc)$' | sed 's|origin/||'   | xargs -I {} git push origin --delete {} || true
-
-# Confirmacao final
-echo "[INFO] Processo concluido com sucesso."
-git branch -r | cat
-git status
-```
-
-✅ Como usar
-Salve o conteúdo acima como um arquivo, por exemplo:
-
-```bash
-nano git_merge_and_cleanup.sh
-```
-
-Torne executável:
-
-```bash
-chmod +x git_merge_and_cleanup.sh
-```
-
-Execute dentro do seu repositório:
-
-```bash
-./git_merge_and_cleanup.sh
-```
-
-Como usar:
-
-```bash
-chmod +x git_merge_and_cleanup.sh
-./git_merge_and_cleanup.sh ita
-```
-#### 2.5.17 Comando `git stash` [9]
+# #### 2.5.17 Comando `git stash` [9]
 # 
 # O comando `git stash` é usado para temporariamente salvar (ou "guardar") as mudanças em seu diretório de trabalho que ainda não foram _commitadas_ em um estado chamado de `stash`. Isso pode ser útil quando você está trabalhando em uma determinada ramificação, mas precisa alternar para outra ramificação ou realizar alguma outra tarefa que exija um diretório de trabalho limpo.
 # 
