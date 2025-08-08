@@ -1150,22 +1150,23 @@ O comando `git merge` é uma ferramenta poderosa para integrar o trabalho de vá
 ```bash
 #!/bin/bash
 
-# Specify the base branch (e.g., main, ita, ufabc)
-BRANCH_BASE="main"
+# Perguntar ao usuario qual a branch base (ex: main, ita, ufabc)
+read -p "Enter the base branch name [default: main]: " BRANCH_BASE
+BRANCH_BASE=${BRANCH_BASE:-main}
 
-# Check and remove old lock file (if exists)
+# Verifica e remove lock antigo (se existir)
 LOCK_FILE=".git/HEAD.lock"
 if [ -f "$LOCK_FILE" ]; then
   echo "[INFO] Removing old lock file: $LOCK_FILE"
   rm -f "$LOCK_FILE"
 fi
 
-# Connect via SSH to avoid asking for the password every time
+# Conectar via SSH sem pedir senha toda hora
 eval "$(ssh-agent -s)" >/dev/null
 ssh-add ~/.ssh/id_rsa 2>/dev/null
 ssh -T git@github.com
 
-# Check for uncommitted local changes
+# Verificar se há mudanças locais não commitadas
 if [[ -n $(git status --porcelain) ]]; then
   echo "[INFO] Local changes detected. Performing automatic commit..."
   git add .
@@ -1174,33 +1175,41 @@ else
   echo "[INFO] No local changes pending."
 fi
 
-# Switch to the base branch
+# Trocar para a branch base
 echo "[INFO] Switching to base branch: $BRANCH_BASE"
 git switch "$BRANCH_BASE"
 
-# Update repository
+# Atualizar repositório
 git fetch --all
 git pull origin "$BRANCH_BASE"
 
-# Push recent changes
+# Subir mudanças recentes
 git push -u origin "$BRANCH_BASE"
 
-# Get the most recent remote branch (excluding protected ones)
-BRANCH_REMOTE=$(git for-each-ref --format="%(refname:short)" refs/remotes/origin/ \
+# Listar branches remotas não protegidas
+echo "[INFO] Listing remote branches (excluding protected)..."
+BRANCHES=($(git for-each-ref --format="%(refname:short)" refs/remotes/origin/ \
   | grep -v '\->' \
-  | grep -vE "origin/(HEAD|main|edf|iae|ita|ufabc)$" \
-  | sed 's|^origin/||' \
-  | tail -n 1)
+  | grep -vE "origin/.*(main|edf|iae|ita|ufabc).*" \
+  | sed 's|^origin/||'))
 
-# Check if a remote branch was found
-if [[ -z "$BRANCH_REMOTE" ]]; then
-  echo "[WARNING] No new remote branch found to merge. Exiting script."
+if [[ ${#BRANCHES[@]} -eq 0 ]]; then
+  echo "[WARNING] No new remote branches found to merge. Exiting script."
   exit 0
 fi
 
+echo
+for i in "${!BRANCHES[@]}"; do
+  echo "[$i] ${BRANCHES[$i]}"
+done
+
+echo
+read -p "Enter the number of the branch to merge: " BRANCH_INDEX
+BRANCH_REMOTE="${BRANCHES[$BRANCH_INDEX]}"
+
 echo "[INFO] Remote branch to be merged: $BRANCH_REMOTE"
 
-# Create local branch from remote
+# Criar branch local a partir da remota
 if git show-ref --verify --quiet "refs/heads/$BRANCH_REMOTE"; then
   echo "[INFO] Local branch '$BRANCH_REMOTE' already exists. Switching..."
   git switch "$BRANCH_REMOTE"
@@ -1209,10 +1218,10 @@ else
   git checkout -b "$BRANCH_REMOTE" "origin/$BRANCH_REMOTE"
 fi
 
-# Make sure it is up to date
+# Garantir que está atualizado
 git pull
 
-# Switch back to base and perform merge
+# Voltar para a base e fazer merge
 git switch "$BRANCH_BASE"
 echo "[INFO] Merging with '$BRANCH_REMOTE'"
 git merge "$BRANCH_REMOTE" --no-edit || {
@@ -1222,20 +1231,20 @@ git merge "$BRANCH_REMOTE" --no-edit || {
 git status --short
 git push
 
-# Clean up local branches that are not protected
+# Limpar branches locais que não são protegidas
 echo "[INFO] Cleaning up non-protected local branches..."
-git branch | grep -v -E '^\*|main$|edf$|iae$|ita$|ufabc$' | grep -q . && \
-git branch | grep -v -E '^\*|main$|edf$|iae$|ita$|ufabc$' | xargs git branch -D
+git branch | grep -v -E '^\*|.*(main|edf|iae|ita|ufabc).*' | grep -q . && \
+git branch | grep -v -E '^\*|.*(main|edf|iae|ita|ufabc).*' | xargs git branch -D
 
-git branch | cat  # Show remaining local branches
+git branch | cat  # Mostrar branches locais restantes
 
-# Delete remote branches that are not protected
+# Deletar branches remotas não protegidas
 echo "[INFO] Cleaning up non-protected remote branches..."
 git remote prune origin
-git branch -r | grep -v -E 'origin/(main|edf|iae|ita|ufabc)$' | sed 's|origin/||' \
+git branch -r | grep -v -E 'origin/.*(main|edf|iae|ita|ufabc).*' | sed 's|origin/||' \
   | xargs -I {} git push origin --delete {} || true
 
-# Final confirmation
+# Confirmação final
 echo "[INFO] Script completed successfully."
 git branch -r | cat
 git status
@@ -2171,7 +2180,8 @@ Use se:
 
 o Git ainda mantém a referência no índice (index). Ou seja, ele ainda "acha" que o caminho `codes/python/big_rocket_data` já está sendo rastreado.
 
-✅ Solução completa (passo a passo)
+#### Solução completa (passo a passo)
+
 Execute os seguintes comandos exatamente nesta ordem para garantir uma limpeza completa:
 
 1. Remova do índice do Git:
