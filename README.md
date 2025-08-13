@@ -2308,6 +2308,63 @@ Não se esqueça de dar uma estrela ao projeto! Obrigado novamente!
 
 
 
+## Submódulo `AGENTS`
+
+Para centralizar instruções em um repositório separado e reutilizá-las em vários projetos,
+você pode adicionar o repositório `AGENTS` como submódulo.
+
+### Como configurar
+
+1. Adicione o submódulo:
+
+```bash
+git submodule add git@github.com:edendenis/AGENTS.git AGENTS
+```
+
+2. Comite os arquivos criados:
+
+```bash
+git add .gitmodules AGENTS
+git commit -m "Adiciona submódulo AGENTS"
+git push
+```
+
+### Atualizar o submódulo
+
+1. Trabalhe dentro da pasta do submódulo:
+
+```bash
+cd AGENTS
+git add AGENTS_python.md
+git commit -m "Atualiza instruções Python"
+git push origin main
+cd ..
+```
+
+2. Atualize a referência no repositório principal:
+
+```bash
+git add AGENTS
+git commit -m "Atualiza referência do submódulo AGENTS"
+git push
+```
+
+### Sincronizar em outros projetos
+
+Para buscar as últimas alterações do submódulo:
+
+```bash
+git submodule update --remote --merge AGENTS
+```
+
+Ao clonar um repositório que utiliza o submódulo:
+
+```bash
+git clone git@github.com:usuario/latex_presentation_template.git
+cd latex_presentation_template
+git submodule update --init --recursive
+```
+
 ## Referências
 
 [1] CHACON, S AND STRAUB, B.. ***Progit: everything you need to know about git***. Apress, Second edition, 2020.
