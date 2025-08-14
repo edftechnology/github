@@ -595,7 +595,7 @@
 # 
 # - **Verificar a Área de Preparação:** Para verificar quais alterações estão na área de preparação, você pode usar o comando `git status`. As alterações listadas sob `"Changes to be committed"` são as que serão incluídas no próximo `commit` após usar `git add`.
 # 
-# - **Adicionar todas as alterações listadas em `"Changes not staged for commit"`**: Para adicionar todas as alterações listadas em "Changes not staged for commit", você pode usar o seguinte comando: `git add -u`
+# - **Adicionar todas as alterações listadas em `"Changes not staged for commit"`**: Para adicionar todas as alterações listadas em `Changes not staged for commit`, você pode usar o seguinte comando: `git add -u`
 # 
 # - **Desfazer `git add`:** Se você acidentalmente adicionar alterações erradas ou quiser remover uma alteração da área de preparação, você pode usar o comando `git reset HEAD <nome_do_arquivo>` para remover o arquivo da área de preparação. Isso mantém as alterações no diretório de trabalho sem incluí-las no próximo `commit`.
 # 
@@ -932,9 +932,9 @@
 # 
 # `<branch_name>` é o nome da ramificação (branch) que você deseja enviar para o repositório remoto. Por exemplo, se você estiver trabalhando na ramificação "feature-branch" e quiser enviar suas alterações para o repositório remoto, você usaria:
 # 
-#     ```bash
-#     git push origin feature-branch
-#     ```
+# ```bash
+# git push origin feature-branch
+# ```
 # 
 # **ATENÇÃO:** Antes de fazer `git push`, é importante garantir que você tenha concluído as etapas anteriores corretamente:
 # 
@@ -1150,6 +1150,23 @@
 
 # ##### Script `git_merge_and_cleanup.sh`
 # 
+# 1. Criar o arquivo `git_merge_and_cleanup.sh`, perceber que ele pode já
+# estar localizado na pasta `docs/` deste projeto, se não, execute o
+# comando:
+# 
+#     ```bash
+#     touch git_merge_and_cleanup.sh
+#     ```
+# 
+# 2. Abrir o arquivo `git_merge_and_cleanup.sh`, por exemplo:
+# 
+# ```bash
+# nano git_merge_and_cleanup.sh
+# ```
+# 
+# 3. Copiar e colar o conteúdo abaixo no arquivo
+# `git_merge_and_cleanup.sh`:
+# 
 # ```bash
 # #!/usr/bin/env bash
 # # Se estiver no zsh, reexecuta este script em bash para evitar problemas de arrays/prompt
@@ -1316,27 +1333,19 @@
 # git status
 # ```
 # 
+# 
 
-# ### Como usar
-# 
-# 1. Salve o conteúdo acima como um arquivo, por exemplo:
-# 
-# ```bash
-# nano git_merge_and_cleanup.sh
-# ```
-# 
-# Torne executável:
+# 4. Torne executável:
 # 
 # ```bash
 # chmod +x git_merge_and_cleanup.sh
 # ```
 # 
-# Execute dentro do seu repositório:
+# 5. Execute dentro do seu repositório:
 # 
 # ```bash
 # ./git_merge_and_cleanup.sh
 # ```
-# 
 
 # #### 2.5.17 Comando `git stash` [9]
 # 
@@ -2153,11 +2162,11 @@
 # 
 
 # <!-- SUBMÓDULOS DO GIT -->
-# ## O que são submódulos `Git`?
+# ## 6. Submódulos `Git`
 # 
 # Submódulos são repositórios `Git` dentro de outro repositório, mas gerenciados oficialmente pelo `Git`, de forma rastreável e limpa.
 # 
-# ### Com submódulo
+# ### 6.1 Com submódulo
 # 
 # O repositório principal sabe que o diretório `repositorio/secundario/` é um repositório `Git` separado.
 # 
@@ -2171,7 +2180,9 @@
 # git submodule update --init --recursive
 # ```
 # 
-# ### Exemplo com submódulo
+# 
+
+# ### 6.2 Exemplo com submódulo
 # ```bash
 # # dentro do repositório principal
 # cd <repositorio/do/repositorio/principal>
@@ -2187,7 +2198,9 @@
 # git commit -m "adicionando repositorios secundatios como submódulos"
 # ```
 # 
-# #### Exemplo real com submódulo
+# 
+
+# #### 6.2.1 Exemplo real com submódulo
 # 
 # ```bash
 # # dentro do repositório principal
@@ -2204,7 +2217,9 @@
 # git commit -m "adicionando repositorios secundatios como submódulos"
 # ```
 # 
-# ### Como o `Git` armazena isso?
+# 
+
+# ### 6.3 Como o `Git` armazena isso?
 # 
 # - O `Git` cria um arquivo chamado `.gitmodules` na raiz do repositório principal.
 # 
@@ -2212,7 +2227,9 @@
 # 
 # - O `Git` não rastreia os arquivos do submódulo, mas sim o commit exato em que o submódulo está fixado.
 # 
-# ### Vantagens dos submódulos
+# 
+
+# ### 6.4 Vantagens dos submódulos
 # 
 # | Vantagem                       | Descrição                                                                                                |
 # | ------------------------------ | -------------------------------------------------------------------------------------------------------- |
@@ -2221,7 +2238,9 @@
 # | Controle                       | O repositório principal fixa cada submódulo em um commit específico — ótimo para versões estáveis        |
 # | Modularidade                   | Útil para projetos científicos onde diferentes partes evoluem separadamente                              |
 # 
-# ### Desvantagens (ou cuidados)
+# 
+
+# ### 6.5 Desvantagens (ou cuidados)
 # 
 # | Limitação                    | Explicação                                                                                             |
 # |------------------------------|---------------------------------------------------------------------------------------------------------|
@@ -2229,7 +2248,9 @@
 # | Não é "recursivo" por padrão | Se você `git clone` sem o comando acima, os submódulos vêm vazios                                      |
 # | Atualizar submódulo é manual | Se você atualizar o submódulo, precisa `commit` no sub e depois `commit` no principal para fixar novo ponteiro |
 # 
-# ### Quando usar submódulos?
+# 
+
+# ### 6.6 Quando usar submódulos?
 # Use se:
 # 
 # - Cada app é independente e pode ser versionado sozinho.
@@ -2242,11 +2263,11 @@
 # 
 # <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
-# ### Tutorial para limpar e readicionar submódulo
+# ### 6.7 Tutorial para limpar e readicionar submódulo
 # 
 # o Git ainda mantém a referência no índice (index). Ou seja, ele ainda "acha" que o caminho `codes/python/big_rocket_data` já está sendo rastreado.
 # 
-# #### Solução completa (passo a passo)
+# #### 6.7.1 Solução completa (passo a passo)
 # 
 # Execute os seguintes comandos exatamente nesta ordem para garantir uma limpeza completa:
 # 
@@ -2289,6 +2310,44 @@
 # git add .gitmodules codes/python/big_rocket_data
 # git commit -m "Adiciona submódulo big_rocket_data corretamente"
 # ```
+# 
+
+# ### 6.8 Sincronizar em outros projetos
+# 
+# Para buscar as últimas alterações do submódulo:
+# 
+# ```bash
+# git submodule update --remote --merge AGENTS
+# ```
+# 
+# Ao clonar um repositório que utiliza o submódulo:
+# 
+# ```bash
+# git clone git@github.com:usuario/latex_presentation_template.git
+# cd latex_presentation_template
+# git submodule update --init --recursive
+# ```
+# 
+
+# ### 7. Git Subtree
+# 
+# Se você preferir que os arquivos do repositório, por exemplo `AGENTS`, fiquem na raiz do projeto principal, utilize o `git subtree`.
+# 
+# 1. Adicione o repositório secundário:
+# 
+#     ```bash
+#     git subtree add --prefix=. git@github.com:usuario/AGENTS.git main --squash
+#     ```
+# 
+#     * `--prefix=.` copia o conteúdo para a raiz do projeto.
+#     * `--squash` mantém o histórico compacto.
+# 
+# 2. Para atualizar posteriormente:
+# 
+#     ```bash
+#     git subtree pull --prefix=. git@github.com:usuario/AGENTS.git main --squash
+#     ```
+# 
 # 
 
 # <!-- LICENÇA -->
@@ -2374,63 +2433,6 @@
 # 
 # 
 
-# ## Submódulo `AGENTS`
-#
-# Para centralizar instruções em um repositório separado e reutilizá-las em vários projetos,
-# você pode adicionar o repositório `AGENTS` como submódulo.
-#
-# ### Como configurar
-#
-# 1. Adicione o submódulo:
-#
-# ```bash
-# git submodule add git@github.com:edendenis/AGENTS.git AGENTS
-# ```
-#
-# 2. Comite os arquivos criados:
-#
-# ```bash
-# git add .gitmodules AGENTS
-# git commit -m "Adiciona submódulo AGENTS"
-# git push
-# ```
-#
-# ### Atualizar o submódulo
-#
-# 1. Trabalhe dentro da pasta do submódulo:
-#
-# ```bash
-# cd AGENTS
-# git add AGENTS_python.md
-# git commit -m "Atualiza instruções Python"
-# git push origin main
-# cd ..
-# ```
-#
-# 2. Atualize a referência no repositório principal:
-#
-# ```bash
-# git add AGENTS
-# git commit -m "Atualiza referência do submódulo AGENTS"
-# git push
-# ```
-#
-# ### Sincronizar em outros projetos
-#
-# Para buscar as últimas alterações do submódulo:
-#
-# ```bash
-# git submodule update --remote --merge AGENTS
-# ```
-#
-# Ao clonar um repositório que utiliza o submódulo:
-#
-# ```bash
-# git clone git@github.com:usuario/latex_presentation_template.git
-# cd latex_presentation_template
-# git submodule update --init --recursive
-# ```
-#
 # ## Referências
 # 
 # [1] CHACON, S AND STRAUB, B.. ***Progit: everything you need to know about git***. Apress, Second edition, 2020.
