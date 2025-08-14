@@ -1148,104 +1148,167 @@ O comando `git merge` é uma ferramenta poderosa para integrar o trabalho de vá
 ##### Script `git_merge_and_cleanup.sh`
 
 ```bash
-#!/bin/bash
+#!/usr/bin/env bash
+# Se estiver no zsh, reexecuta este script em bash para evitar problemas de arrays/prompt
+if [ -n "${ZSH_VERSION-}" ]; then
+  exec bash "$0" "$@"
+fi
+set -euo pipefail
 
-# Perguntar ao usuario qual a branch base (ex: main, ita, ufabc)
-read -p "Enter the base branch name [default: main]: " BRANCH_BASE
-BRANCH_BASE=${BRANCH_BASE:-main}
+# -------------------- util --------------------
+# ecoa e executa comando (log simples)
+run() { echo "+ $*"; "$@"; }
 
-# Verifica e remove lock antigo (se existir)
-LOCK_FILE=".git/HEAD.lock"
-if [ -f "$LOCK_FILE" ]; then
-  echo "[INFO] Removing old lock file: $LOCK_FILE"
-  rm -f "$LOCK_FILE"
+# -------------------- fetch -------------------
+echo "[INFO] Fetching all branches from remote..."
+run git fetch --all
+
+# -------------------- lista branches -------------------
+echo "[INFO] Building branch list (local + remote)..."
+BRANCHES=()
+# locais
+while read -r b; do
+  BRANCHES+=("$b")
+done < <(git branch --format='%(refname:short)' | sort -u)
+
+# remotas (sem origin/, sem HEAD)
+while read -r rb; do
+  name="${rb#origin/}"
+  [ "$name" = "HEAD" ] && continue
+  # adiciona se nao existir na lista
+  if ! printf '%s\0' "${BRANCHES[@]}" | grep -Fxqz -- "$name"; then
+    BRANCHES+=("$name")
+  fi
+done < <(git for-each-ref --format='%(refname:short)' refs/remotes/origin | sort -u)
+
+if [ "${#BRANCHES[@]}" -eq 0 ]; then
+  echo "[ERROR] No branches found."
+  exit 1
 fi
 
-# Conectar via SSH sem pedir senha toda hora
-eval "$(ssh-agent -s)" >/dev/null
-ssh-add ~/.ssh/id_rsa 2>/dev/null
-ssh -T git@github.com
+# imprime tabela numerada
+echo "[INFO] Available branches:"
+idx=1
+for b in "${BRANCHES[@]}"; do
+  # marca se existe localmente
+  if git show-ref --verify --quiet "refs/heads/$b"; then
+    suffix="(local)"
+  else
+    suffix="(remote)"
+  fi
+  printf "  [%d] %s %s\n" "$idx" "$b" "$suffix"
+  idx=$((idx+1))
+done
 
-# Verificar se há mudanças locais não commitadas
+# -------------------- escolher SOURCE -------------------
+echo -n "Enter the number of the SOURCE branch to merge FROM [default: 1]: "
+read -r SRC_NUM
+SRC_NUM=${SRC_NUM:-1}
+if ! [[ "$SRC_NUM" =~ ^[0-9]+$ ]] || [ "$SRC_NUM" -lt 1 ] || [ "$SRC_NUM" -gt "${#BRANCHES[@]}" ]; then
+  echo "[ERROR] Invalid selection for SOURCE."
+  exit 1
+fi
+SRC_BRANCH="${BRANCHES[$((SRC_NUM-1))]}"
+echo "[INFO] SOURCE branch: $SRC_BRANCH"
+
+# -------------------- escolher TARGET -------------------
+echo -n "Enter the number of the TARGET branch to merge INTO [default: 2]: "
+read -r TGT_NUM
+TGT_NUM=${TGT_NUM:-2}
+if ! [[ "$TGT_NUM" =~ ^[0-9]+$ ]] || [ "$TGT_NUM" -lt 1 ] || [ "$TGT_NUM" -gt "${#BRANCHES[@]}" ]; then
+  echo "[ERROR] Invalid selection for TARGET."
+  exit 1
+fi
+TGT_BRANCH="${BRANCHES[$((TGT_NUM-1))]}"
+echo "[INFO] TARGET branch: $TGT_BRANCH"
+
+# impede escolher a mesma para ambas
+if [ "$SRC_BRANCH" = "$TGT_BRANCH" ]; then
+  echo "[ERROR] SOURCE and TARGET cannot be the same."
+  exit 1
+fi
+
+# -------------------- ssh agent opcional -------------------
+# Inicia ssh-agent e tenta adicionar chave padrao (ignora erros)
+eval "$(ssh-agent -s)" >/dev/null 2>&1 || true
+ssh-add ~/.ssh/id_rsa >/dev/null 2>&1 || true
+ssh -T git@github.com || true
+
+# -------------------- commit de seguranca se houver mudancas -------------------
 if [[ -n $(git status --porcelain) ]]; then
   echo "[INFO] Local changes detected. Performing automatic commit..."
-  git add .
-  git commit -m "Automatic backup before switch"
+  run git add .
+  run git commit -m "Automatic backup before merge"
 else
   echo "[INFO] No local changes pending."
 fi
 
-# Trocar para a branch base
-echo "[INFO] Switching to base branch: $BRANCH_BASE"
-git switch "$BRANCH_BASE"
-
-# Atualizar repositório
-git fetch --all
-git pull origin "$BRANCH_BASE"
-
-# Subir mudanças recentes
-git push -u origin "$BRANCH_BASE"
-
-# Listar branches remotas não protegidas
-echo "[INFO] Listing remote branches (excluding protected)..."
-BRANCHES=($(git for-each-ref --format="%(refname:short)" refs/remotes/origin/ \
-  | grep -v '\->' \
-  | grep -vE "origin/.*(main|edf|iae|ita|ufabc).*" \
-  | sed 's|^origin/||'))
-
-if [[ ${#BRANCHES[@]} -eq 0 ]]; then
-  echo "[WARNING] No new remote branches found to merge. Exiting script."
-  exit 0
-fi
-
-echo
-for i in "${!BRANCHES[@]}"; do
-  echo "[$i] ${BRANCHES[$i]}"
-done
-
-echo
-read -p "Enter the number of the branch to merge: " BRANCH_INDEX
-BRANCH_REMOTE="${BRANCHES[$BRANCH_INDEX]}"
-
-echo "[INFO] Remote branch to be merged: $BRANCH_REMOTE"
-
-# Criar branch local a partir da remota
-if git show-ref --verify --quiet "refs/heads/$BRANCH_REMOTE"; then
-  echo "[INFO] Local branch '$BRANCH_REMOTE' already exists. Switching..."
-  git switch "$BRANCH_REMOTE"
+# -------------------- preparar TARGET -------------------
+echo "[INFO] Switching to TARGET: $TGT_BRANCH"
+if git show-ref --verify --quiet "refs/heads/$TGT_BRANCH"; then
+  run git switch "$TGT_BRANCH"
 else
-  echo "[INFO] Creating new local branch '$BRANCH_REMOTE' from 'origin/$BRANCH_REMOTE'"
-  git checkout -b "$BRANCH_REMOTE" "origin/$BRANCH_REMOTE"
+  # se nao existe local, tenta criar a partir da remota
+  if git show-ref --verify --quiet "refs/remotes/origin/$TGT_BRANCH"; then
+    run git switch -c "$TGT_BRANCH" --track "origin/$TGT_BRANCH"
+  else
+    # cria branch vazia baseada no HEAD atual (raro, mas util)
+    run git switch -c "$TGT_BRANCH"
+  fi
+fi
+# atualiza target
+run git pull --ff-only origin "$TGT_BRANCH" || true
+run git push -u origin "$TGT_BRANCH" || true
+
+# -------------------- garantir SOURCE local -------------------
+if git show-ref --verify --quiet "refs/heads/$SRC_BRANCH"; then
+  echo "[INFO] SOURCE exists locally."
+else
+  if git show-ref --verify --quiet "refs/remotes/origin/$SRC_BRANCH"; then
+    echo "[INFO] Creating local SOURCE from origin/$SRC_BRANCH"
+    run git fetch origin "$SRC_BRANCH"
+    run git branch "$SRC_BRANCH" "origin/$SRC_BRANCH"
+  else
+    echo "[ERROR] SOURCE branch not found locally or on origin: $SRC_BRANCH"
+    exit 1
+  fi
 fi
 
-# Garantir que está atualizado
-git pull
+# -------------------- merge -------------------
+echo "[INFO] Merging '$SRC_BRANCH' into '$TGT_BRANCH'"
+set +e
+git merge "$SRC_BRANCH" --no-edit
+merge_status=$?
+set -e
 
-# Voltar para a base e fazer merge
-git switch "$BRANCH_BASE"
-echo "[INFO] Merging with '$BRANCH_REMOTE'"
-git merge "$BRANCH_REMOTE" --no-edit || {
-  echo "[ERROR] An error occurred during merge. Aborting."
+if [ "$merge_status" -ne 0 ]; then
+  echo "[ERROR] Merge has conflicts. Resolve them, then run:"
+  echo "  git add -A"
+  echo "  git commit --no-edit"
+  echo "  git push"
   exit 1
-}
-git status --short
-git push
+fi
 
-# Limpar branches locais que não são protegidas
-echo "[INFO] Cleaning up non-protected local branches..."
-git branch | grep -v -E '^\*|.*(main|edf|iae|ita|ufabc).*' | grep -q . && \
-git branch | grep -v -E '^\*|.*(main|edf|iae|ita|ufabc).*' | xargs git branch -D
+run git status --short
+run git push
 
-git branch | cat  # Mostrar branches locais restantes
+# -------------------- opcional: limpeza (protege nomes contendo palavras-chave) -------------------
+echo "[INFO] Optional cleanup of non-protected local branches..."
+if git branch | grep -v -E '^\*|.*(main|edf|iae|ita|ufabc).*' | grep -q .; then
+  git branch | grep -v -E '^\*|.*(main|edf|iae|ita|ufabc).*' | xargs git branch -D
+fi
+git branch | cat
 
-# Deletar branches remotas não protegidas
-echo "[INFO] Cleaning up non-protected remote branches..."
-git remote prune origin
-git branch -r | grep -v -E 'origin/.*(main|edf|iae|ita|ufabc).*' | sed 's|origin/||' \
-  | xargs -I {} git push origin --delete {} || true
+echo "[INFO] Optional cleanup of non-protected remote branches..."
+git remote prune origin >/dev/null || true
+git for-each-ref --format='%(refname:short)' refs/remotes/origin \
+  | grep -v '^origin/HEAD$' \
+  | grep -v -E 'origin/.*(main|edf|iae|ita|ufabc).*' \
+  | sed 's|^origin/||' \
+  | grep -v -E "^(${TGT_BRANCH}|${SRC_BRANCH})$" \
+  | xargs -r -I {} git push origin --delete {}
 
-# Confirmação final
-echo "[INFO] Script completed successfully."
+echo "[INFO] Done."
 git branch -r | cat
 git status
 ```
