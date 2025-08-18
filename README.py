@@ -2331,7 +2331,11 @@
 
 # ### 7. Git Subtree
 # 
+# ### 7.1 Git Subtree na raiz do repositório
+# 
 # Se você preferir que os arquivos do repositório, por exemplo `AGENTS`, fiquem na raiz do projeto principal, utilize o `git subtree`.
+# 
+# **ATENÇÃO:** Lembre de substituir o `AGENTS` pelo nome do seu repositótio no `GitHub`.
 # 
 # 1. Adicione o repositório secundário:
 # 
@@ -2340,7 +2344,8 @@
 #     ```
 # 
 #     * `--prefix=.` copia o conteúdo para a raiz do projeto.
-#     * `--squash` mantém o histórico compacto.
+#     * `--squash` mantém o histórico compacto
+# 
 # 
 # 2. Para atualizar posteriormente:
 # 
@@ -2349,6 +2354,32 @@
 #     ```
 # 
 # 
+
+# ### 7.2 Git Subtree em pasta específico do repositório
+# 
+# Se você preferir que os arquivos do repositório, por exemplo `AGENTS`,
+# fiquem fora da raiz do projeto principal, utilize o `git subtree`.
+# 
+# **ATENÇÃO:** Lembre de substituir o  `agents` em `--prefix=` para o
+# repositório e nome de repositório do `GitHub`, além de alterar o
+# `AGENTS` pelo nome do seu repositótio no `GitHub`, perceber que é
+# conveniente que os nomes coincidam, mesmo que com a diferença entre ser
+# escrito com MAIÚSCULAS e minúsculas.
+# 
+# 1. Adicione o repositório secundário:
+# 
+#     ```bash
+#     git subtree add --prefix=subs/substrees/agents git@github.com:usuario/AGENTS.git main --squash
+#     ```
+# 
+#     * `--prefix=subs/substrees/agents` copia o conteúdo para a raiz do projeto.
+#     * `--squash` mantém o histórico compacto.
+# 
+# 2. Para atualizar posteriormente:
+# 
+#     ```bash
+#     git subtree pull --prefix=subs/substrees/agents git@github.com:usuario/AGENTS.git main --squash
+#     ```
 
 # <!-- LICENÇA -->
 # ## Licença
