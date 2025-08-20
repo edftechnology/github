@@ -2435,6 +2435,35 @@ Não se esqueça de dar uma estrela ao projeto! Obrigado novamente!
 
 
 
+
+### 6.4 Token no `GitHub`
+
+Aqui tem duas coisas diferentes que precisam ser separadas:
+
+Quando você roda:
+
+```bash
+./config.sh --url https://github.com/edftechnology --token ALZVH4AO5FWWWLB547VNHZDIUR4OQ
+```
+
+esse `--token` **não é reutilizável em vários computadores**.
+
+- Ele é um **token temporário**, válido só para **registrar o runner uma vez**.
+- Depois que você usa ele, o GitHub invalida esse token.
+- Se tentar usar em outro computador, vai dar erro (como o 404 Not Found que você recebeu).
+
+Se você precisa registrar runners em várias máquinas, precisa **gerar um novo token para cada máquina** (no menu `Settings > Actions > Runners` da sua org/repo).
+
+#### 6.4.1 Depois de registrado
+
+Uma vez que o runner está registrado, você não precisa mais do token. O processo `runsvc.sh` ou `./run.sh` já fica conectado ao GitHub e não depende mais desse token.
+
+**Resumindo**:
+
+- Cada runner (máquina) precisa do **seu próprio token**.
+- Esses tokens só podem ser usados **uma vez**.
+- Se precisar registrar outro runner, gere outro token pelo GitHub.
+
 <!-- ACKNOWLEDGMENTS -->
 ## Agradecimentos
 
