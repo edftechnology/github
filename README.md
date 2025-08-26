@@ -2262,51 +2262,73 @@ Use se:
 
 ### 6.7 Tutorial para limpar e readicionar submódulo
 
-o Git ainda mantém a referência no índice (index). Ou seja, ele ainda "acha" que o caminho `codes/python/big_rocket_data` já está sendo rastreado.
+o `Git` ainda mantém a referência no índice (`index`), ou seja, ele ainda "acha" que o caminho, por exemplo, `subs/submodules/agents` já está sendo rastreado.
 
 #### 6.7.1 Solução completa (passo a passo)
 
 Execute os seguintes comandos exatamente nesta ordem para garantir uma limpeza completa:
 
-1. Remova do índice do Git:
-```bash
-git rm --cached -r codes/python/big_rocket_data
-```
+1. Remova do índice do `Git`:
+
+    ```bash
+    git rm --cached -r subs/submodules/agents
+    ```
+
 2. Remova o diretório se ainda existir:
-```bash
-rm -rf codes/python/big_rocket_data
-```
+
+    ```bash
+    rm -rf subs/submodules/agents
+    ```
+
 3. Remova a entrada "órfã" de submódulo (caso exista):
-```bash
-rm -rf .git/modules/codes/python/big_rocket_data
-```
-4. Verifique se ainda está no .gitmodules:
-Se aparecer alguma linha como essa:
-```ini
-[submodule "codes/python/big_rocket_data"]
-```
-Então edite e remova manualmente essa entrada do .gitmodules:
-```bash
-nano .gitmodules
-```
-5. (Opcional, mas seguro) Verifique também o .git/config:
-```bash
-nano .git/config
-```
-Remova se houver algum bloco como:
-```ini
-[submodule "codes/python/big_rocket_data"]
-    url = ...
-```
+
+    ```bash
+    rm -rf .git/modules/subs/submodules/agents
+    ```
+
+4. Verifique se ainda está no `.gitmodules` se aparecer alguma linha como essa:
+    
+    ```ini
+    [submodule "subs/submodules/agents"]
+    ```
+
+    Então edite com `sudo nano .gitmodules` e remova manualmente essa entrada do `.gitmodules`:
+    
+    ```bash
+    nano .gitmodules | cat
+    ```
+
+5. (Opcional, mas seguro) Verifique também o `.git/config`:
+    
+    ```bash
+    nano .git/config | cat
+    ```
+    
+    Remova se houver algum bloco como:
+    
+    ```ini
+    [submodule "subs/submodules/agents"]
+        url = ...
+    ```
+
 6. Agora sim: adicione novamente o submódulo
-```bash
-git submodule add git@github.com:edendenis/big_rocket_data.git codes/python/big_rocket_data
-```
-7. Adicione e faça commit
-```bash
-git add .gitmodules codes/python/big_rocket_data
-git commit -m "Adiciona submódulo big_rocket_data corretamente"
-```
+
+    ```bash
+    git submodule add git@github.com:edftechnology/agents.git subs/submodules/agents
+    ```
+
+7. Exibir a lista de `submodules`, execute o comando:
+
+    ```bash
+    git submodule status
+    ```
+
+8. Adicione:
+
+    ```bash
+    git add .gitmodules subs/submodules/agents
+    git commit -m "Adiciona submódulo `agents` corretamente"
+    ```
 
 
 ### 6.8 Sincronizar em outros projetos
@@ -2435,7 +2457,6 @@ Não se esqueça de dar uma estrela ao projeto! Obrigado novamente!
 
 
 
-
 ### 6.4 Token no `GitHub`
 
 Aqui tem duas coisas diferentes que precisam ser separadas:
@@ -2463,6 +2484,7 @@ Uma vez que o runner está registrado, você não precisa mais do token. O proce
 - Cada runner (máquina) precisa do **seu próprio token**.
 - Esses tokens só podem ser usados **uma vez**.
 - Se precisar registrar outro runner, gere outro token pelo GitHub.
+
 
 <!-- ACKNOWLEDGMENTS -->
 ## Agradecimentos
