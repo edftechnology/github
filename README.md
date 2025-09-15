@@ -2277,13 +2277,13 @@ Execute os seguintes comandos exatamente nesta ordem para garantir uma limpeza c
 2. Definir a pasta na qual o repositório será "clonado":
 
     ```bash
-    FOLDER="subs/submodules"
+    FOLDER="subs/submodules/"
     ```
 
 3. Remova do índice do `Git`:
 
     ```bash
-    git rm --cached -r "$FOLDER/$REPO"
+    git rm --cached -r "$FOLDER$REPO"
     ```
 
 4. Remova o diretório se ainda existir:
@@ -2301,7 +2301,7 @@ Execute os seguintes comandos exatamente nesta ordem para garantir uma limpeza c
 5. Abra o arquivo `.gitmodules`:
 
     ```bash
-    sudo nano .gitmodules
+    nano .gitmodules
     ```
 
 6. Verifique no arquivo `.gitmodules` se aparecer alguma linha como essa:
@@ -2313,47 +2313,55 @@ Execute os seguintes comandos exatamente nesta ordem para garantir uma limpeza c
     Então edite com `sudo nano .gitmodules` e remova manualmente essa entrada do `.gitmodules`:
     
     ```bash
-    sudo nano .gitmodules
+    nano .gitmodules
     ```
 
 7. (Opcional, mas seguro) Verifique também o `.git/config`:
     
     ```bash
-    sudo nano .git/config
+    nano .git/config
     ```
     
     Remova se houver algum bloco como:
     
     ```ini
-    [submodule "subs/submodules/agents"]
+    [submodule "$FOLDER$REPO"]
         url = ...
     ```
 
 8. Agora sim: adicione novamente o submódulo
 
     ```bash
-    git submodule add "git@github.com:edftechnology/$REPO.git" "$FOLDER/$REPO"
+    git submodule add "git@github.com:edftechnology/$REPO.git" "$FOLDER$REPO"
     ```
 
-9. Inicializar, atualizar submódulos e fazer isso de maneira recursiva para submódulos de submódulos, execute o comando:
+9. Atualize o `.git/config` automaticamente: Não é necessário editar o `.git/config` manualmente. Basta rodar:
+
+    ```bash
+    git submodule sync --recursive
+    ```
+
+    Isso força o `.git/config` a refletir o conteúdo do `.gitmodules`.
+
+10. Inicializar, atualizar submódulos e fazer isso de maneira recursiva para submódulos de submódulos, execute o comando:
 
     ```bash
     git submodule update --init --recursive
     ```
 
-10. Exibir a lista de `submodules`, execute o comando:
+11. Exibir a lista de `submodules`, execute o comando:
 
     ```bash
     git submodule status
     ```
 
-11. Adicione:
+12. Adicione:
 
     ```bash
     git add .gitmodules subs/submodules/agents
     ```
 
-12. E faça commit:
+13. E faça commit:
 
     ```bash
     git commit -m "Adiciona submódulo `agents` corretamente"
@@ -2540,6 +2548,60 @@ Uma vez que o runner está registrado, você não precisa mais do token. O proce
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
 
+
+
+## Proteção de branch no GitHub
+
+No GitHub, é possível proteger branches para que colaboradores só enviem mudanças via pull requests.
+
+### Opções de proteção
+
+- **Require pull request reviews before merging**: força que todas as alterações passem por PR com revisão.
+- **Require status checks to pass before merging**: exige que testes automatizados estejam verdes.
+- **Include administrators**: se marcado, até administradores precisam seguir as regras.
+- **Restrict who can push to matching branches**: limita usuários/teams autorizados a dar push direto.
+- **Prevent force pushes**: evita sobrescrever o histórico com `git push --force`.
+- **Prevent deletion**: bloqueia a exclusão do branch protegido.
+
+> Recomenda-se proteger o branch principal (`main` ou `master`) dessa forma, enquanto outros branches podem ser menos restritos.
+
+### Controle de permissões por colaborador ou time
+
+No repositório, em **Settings → Manage Access**, é possível definir papéis:
+
+| Papel | Permissões principais |
+| --- | --- |
+| **Admin** | acesso total, inclusive excluir o repositório |
+| **Maintainer (Org)** | administração de repositórios da organização |
+| **Write** | pode dar push, criar branches e abrir PRs |
+| **Triage** | pode criar issues e PRs, mas não dar push |
+| **Read** | acesso somente leitura |
+
+Para impedir que colaboradores excluam ou alterem o branch `main`, conceda **Write** ou **Triage**, mas não **Admin**.
+
+### Protegendo todos os repositórios de uma organização
+
+Em **Organization Settings → Repository settings**, é possível definir políticas globais como proteção obrigatória de branches, restrição de exclusão e merges somente via PR.
+
+Com essas configurações, evita-se que colaboradores removam o branch principal ou o repositório sem permissões de administrador.
+
+
+## Como adicionar uma pessoa para colaborar
+
+É possível adicionar colaboradores ao repositório pela interface web do GitHub:
+
+1. Acesse o repositório e clique em **Settings**.
+2. Abra **Collaborators and teams**.
+3. Clique em **Add people**, digite o usuário e selecione-o.
+4. Defina a permissão:
+   - **Read** – apenas leitura.
+   - **Triage** – pode abrir/fechar issues e PRs, sem push.
+   - **Write** – pode dar push e abrir PRs.
+   - **Maintain** – gerencia o repositório, sem excluir.
+   - **Admin** – acesso total.
+5. Clique em **Add <usuário> to repository** e o convidado deve aceitar o convite.
+
+Para repositórios de organizações, recomenda-se criar um **Team**, adicionar membros e atribuir o time ao repositório com a permissão desejada.
 
 
 ## Referências
