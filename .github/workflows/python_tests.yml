@@ -1,0 +1,36 @@
+name: Python Continuous Integration (CI)
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Lint with pylint
+        run: |
+          pip install pylint
+          pylint . || true
+          # The '|| true' allows the workflow to continue even if pylint fails
+
+      - name: Run tests with coverage
+        run: |
+          pip install coverage
+          coverage run -m pytest
+          coverage report

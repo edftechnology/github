@@ -1,0 +1,38 @@
+name: Generate documentation
+
+on:
+  # Trigger manually via the “Actions” tab → “Run workflow”
+  workflow_dispatch:
+  # Or run every Monday at 4:00 AM
+  schedule:
+    - cron: '0 4 * * 1'
+
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install docs dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install sphinx
+
+      - name: Clean old files
+        run: |
+          find . -type f -name '*.rst' ! -name 'index.rst' -delete
+          rm -rf docs/build/
+
+      - name: Generate Sphinx sources
+        run: sphinx-apidoc -o docs/source/ .
+
+      - name: Build HTML
+        run: make -C docs html
+
+      - name: Publish to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/build/html

@@ -2271,40 +2271,58 @@
 # 
 # Execute os seguintes comandos exatamente nesta ordem para garantir uma limpeza completa:
 # 
-# 1. Remova do índice do `Git`:
+# 1. Definir a variável com o nome do repositório:
 # 
 #     ```bash
-#     git rm --cached -r subs/submodules/agents
+#     REPO="agents"
 #     ```
 # 
-# 2. Remova o diretório se ainda existir:
+# 2. Definir a pasta na qual o repositório será "clonado":
 # 
 #     ```bash
-#     rm -rf subs/submodules/agents
+#     FOLDER="subs/submodules"
 #     ```
 # 
-# 3. Remova a entrada "órfã" de submódulo (caso exista):
+# 3. Remova do índice do `Git`:
 # 
 #     ```bash
-#     rm -rf .git/modules/subs/submodules/agents
+#     git rm --cached -r "$FOLDER/$REPO"
 #     ```
 # 
-# 4. Verifique se ainda está no `.gitmodules` se aparecer alguma linha como essa:
+# 4. Remova o diretório se ainda existir:
+# 
+#     ```bash
+#     rm -rf "$FOLDER/$REPO"
+#     ```
+# 
+# 5. Remova a entrada "órfã" de submódulo (caso exista):
+# 
+#     ```bash
+#     rm -rf ".git/modules/$FOLDER/$REPO"
+#     ```
+# 
+# 5. Abra o arquivo `.gitmodules`:
+# 
+#     ```bash
+#     sudo nano .gitmodules
+#     ```
+# 
+# 6. Verifique no arquivo `.gitmodules` se aparecer alguma linha como essa:
 #     
 #     ```ini
-#     [submodule "subs/submodules/agents"]
+#     [submodule "$FOLDER/$REPO"]
 #     ```
 # 
 #     Então edite com `sudo nano .gitmodules` e remova manualmente essa entrada do `.gitmodules`:
 #     
 #     ```bash
-#     nano .gitmodules | cat
+#     sudo nano .gitmodules
 #     ```
 # 
-# 5. (Opcional, mas seguro) Verifique também o `.git/config`:
+# 7. (Opcional, mas seguro) Verifique também o `.git/config`:
 #     
 #     ```bash
-#     nano .git/config | cat
+#     sudo nano .git/config
 #     ```
 #     
 #     Remova se houver algum bloco como:
@@ -2314,22 +2332,33 @@
 #         url = ...
 #     ```
 # 
-# 6. Agora sim: adicione novamente o submódulo
+# 8. Agora sim: adicione novamente o submódulo
 # 
 #     ```bash
-#     git submodule add git@github.com:edftechnology/agents.git subs/submodules/agents
+#     git submodule add "git@github.com:edftechnology/$REPO.git" "$FOLDER/$REPO"
 #     ```
 # 
-# 7. Exibir a lista de `submodules`, execute o comando:
+# 9. Inicializar, atualizar submódulos e fazer isso de maneira recursiva para submódulos de submódulos, execute o comando:
+# 
+#     ```bash
+#     git submodule update --init --recursive
+#     ```
+# 
+# 10. Exibir a lista de `submodules`, execute o comando:
 # 
 #     ```bash
 #     git submodule status
 #     ```
 # 
-# 8. Adicione:
+# 11. Adicione:
 # 
 #     ```bash
 #     git add .gitmodules subs/submodules/agents
+#     ```
+# 
+# 12. E faça commit:
+# 
+#     ```bash
 #     git commit -m "Adiciona submódulo `agents` corretamente"
 #     ```
 # 
@@ -2366,6 +2395,7 @@
 #     ```
 # 
 #     * `--prefix=.` copia o conteúdo para a raiz do projeto.
+#     
 #     * `--squash` mantém o histórico compacto
 # 
 # 
